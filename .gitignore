@@ -362,3 +362,8 @@ MigrationBackup/
 FodyWeavers.xsd
 
 project.assets.json
+*.nuget.g.props
+*.nuget.g.targets
+project.nuget.cache
+project.assets.json
+project.nuget.cache

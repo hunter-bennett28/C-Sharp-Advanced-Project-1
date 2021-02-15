@@ -22,9 +22,9 @@ namespace Project1_Group_17
             return null;
         }
 
-        public int DisplayLargestPopulationCity(string province)
+        public ulong DisplayLargestPopulationCity(string province)
         {
-            int largestPopulation = 0;
+            ulong largestPopulation = 0;
             foreach(KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
                 if(city.Value.GetProvince() == province && city.Value.GetPopulation() > largestPopulation)
@@ -36,9 +36,9 @@ namespace Project1_Group_17
             return largestPopulation;
         }
 
-        public int DisplaySmallestPopulationCity(string province)
+        public ulong DisplaySmallestPopulationCity(string province)
         {
-            int lowestPopulation = int.MaxValue;
+            ulong lowestPopulation = ulong.MaxValue;
             foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
                 if (city.Value.GetProvince() == province && city.Value.GetPopulation() < lowestPopulation)
@@ -66,9 +66,9 @@ namespace Project1_Group_17
         }
 
         // Province Methods
-        public int DisplayProvincePopulation(string province)
+        public ulong DisplayProvincePopulation(string province)
         {
-            int totalPopulation = 0;
+            ulong totalPopulation = 0;
             foreach(KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
                 if (city.Value.GetProvince() == province)
