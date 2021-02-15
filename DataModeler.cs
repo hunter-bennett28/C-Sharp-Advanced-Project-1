@@ -23,7 +23,6 @@ namespace Project1_Group_17
                 //Read in all of the elements of a city
                 string city = canadaCity.GetElementsByTagName("city").Item(0).InnerText,
                     cityAscii = canadaCity.GetElementsByTagName("city_ascii").Item(0).InnerText,
-                    country = canadaCity.GetElementsByTagName("country").Item(0).InnerText,
                     adminName = canadaCity.GetElementsByTagName("admin_name").Item(0).InnerText,
                     captial = canadaCity.GetElementsByTagName("capital").Item(0).InnerText;
 
@@ -33,8 +32,8 @@ namespace Project1_Group_17
                 ulong pop = Convert.ToUInt64(canadaCity.GetElementsByTagName("population").Item(0).InnerText),
                     id = Convert.ToUInt64(canadaCity.GetElementsByTagName("id").Item(0).InnerText);
 
+                //add the city
                 cities.Add($"{city}|{adminName}", new CityInfo(id, city, cityAscii, pop, adminName, lat, lng));
-                break;
             }
         }
 
