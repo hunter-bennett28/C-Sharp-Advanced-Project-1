@@ -1,5 +1,4 @@
-﻿//Test
-using System;
+﻿using System;
 
 namespace Project1_Group_17
 {
