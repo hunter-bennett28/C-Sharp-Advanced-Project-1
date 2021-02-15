@@ -366,4 +366,8 @@ project.assets.json
 *.nuget.g.targets
 project.nuget.cache
 project.assets.json
+<<<<<<< HEAD
 project.nuget.cache
+=======
+project.nuget.cache
+>>>>>>> master
