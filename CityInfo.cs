@@ -32,7 +32,7 @@
             return Province;
         }
 
-        public int GetPopulation()
+        public ulong GetPopulation()
         {
             return Population;
         }
