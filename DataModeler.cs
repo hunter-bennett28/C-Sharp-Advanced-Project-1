@@ -7,15 +7,16 @@ namespace Project1_Group_17
 {
     public class DataModeler
     {
-        public delegate Dictionary<string, CityInfo> ParseHandler(string fileName);
+        private Dictionary<string, CityInfo> ParsedCities;
+        public delegate void ParseHandler(string fileName);
         public enum SupportedFileTypes { JSON, XML, CSV };
 
-        public Dictionary<string, CityInfo> ParseXML(string fileName)
+        public void ParseXML(string fileName)
         {
-            return null;
+             
         }
 
-        public Dictionary<string, CityInfo> ParseJSON(string fileName)
+        public void ParseJSON(string fileName)
         {
 
             string rawJson = File.ReadAllText($"../../../Data/{fileName}");
@@ -46,7 +47,7 @@ namespace Project1_Group_17
                 allCities.Add(cityName, city);
             }
 
-            return allCities;
+            ParsedCities = allCities;
         }
 
         /// <summary>
@@ -61,9 +62,9 @@ namespace Project1_Group_17
             return token[property] == null ? defaultValue : token[property].ToString();
         }
 
-        public Dictionary<string, CityInfo> ParseCSV(string fileName)
+        public void ParseCSV(string fileName)
         {
-            return null;
+
         }
 
         public Dictionary<string, CityInfo> ParseFile(string fileName, SupportedFileTypes fileType)
@@ -82,7 +83,8 @@ namespace Project1_Group_17
                     break;
             }
 
-            return parseMethod(fileName);
+            parseMethod(fileName);
+            return ParsedCities;
         }
     }
 }
