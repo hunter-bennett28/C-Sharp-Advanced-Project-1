@@ -8,23 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Hunter\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\conni\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Mega\\CPATerm5\\C# Advanced\\Projects\\Project1\\Project1_Group_17\\Project1_Group_17.csproj",
+      "projectUniqueName": "C:\\Users\\conni\\Desktop\\CPA Course\\CPA Term 5\\C# Adv. Topics\\Project 1\\Project1_Group_17.csproj",
       "projectName": "Project1_Group_17",
-      "projectPath": "D:\\Mega\\CPATerm5\\C# Advanced\\Projects\\Project1\\Project1_Group_17\\Project1_Group_17.csproj",
-      "packagesPath": "C:\\Users\\Hunter\\.nuget\\packages\\",
-      "outputPath": "D:\\Mega\\CPATerm5\\C# Advanced\\Projects\\Project1\\Project1_Group_17\\obj\\",
+      "projectPath": "C:\\Users\\conni\\Desktop\\CPA Course\\CPA Term 5\\C# Adv. Topics\\Project 1\\Project1_Group_17.csproj",
+      "packagesPath": "C:\\Users\\conni\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\conni\\Desktop\\CPA Course\\CPA Term 5\\C# Adv. Topics\\Project 1\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Hunter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\conni\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -32,7 +28,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "D:\\MyNuGet": {},
+        "C:\\Users\\conni\\Desktop\\CPA Course\\CPA Term 5\\Component Based Programming in .NET\\Week 5\\Tutorial\\MyNuGetRepository": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
