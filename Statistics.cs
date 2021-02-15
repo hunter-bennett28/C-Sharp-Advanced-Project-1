@@ -99,5 +99,10 @@ namespace Project1_Group_17
         {
 
         }
+
+        public void GetCapital(string province)
+        {
+
+        }
     }
 }
