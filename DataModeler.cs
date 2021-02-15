@@ -7,7 +7,7 @@ namespace Project1_Group_17
         public delegate void ParseHandler(string fileName);
         public void ParseXML(string fileName)
         {
-
+            //TODO: Read file and populate the dictionary
         }
 
         public void ParseJSON(string fileName)
