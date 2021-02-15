@@ -6,7 +6,8 @@ namespace Project1_Group_17
     public class DataModeler
     {
         public delegate void ParseHandler(string fileName);
-        private Dictionary<string, CityInfo> cities;
+        private Dictionary<string, CityInfo> ParsedCities;
+        public enum SupportedFileTypes { JSON, XML, CSV };
 
         /// <summary>
         /// Parse a XML file and populate a dictionary
@@ -16,7 +17,7 @@ namespace Project1_Group_17
         {
             //TODO: Read file and populate the dictionary
             XmlDocument document = new XmlDocument();
-            document.Load(fileName);
+            document.Load($"../../../{fileName}");
 
             foreach (XmlElement canadaCity in document.DocumentElement)
             {
@@ -33,7 +34,7 @@ namespace Project1_Group_17
                     id = Convert.ToUInt64(canadaCity.GetElementsByTagName("id").Item(0).InnerText);
 
                 //add the city
-                cities.Add($"{city}|{adminName}", new CityInfo(id, city, cityAscii, pop, adminName, lat, lng));
+                ParsedCities.Add($"{city}|{adminName}", new CityInfo(id, city, cityAscii, pop, adminName, lat, lng));
             }
         }
 
@@ -47,13 +48,13 @@ namespace Project1_Group_17
 
         }
 
-        public Dictionary<string, CityInfo> ParseFile(string fileName, string fileType)
+        public Dictionary<string, CityInfo> ParseFile(string fileName, SupportedFileTypes fileType)
         {
-            cities = new Dictionary<string, CityInfo>();
+            ParsedCities = new Dictionary<string, CityInfo>();
 
             //TODO
 
-            return cities;
+            return ParsedCities;
         }
     }
 }
