@@ -1,21 +1,23 @@
 ﻿using System.Collections.Generic;
-using System.Xml;
+using System.IO;
+using System.Linq;
+using Newtonsoft.Json.Linq;
+
 using System;
+using System.Xml;
 namespace Project1_Group_17
 {
     public class DataModeler
     {
-        public delegate void ParseHandler(string fileName);
         private Dictionary<string, CityInfo> ParsedCities;
-        public enum SupportedFileTypes { JSON, XML, CSV };
-
+        public delegate void ParseHandler(string fileName);
         /// <summary>
         /// Parse a XML file and populate a dictionary
         /// </summary>
         /// <param name="fileName">XML file to be opened</param>
         public void ParseXML(string fileName)
         {
-            //TODO: Read file and populate the dictionary
+
             XmlDocument document = new XmlDocument();
             document.Load($"../../../{fileName}");
 
@@ -34,13 +36,58 @@ namespace Project1_Group_17
                     id = Convert.ToUInt64(canadaCity.GetElementsByTagName("id").Item(0).InnerText);
 
                 //add the city
-                ParsedCities.Add($"{city}|{adminName}", new CityInfo(id, city, cityAscii, pop, adminName, lat, lng));
+                if (ParsedCities.ContainsKey(city))
+                    ParsedCities.Add($"{city}|{adminName}", new CityInfo(id, city, cityAscii, pop, adminName, lat, lng));
+                else
+                    ParsedCities.Add(city, new CityInfo(id, city, cityAscii, pop, adminName, lat, lng));
+
             }
         }
 
         public void ParseJSON(string fileName)
         {
 
+            string rawJson = File.ReadAllText($"../../../Data/{fileName}");
+            JObject json = JObject.Parse($"{{ data:{rawJson}}}"); // Wrap JSON in braces for valid Parse syntax
+            IList<JToken> results = json["data"].Children().ToList();
+
+            Dictionary<string, CityInfo> allCities = new Dictionary<string, CityInfo>();
+            foreach (JToken result in results)
+            {
+                string cityName = GetJTokenPropertyValue(result, "city", "");
+                if (cityName == "")
+                    continue;
+                CityInfo city = new CityInfo(
+                    ulong.Parse(GetJTokenPropertyValue(result, "id", "0")),
+                    cityName,
+                    GetJTokenPropertyValue(result, "city_ascii", ""),
+                    ulong.Parse(GetJTokenPropertyValue(result, "population", "0")),
+                    GetJTokenPropertyValue(result, "admin_name", ""),
+                    double.Parse(GetJTokenPropertyValue(result, "lat", "0")),
+                    double.Parse(GetJTokenPropertyValue(result, "lng", "0"))
+                );
+
+                // If a city with the given name already exists in the dictionary, append the province name
+                if (allCities.ContainsKey(cityName))
+                {
+                    cityName += $"|{result["admin_name"].ToString()}";
+                }
+                allCities.Add(cityName, city);
+            }
+
+            ParsedCities = allCities;
+        }
+
+        /// <summary>
+        /// Retrieves a property from a JToken, or returns the given default value if not available
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="property"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
+        private string GetJTokenPropertyValue(JToken token, string property, string defaultValue)
+        {
+            return token[property] == null ? defaultValue : token[property].ToString();
         }
 
         public void ParseCSV(string fileName)
@@ -50,10 +97,21 @@ namespace Project1_Group_17
 
         public Dictionary<string, CityInfo> ParseFile(string fileName, SupportedFileTypes fileType)
         {
-            ParsedCities = new Dictionary<string, CityInfo>();
+            ParseHandler parseMethod = null;
+            switch (fileType)
+            {
+                case SupportedFileTypes.JSON:
+                    parseMethod = ParseJSON;
+                    break;
+                case SupportedFileTypes.XML:
+                    parseMethod = ParseXML;
+                    break;
+                case SupportedFileTypes.CSV:
+                    parseMethod = ParseCSV;
+                    break;
+            }
 
-            //TODO
-
+            parseMethod(fileName);
             return ParsedCities;
         }
     }
