@@ -6,11 +6,45 @@ namespace Project1_Group_17
     {
         static void Main(string[] args)
         {
-            DataModeler modeler = new DataModeler();
-            modeler.ParseFile("Canadacities-JSON.json", DataModeler.SupportedFileTypes.JSON);
-            modeler.ParseFile("Canadacities-XML.xml", DataModeler.SupportedFileTypes.XML);
-            modeler.ParseFile("Canadacities.csv", DataModeler.SupportedFileTypes.CSV);
+            Console.WriteLine("Canadian Cities Data Analayzer © Hunter Bennett, Connor Black, James Dunton");
+            char selection;
+            do
+            {
+                Console.WriteLine("\nAvailable data files:");
+                Console.WriteLine("\t1) Canadacities-JSON.json");
+                Console.WriteLine("\t2) Canadacities-XML.xml");
+                Console.WriteLine("\t3) Canadacities.csv");
 
+                Console.Write("Select a data file to parse: ");
+                selection = Console.ReadKey().KeyChar;
+                if (selection >= '1' && selection <= '3')
+                    break;
+                Console.WriteLine("Invalid option. Valid options are 1, 2, 3.");
+            } while (true);
+            Console.WriteLine();
+
+            Statistics citiesStats = null;
+            switch (selection)
+            {
+                case '1':
+                    citiesStats = new Statistics("Canadacities-JSON.json", DataModeler.SupportedFileTypes.JSON);
+                    break;
+                case '2':
+                    citiesStats = new Statistics("Canadacities-XML.xml", DataModeler.SupportedFileTypes.XML);
+                    break;
+                case '3':
+                    citiesStats = new Statistics("Canadacities.csv", DataModeler.SupportedFileTypes.CSV);
+                    break;
+            }
+
+            citiesStats.DisplayLargestPopulationCity("Ontario");
+            citiesStats.DisplaySmallestPopulationCity("Ontario");
+            citiesStats.DisplayProvincePopulation("Ontario");
+            citiesStats.DisplayCityInfo("London");
+            citiesStats.DisplayCityInfo("Windsor");
+            citiesStats.DisplayProvinceCities("Ontario");
+
+            //TODO: implement options
         }
     }
 }

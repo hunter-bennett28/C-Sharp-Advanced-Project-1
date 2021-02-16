@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Project1_Group_17
 {
@@ -8,46 +9,54 @@ namespace Project1_Group_17
         private Dictionary<string, CityInfo> CityCatalogue;
 
         // Constructor
-        public Statistics(string fileName, string fileType)
+        public Statistics(string fileName, DataModeler.SupportedFileTypes fileType)
         {
-            
+            CityCatalogue = new DataModeler().ParseFile(fileName, fileType);
         }
 
         // City Methods
-        public CityInfo DisplayCityInfo(string cityName)
+        public void DisplayCityInfo(string cityName)
         {
             //Either show all cities with same name or ask user which to show
-            if (CityCatalogue.ContainsKey(cityName))
-                return CityCatalogue[cityName];
-            return null;
+            foreach(KeyValuePair<string, CityInfo> city in CityCatalogue)
+            {
+                string[] nameParts = city.Key.Split('|');
+                if(nameParts[0] == cityName)
+                {
+                    Console.WriteLine($"{cityName}, {city.Value.GetProvince()}. Population: {city.Value.GetPopulation()}");
+                }
+            }
         }
 
-        public ulong DisplayLargestPopulationCity(string province)
+        public void DisplayLargestPopulationCity(string province)
         {
             ulong largestPopulation = 0;
+            string cityName = "";
             foreach(KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
                 if(city.Value.GetProvince() == province && city.Value.GetPopulation() > largestPopulation)
                 {
                     largestPopulation = city.Value.GetPopulation();
+                    cityName = city.Key.Split('|')[0];
                 }
             }
-
-            return largestPopulation;
+            Console.WriteLine($"Largest Population: {cityName} Population: {largestPopulation}");
         }
 
-        public ulong DisplaySmallestPopulationCity(string province)
+        public void DisplaySmallestPopulationCity(string province)
         {
             ulong lowestPopulation = ulong.MaxValue;
+            string cityName = "";
             foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
                 if (city.Value.GetProvince() == province && city.Value.GetPopulation() < lowestPopulation)
                 {
                     lowestPopulation = city.Value.GetPopulation();
+                    cityName = city.Key.Split('|')[0];
                 }
             }
 
-            return lowestPopulation;
+            Console.WriteLine($"Smallest Population: {cityName} Population: {lowestPopulation}");
         }
 
         public void CompareCitiesPopulation()
@@ -66,7 +75,7 @@ namespace Project1_Group_17
         }
 
         // Province Methods
-        public ulong DisplayProvincePopulation(string province)
+        public void DisplayProvincePopulation(string province)
         {
             ulong totalPopulation = 0;
             foreach(KeyValuePair<string, CityInfo> city in CityCatalogue)
@@ -75,19 +84,18 @@ namespace Project1_Group_17
                     totalPopulation += city.Value.GetPopulation();
             }
 
-            return totalPopulation;
+            Console.WriteLine($"{province} Population: {totalPopulation}");
         }
         
-        public List<string> DisplayProvinceCities(string province)
+        public void DisplayProvinceCities(string province)
         {
-            List<string> allCitiesInProvince = new List<string>();
             foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
                 if (city.Value.GetProvince() == province)
-                    allCitiesInProvince.Add(city.Key);
+                {
+                    Console.WriteLine(city.Key.Split('|')[0]);
+                }
             }
-
-            return allCitiesInProvince;
         }
 
         public void RankProvincesByPopulation()

@@ -13,6 +13,10 @@ namespace Project1_Group_17
         public delegate void ParseHandler(string fileName);
         public enum SupportedFileTypes { JSON, XML, CSV };
       
+        public DataModeler()
+        {
+            ParsedCities = new Dictionary<string, CityInfo>();
+        }
         /// <summary>
         /// Parse a XML file and populate a dictionary
         /// </summary>
@@ -21,7 +25,7 @@ namespace Project1_Group_17
         {
 
             XmlDocument document = new XmlDocument();
-            document.Load($"../../../{fileName}");
+            document.Load($"../../../Data/{fileName}");
 
             foreach (XmlElement canadaCity in document.DocumentElement)
             {
@@ -53,7 +57,6 @@ namespace Project1_Group_17
             JObject json = JObject.Parse($"{{ data:{rawJson}}}"); // Wrap JSON in braces for valid Parse syntax
             IList<JToken> results = json["data"].Children().ToList();
 
-            Dictionary<string, CityInfo> allCities = new Dictionary<string, CityInfo>();
             foreach (JToken result in results)
             {
                 string cityName = GetJTokenPropertyValue(result, "city", "");
@@ -70,14 +73,12 @@ namespace Project1_Group_17
                 );
 
                 // If a city with the given name already exists in the dictionary, append the province name
-                if(allCities.ContainsKey(cityName))
+                if(ParsedCities.ContainsKey(cityName))
                 {
                     cityName += $"|{result["admin_name"].ToString()}";
                 }
-                allCities.Add(cityName, city);
+                ParsedCities.Add(cityName, city);
             }
-
-            ParsedCities = allCities;
         }
 
         /// <summary>
