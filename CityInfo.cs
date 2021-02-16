@@ -6,15 +6,15 @@
         private ulong CityID;
         private string CityName;
         private string CityAscii;
-        private int Population;
+        private ulong Population;
         private string Province;
-        private float Latitude;
-        private float Longitude;
+        private double Latitude;
+        private double Longitude;
 
         // Constructor
         public CityInfo(
-            ulong cityID, string cityName, string cityAscii, int population,
-            string province, float latitude, float longitude
+            ulong cityID, string cityName, string cityAscii, ulong population,
+            string province, double latitude, double longitude
         )
         {
             CityID = cityID;
@@ -32,7 +32,7 @@
             return Province;
         }
 
-        public int GetPopulation()
+        public ulong GetPopulation()
         {
             return Population;
         }
