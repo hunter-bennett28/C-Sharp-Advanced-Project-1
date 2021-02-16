@@ -3,6 +3,8 @@ using System.IO;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
+using System;
+using System.Xml;
 namespace Project1_Group_17
 {
     public class DataModeler
@@ -10,10 +12,38 @@ namespace Project1_Group_17
         private Dictionary<string, CityInfo> ParsedCities;
         public delegate void ParseHandler(string fileName);
         public enum SupportedFileTypes { JSON, XML, CSV };
-
+      
+        /// <summary>
+        /// Parse a XML file and populate a dictionary
+        /// </summary>
+        /// <param name="fileName">XML file to be opened</param>
         public void ParseXML(string fileName)
         {
-             
+
+            XmlDocument document = new XmlDocument();
+            document.Load($"../../../{fileName}");
+
+            foreach (XmlElement canadaCity in document.DocumentElement)
+            {
+                //Read in all of the elements of a city
+                string city = canadaCity.GetElementsByTagName("city").Item(0).InnerText,
+                    cityAscii = canadaCity.GetElementsByTagName("city_ascii").Item(0).InnerText,
+                    adminName = canadaCity.GetElementsByTagName("admin_name").Item(0).InnerText,
+                    captial = canadaCity.GetElementsByTagName("capital").Item(0).InnerText;
+
+                double lat = Convert.ToDouble(canadaCity.GetElementsByTagName("lat").Item(0).InnerText),
+                    lng = Convert.ToDouble(canadaCity.GetElementsByTagName("lng").Item(0).InnerText);
+
+                ulong pop = Convert.ToUInt64(canadaCity.GetElementsByTagName("population").Item(0).InnerText),
+                    id = Convert.ToUInt64(canadaCity.GetElementsByTagName("id").Item(0).InnerText);
+
+                //add the city
+                if (ParsedCities.ContainsKey(city))
+                    ParsedCities.Add($"{city}|{adminName}", new CityInfo(id, city, cityAscii, pop, adminName, lat, lng));
+                else
+                    ParsedCities.Add(city, new CityInfo(id, city, cityAscii, pop, adminName, lat, lng));
+
+            }
         }
 
         public void ParseJSON(string fileName)
