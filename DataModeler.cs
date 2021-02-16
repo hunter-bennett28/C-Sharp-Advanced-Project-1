@@ -11,6 +11,8 @@ namespace Project1_Group_17
     {
         private Dictionary<string, CityInfo> ParsedCities;
         public delegate void ParseHandler(string fileName);
+        public enum SupportedFileTypes { JSON, XML, CSV };
+      
         /// <summary>
         /// Parse a XML file and populate a dictionary
         /// </summary>
@@ -68,7 +70,7 @@ namespace Project1_Group_17
                 );
 
                 // If a city with the given name already exists in the dictionary, append the province name
-                if (allCities.ContainsKey(cityName))
+                if(allCities.ContainsKey(cityName))
                 {
                     cityName += $"|{result["admin_name"].ToString()}";
                 }
@@ -98,7 +100,7 @@ namespace Project1_Group_17
         public Dictionary<string, CityInfo> ParseFile(string fileName, SupportedFileTypes fileType)
         {
             ParseHandler parseMethod = null;
-            switch (fileType)
+            switch(fileType)
             {
                 case SupportedFileTypes.JSON:
                     parseMethod = ParseJSON;
