@@ -170,6 +170,12 @@ namespace Project1_Group_17
         // Province Methods
         public bool IsValidProvince(string province)
         {
+            foreach (var city in CityCatalogue)
+            {
+                if (city.Value.GetProvince() == province)
+                    return true;
+            }
+
             return false;
         }
 

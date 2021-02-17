@@ -50,6 +50,11 @@ namespace Project1_Group_17
             //citiesStats.UpdatePopulation("Selkirk", 9986, "Canadacities-XML.xml");
             citiesStats.UpdatePopulation("Selkirk", 9986, "Canadacities.csv");
 
+            Console.WriteLine(citiesStats.IsValidCity("London"));
+            Console.WriteLine(citiesStats.IsValidCity("Ontario"));
+            Console.WriteLine(citiesStats.IsValidProvince("London"));
+            Console.WriteLine(citiesStats.IsValidProvince("Ontario"));
+
             //TODO: implement options
         }
     }
