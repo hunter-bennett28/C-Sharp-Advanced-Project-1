@@ -190,9 +190,7 @@ namespace Project1_Group_17
 
             //Table header
             Console.WriteLine("\n\n{0,-35}\t{1,10}", "Province", "Population");
-            for (int x = 0; x < 50; x++)
-                Console.Write('-');
-            Console.WriteLine();
+            Console.WriteLine(new string('-', 50));
 
             //Display table contents
             foreach (var province in provincePopulation.OrderBy(item => item.Value))
@@ -215,9 +213,7 @@ namespace Project1_Group_17
 
             //Table header
             Console.WriteLine("\n\n{0,-35}\t{1,10}", "Province", "Cities");
-            for (int x = 0; x < 50; x++)
-                Console.Write('-');
-            Console.WriteLine();
+            Console.WriteLine(new string('-', 50));
 
             //Display table contents
             foreach (var province in provinceCities.OrderBy(item => item.Value))
