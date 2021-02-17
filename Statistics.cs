@@ -91,8 +91,8 @@ namespace Project1_Group_17
         /// <summary>
         /// Determine the distance between two points using the Bing Map API
         /// </summary>
-        /// <param name="city1"></param>
-        /// <param name="city2"></param>
+        /// <param name="city1">First city name</param>
+        /// <param name="city2">Second city name</param>
         /// <returns>A awaitable task to ensure that the method is called</returns>
         public async Task CalculateDistanceBetweenCities(string city1Name, string city2Name)
         {
