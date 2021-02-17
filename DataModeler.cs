@@ -116,47 +116,5 @@ namespace Project1_Group_17
             parseMethod(fileName);
             return ParsedCities;
         }
-
-        public void UpdatePopulation(string cityName, ulong population, string fileName)
-        {
-            if(ParsedCities.ContainsKey(cityName))
-            {
-                ParsedCities[cityName].SetPopulation(population);
-                switch(fileName)
-                {
-                    case "Canadacities-XML.xml":
-                        UpdateXMLFile(cityName, population);
-                        break;
-                    case "Canadacities-JSON.json":
-                        UpdateJSONFile(cityName, population);
-                        break;
-                    case "Canadacities.csv":
-                        UpdateCSVFile(cityName, population);
-                        break;
-                }
-            }
-            CityPopulationChangeEvent populationChangeEvent = new CityPopulationChangeEvent();
-            populationChangeEvent.NotifyPopulationChange += NotifyPopulationChanged; 
-        }
-
-        public void NotifyPopulationChanged(object sender, PopulationChangeEventArgs eventArgs)
-        {
-            Console.WriteLine($"{eventArgs.CityName}, {eventArgs.ProvinceName} Population Changed To {eventArgs.Population}");
-        }
-
-        private void UpdateCSVFile(string cityName, ulong population)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void UpdateJSONFile(string cityName, ulong population)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void UpdateXMLFile(string cityName, ulong population)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

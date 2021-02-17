@@ -48,5 +48,10 @@ namespace Project1_Group_17
         {
             return new Tuple<double, double>(Latitude, Longitude);
         }
+
+        public string GetCityName()
+        {
+            return CityName;
+        }
     }
 }
