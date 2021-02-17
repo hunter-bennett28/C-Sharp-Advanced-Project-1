@@ -106,7 +106,7 @@ namespace Project1_Group_17
                 const string bingApiKey = "Ao0BK4GXiMwRy_4CGUMODJcwKwsHzEluEPLwIA5XpVJVxjpZyoY9NOujRdaLRtEM";
                 string destMatrix = $"https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=" +
                     $"{lat1},{lng1}&destinations={lat2},{lng2}" +
-                    $"&travelMode=driving&startTime=&timeUnit=&key={bingApiKey}";
+                    $"&travelMode=driving&startTime=&timeUnit=&key={bingApiKey}"; //Travel mode is required but does not impact distance
 
                 //Get the response from the server
                 HttpResponseMessage response = await client.GetAsync(destMatrix);
