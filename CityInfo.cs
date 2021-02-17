@@ -44,6 +44,10 @@ namespace Project1_Group_17
             Population = population;
         }
 
+        /// <summary>
+        /// Get the latitude and longitude
+        /// </summary>
+        /// <returns>A tuple with the lat (item 1) and long (item 2)</returns>
         public Tuple<double, double> GetLocation() // TODO: figure out return type, returns lat AND long
         {
             return new Tuple<double, double>(Latitude, Longitude);
