@@ -96,12 +96,19 @@ namespace Project1_Group_17
         /// <param name="lat2">Lattitude of the second city</param>
         /// <param name="lng2">Longitude of the second city</param>
         /// <returns>A awaitable task to ensure that the method is called</returns>
-        public async Task CalculateDistanceBetweenCities(double lat1, double lng1, double lat2, double lng2)
+        public async Task CalculateDistanceBetweenCities(CityInfo city1, CityInfo city2)
         {
             //Fetch from the url, in this case the bing API
             //https://docs.microsoft.com/en-us/bingmaps/rest-services/routes/calculate-a-distance-matrix#response
             try
             {
+                //Get the lattitudes and logitudes from the cities
+                Tuple<double, double> c1Loc = city1.GetLocation();
+                double lat1 = c1Loc.Item1, lng1 = c1Loc.Item2;
+
+                Tuple<double, double> c2Loc = city2.GetLocation();
+                double lat2 = c2Loc.Item1, lng2 = c2Loc.Item2;
+
                 //Initiate the key and populate the URL to call
                 const string bingApiKey = "Ao0BK4GXiMwRy_4CGUMODJcwKwsHzEluEPLwIA5XpVJVxjpZyoY9NOujRdaLRtEM";
                 string destMatrix = $"https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=" +
