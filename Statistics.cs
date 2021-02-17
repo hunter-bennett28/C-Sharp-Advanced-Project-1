@@ -107,6 +107,7 @@ namespace Project1_Group_17
                 Tuple<double, double> c1Loc = city1.GetLocation();
                 double lat1 = c1Loc.Item1, lng1 = c1Loc.Item2;
 
+
                 Tuple<double, double> c2Loc = city2.GetLocation();
                 double lat2 = c2Loc.Item1, lng2 = c2Loc.Item2;
 
