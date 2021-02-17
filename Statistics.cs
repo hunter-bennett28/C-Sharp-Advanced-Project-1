@@ -197,7 +197,7 @@ namespace Project1_Group_17
             //Display table contents
             foreach (var province in provincePopulation.OrderBy(item => item.Value))
             {
-                Console.WriteLine("{0,-35}|{1,14}", province.Key, province.Value);
+                Console.WriteLine("{0,-35}|{1,14}", province.Key, string.Format("{0:n0}", province.Value));
             }
         }
 
@@ -222,7 +222,7 @@ namespace Project1_Group_17
             //Display table contents
             foreach (var province in provinceCities.OrderBy(item => item.Value))
             {
-                Console.WriteLine("{0,-35}|{1,14}", province.Key, province.Value);
+                Console.WriteLine("{0,-35}|{1,14}", province.Key, string.Format("{0:n0}", province.Value));
             }
         }
 
