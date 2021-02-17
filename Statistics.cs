@@ -35,7 +35,7 @@ namespace Project1_Group_17
                 string[] nameParts = city.Key.Split('|');
                 if (nameParts[0] == cityName)
                 {
-                    Console.WriteLine($"{cityName}, {city.Value.GetProvince()}. Population: {city.Value.GetPopulation()}");
+                    Console.WriteLine($"{cityName}, {city.Value.GetProvince()}. Population: {string.Format("{0:n0}", city.Value.GetPopulation())}");
                 }
             }
         }
@@ -52,7 +52,7 @@ namespace Project1_Group_17
                     cityName = city.Key.Split('|')[0];
                 }
             }
-            Console.WriteLine($"Largest Population: {cityName} Population: {largestPopulation}");
+            Console.WriteLine($"Largest Population: {cityName} Population: {string.Format("{0:n0}", largestPopulation)}");
         }
 
         public void DisplaySmallestPopulationCity(string province)
@@ -68,12 +68,21 @@ namespace Project1_Group_17
                 }
             }
 
-            Console.WriteLine($"Smallest Population: {cityName} Population: {lowestPopulation}");
+            Console.WriteLine($"Smallest Population: {cityName} Population: {string.Format("{0:n0}", lowestPopulation)}");
         }
 
-        public void CompareCitiesPopulation()
+        /// <summary>
+        /// Reports which city between two given cities has a higher population
+        /// </summary>
+        /// <param name="city1"></param>
+        /// <param name="city2"></param>
+        public void CompareCitiesPopulation(string city1, string city2)
         {
-
+            CityInfo city1Info = CityCatalogue[city1];
+            CityInfo city2Info = CityCatalogue[city2];
+            CityInfo smallerCity = city1Info.GetPopulation() < city2Info.GetPopulation() ? city1Info : city2Info;
+            CityInfo largerCity = smallerCity == city1Info ? city2Info : city1Info;
+            Console.WriteLine($"{largerCity.GetCityName()} has a larger population than {smallerCity.GetCityName()} at {string.Format("{0:n0}", largerCity.GetPopulation())}");
         }
 
         /// <summary>
@@ -163,7 +172,7 @@ namespace Project1_Group_17
                     totalPopulation += city.Value.GetPopulation();
             }
 
-            Console.WriteLine($"{province} Population: {totalPopulation}");
+            Console.WriteLine($"{province} Population: {string.Format("{0:n0}", totalPopulation)}");
         }
 
         public void DisplayProvinceCities(string province)
@@ -187,9 +196,20 @@ namespace Project1_Group_17
 
         }
 
+        /// <summary>
+        /// Reports which city is the capital of the given province
+        /// </summary>
+        /// <param name="province"></param>
         public void GetCapital(string province)
         {
-
+            foreach(KeyValuePair<string, CityInfo> city in CityCatalogue)
+            {
+                if(city.Value.GetProvince() == province && city.Value.GetCapitalStatus() == "admin")
+                {
+                    Console.WriteLine($"The capital of {province} is {city.Value.GetCityName()}.");
+                    return;
+                }
+            }
         }
 
         /// <summary>
@@ -209,7 +229,7 @@ namespace Project1_Group_17
                     CityInfo cityToUpdate = CityCatalogue[cityName];
                     if (cityToUpdate.GetPopulation() == population)
                     {
-                        Console.WriteLine($"{cityToUpdate.GetCityName()}, {cityToUpdate.GetProvince()} already has a population of {population}.");
+                        Console.WriteLine($"{cityToUpdate.GetCityName()}, {cityToUpdate.GetProvince()} already has a population of {string.Format("{0:n0}", population)}.");
                         return;
                     }
                     switch (fileName)
@@ -253,7 +273,9 @@ namespace Project1_Group_17
         /// <param name="eventArgs"></param>
         public void NotifyPopulationChanged(object sender, PopulationChangeEventArgs eventArgs)
         {
-            Console.WriteLine($"{eventArgs.CityName}, {eventArgs.ProvinceName} Population Changed From {eventArgs.OldPopulation} to {eventArgs.NewPopulation}");
+            string oldPopulation = string.Format("{0:n0}", eventArgs.OldPopulation);
+            string newPopulation = string.Format("{0:n0}", eventArgs.NewPopulation);
+            Console.WriteLine($"{eventArgs.CityName}, {eventArgs.ProvinceName} Population Changed From {oldPopulation} to {newPopulation}");
         }
 
         /// <summary>

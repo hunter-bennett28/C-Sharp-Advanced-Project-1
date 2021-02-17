@@ -42,7 +42,9 @@ namespace Project1_Group_17
             citiesStats.DisplayProvincePopulation("Ontario");
             citiesStats.DisplayCityInfo("London");
             citiesStats.DisplayCityInfo("Windsor");
-            citiesStats.DisplayProvinceCities("Ontario");
+            //citiesStats.DisplayProvinceCities("Ontario");
+            citiesStats.GetCapital("Ontario");
+            citiesStats.CompareCitiesPopulation("Toronto", "London");
 
             //citiesStats.UpdatePopulation("Selkirk", 9986, "Canadacities-JSON.json");
             //citiesStats.UpdatePopulation("Selkirk", 9986, "Canadacities-XML.xml");

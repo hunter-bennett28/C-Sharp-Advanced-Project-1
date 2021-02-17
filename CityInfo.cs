@@ -12,11 +12,12 @@ namespace Project1_Group_17
         private string Province;
         private double Latitude;
         private double Longitude;
+        private string CapitalStatus;
 
         // Constructor
         public CityInfo(
             ulong cityID, string cityName, string cityAscii, ulong population,
-            string province, double latitude, double longitude
+            string province, double latitude, double longitude, string capitalStatus
         )
         {
             CityID = cityID;
@@ -26,6 +27,7 @@ namespace Project1_Group_17
             Province = province;
             Latitude = latitude;
             Longitude = longitude;
+            CapitalStatus = capitalStatus;
         }
 
         // Methods
@@ -56,6 +58,11 @@ namespace Project1_Group_17
         public string GetCityName()
         {
             return CityName;
+        }
+
+        public string GetCapitalStatus()
+        {
+            return CapitalStatus;
         }
     }
 }

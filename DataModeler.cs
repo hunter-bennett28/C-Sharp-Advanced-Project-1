@@ -33,7 +33,7 @@ namespace Project1_Group_17
                 string city = canadaCity.GetElementsByTagName("city").Item(0).InnerText,
                     cityAscii = canadaCity.GetElementsByTagName("city_ascii").Item(0).InnerText,
                     adminName = canadaCity.GetElementsByTagName("admin_name").Item(0).InnerText,
-                    captial = canadaCity.GetElementsByTagName("capital").Item(0).InnerText;
+                    capital = canadaCity.GetElementsByTagName("capital").Item(0).InnerText;
 
                 double lat = Convert.ToDouble(canadaCity.GetElementsByTagName("lat").Item(0).InnerText),
                     lng = Convert.ToDouble(canadaCity.GetElementsByTagName("lng").Item(0).InnerText);
@@ -41,11 +41,12 @@ namespace Project1_Group_17
                 ulong pop = Convert.ToUInt64(canadaCity.GetElementsByTagName("population").Item(0).InnerText),
                     id = Convert.ToUInt64(canadaCity.GetElementsByTagName("id").Item(0).InnerText);
 
+
                 //add the city
                 if (ParsedCities.ContainsKey(city))
-                    ParsedCities.Add($"{city}|{adminName}", new CityInfo(id, city, cityAscii, pop, adminName, lat, lng));
+                    ParsedCities.Add($"{city}|{adminName}", new CityInfo(id, city, cityAscii, pop, adminName, lat, lng, capital));
                 else
-                    ParsedCities.Add(city, new CityInfo(id, city, cityAscii, pop, adminName, lat, lng));
+                    ParsedCities.Add(city, new CityInfo(id, city, cityAscii, pop, adminName, lat, lng, capital));
 
             }
         }
@@ -68,7 +69,8 @@ namespace Project1_Group_17
                     ulong.Parse(GetJTokenPropertyValue(result, "population", "0")),
                     GetJTokenPropertyValue(result, "admin_name", ""),
                     double.Parse(GetJTokenPropertyValue(result, "lat", "0")),
-                    double.Parse(GetJTokenPropertyValue(result, "lng", "0"))
+                    double.Parse(GetJTokenPropertyValue(result, "lng", "0")),
+                    GetJTokenPropertyValue(result, "capital", "")
                 );
 
                 // If a city with the given name already exists in the dictionary, append the province name
@@ -95,6 +97,28 @@ namespace Project1_Group_17
         public void ParseCSV(string fileName)
         {
 
+            ParsedCities = new Dictionary<string, CityInfo>();
+            List<string> cityInfo = new List<string>(File.ReadAllLines($"../../../Data/{fileName}"));
+
+            for (int i = 1; i < cityInfo.Count; i++)
+            {
+                string[] city = cityInfo[i].Split(',');
+
+                ulong Id = Convert.ToUInt64(city[8]);
+                string cityName = city[0];
+                string ascii = city[1];
+                ulong pop = Convert.ToUInt64(city[7]);
+                string prov = city[5];
+                double lat = Convert.ToDouble(city[2]);
+                double lon = Convert.ToDouble(city[3]);
+                string capital = city[6];
+
+                CityInfo info = new CityInfo(Id, cityName, ascii, pop, prov, lat, lon, capital);
+                if (ParsedCities.ContainsKey(cityName))
+                    ParsedCities.Add(($"{cityName}|{prov}"), info);
+                else
+                    ParsedCities.Add(cityName, info);
+            }
         }
 
         public Dictionary<string, CityInfo> ParseFile(string fileName, SupportedFileTypes fileType)
