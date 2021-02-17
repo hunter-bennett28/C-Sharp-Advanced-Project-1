@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -79,7 +80,7 @@ namespace Project1_Group_17
             string url = $"https://www.google.com/maps/@{lat},{lng},15z";
             try
             {
-                System.Diagnostics.Process.Start("explorer.exe", url);
+                Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
             }
             catch (Exception ex)
             {
