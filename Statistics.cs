@@ -16,7 +16,7 @@ namespace Project1_Group_17
         static readonly HttpClient client = new HttpClient(); //Used to make requests to the bing API
         private Dictionary<string, CityInfo> CityCatalogue;
         private CityPopulationChangeEvent PopulationChangeEvent;// = new CityPopulationChangeEvent();
-        
+
 
         // Constructor
         public Statistics(string fileName, DataModeler.SupportedFileTypes fileType)
@@ -188,12 +188,47 @@ namespace Project1_Group_17
 
         public void RankProvincesByPopulation()
         {
+            Dictionary<string, ulong> provincePopulation = new Dictionary<string, ulong>();
+            foreach (var city in CityCatalogue)
+            {
+                if (provincePopulation.ContainsKey(city.Value.GetProvince()))
+                    provincePopulation[city.Value.GetProvince()] += city.Value.GetPopulation();
+                else
+                    provincePopulation.Add(city.Value.GetProvince(), city.Value.GetPopulation());
+            }
 
+            //Table header
+            Console.WriteLine("\n\n{0,-35}\t{1,10}", "Province", "Population");
+            Console.WriteLine(new string('-', 50));
+
+            //Display table contents
+            foreach (var province in provincePopulation.OrderBy(item => item.Value))
+            {
+                Console.WriteLine("{0,-35}|{1,14}", province.Key, string.Format("{0:n0}", province.Value));
+            }
         }
 
         public void RankProvincesByCities()
         {
+            Dictionary<string, ulong> provinceCities = new Dictionary<string, ulong>();
+            foreach (var city in CityCatalogue)
+            {
+                //Count cities in each province
+                if (provinceCities.ContainsKey(city.Value.GetProvince()))
+                    provinceCities[city.Value.GetProvince()]++;
+                else
+                    provinceCities.Add(city.Value.GetProvince(), 1);
+            }
 
+            //Table header
+            Console.WriteLine("\n\n{0,-35}\t{1,10}", "Province", "Cities");
+            Console.WriteLine(new string('-', 50));
+
+            //Display table contents
+            foreach (var province in provinceCities.OrderBy(item => item.Value))
+            {
+                Console.WriteLine("{0,-35}|{1,14}", province.Key, string.Format("{0:n0}", province.Value));
+            }
         }
 
         /// <summary>
@@ -290,9 +325,9 @@ namespace Project1_Group_17
             for (int i = 0; i < fileText.Length; i++)
             {
                 string[] cityParts = fileText[i].Split(',');
-                if(cityParts[0] == nameParts[0])
+                if (cityParts[0] == nameParts[0])
                 {
-                    if(nameParts.Length == 1 || (nameParts.Length == 2 && cityParts[5] == nameParts[1]))
+                    if (nameParts.Length == 1 || (nameParts.Length == 2 && cityParts[5] == nameParts[1]))
                     {
                         cityParts[7] = population.ToString();
                         string outputText = $"{string.Join(',', cityParts)}";
