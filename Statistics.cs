@@ -91,20 +91,22 @@ namespace Project1_Group_17
         /// <summary>
         /// Determine the distance between two points using the Bing Map API
         /// </summary>
-        /// <param name="lat1">Lattitude of the first city</param>
-        /// <param name="lng1">Longitude of the first city</param>
-        /// <param name="lat2">Lattitude of the second city</param>
-        /// <param name="lng2">Longitude of the second city</param>
+        /// <param name="city1">First city name</param>
+        /// <param name="city2">Second city name</param>
         /// <returns>A awaitable task to ensure that the method is called</returns>
-        public async Task CalculateDistanceBetweenCities(CityInfo city1, CityInfo city2)
+        public async Task CalculateDistanceBetweenCities(string city1Name, string city2Name)
         {
             //Fetch from the url, in this case the bing API
             //https://docs.microsoft.com/en-us/bingmaps/rest-services/routes/calculate-a-distance-matrix#response
             try
             {
+                CityInfo city1 = CityCatalogue[city1Name];
+                CityInfo city2 = CityCatalogue[city2Name];
+
                 //Get the lattitudes and logitudes from the cities
                 Tuple<double, double> c1Loc = city1.GetLocation();
                 double lat1 = c1Loc.Item1, lng1 = c1Loc.Item2;
+
 
                 Tuple<double, double> c2Loc = city2.GetLocation();
                 double lat2 = c2Loc.Item1, lng2 = c2Loc.Item2;
