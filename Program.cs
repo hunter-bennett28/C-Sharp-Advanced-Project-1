@@ -44,6 +44,10 @@ namespace Project1_Group_17
             citiesStats.DisplayCityInfo("Windsor");
             citiesStats.DisplayProvinceCities("Ontario");
 
+            //citiesStats.UpdatePopulation("Selkirk", 9986, "Canadacities-JSON.json");
+            //citiesStats.UpdatePopulation("Selkirk", 9986, "Canadacities-XML.xml");
+            citiesStats.UpdatePopulation("Selkirk", 9986, "Canadacities.csv");
+
             //TODO: implement options
         }
     }

@@ -52,7 +52,6 @@ namespace Project1_Group_17
 
         public void ParseJSON(string fileName)
         {
-
             string rawJson = File.ReadAllText($"../../../Data/{fileName}");
             JObject json = JObject.Parse($"{{ data:{rawJson}}}"); // Wrap JSON in braces for valid Parse syntax
             IList<JToken> results = json["data"].Children().ToList();
