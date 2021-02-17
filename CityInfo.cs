@@ -1,4 +1,6 @@
-﻿namespace Project1_Group_17
+﻿using System;
+
+namespace Project1_Group_17
 {
     public class CityInfo
     {
@@ -37,9 +39,14 @@
             return Population;
         }
 
-        public void GetLocation() // TODO: figure out return type, returns lat AND long
+        public void SetPopulation(ulong population)
         {
+            Population = population;
+        }
 
+        public Tuple<double, double> GetLocation() // TODO: figure out return type, returns lat AND long
+        {
+            return new Tuple<double, double>(Latitude, Longitude);
         }
     }
 }
