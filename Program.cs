@@ -176,7 +176,7 @@ namespace Project1_Group_17
             string selection;
             string titleText = "Cities Menu";
             string dash = new string('-', titleText.Length);
-
+          
             do
             {
                 Console.WriteLine($"\n{dash}\n{titleText}\n{dash}\n");
@@ -356,6 +356,7 @@ namespace Project1_Group_17
                 }
             } while (!cityStats.CityIsValid(cityProv[0]) || (!cityStats.ProvinceIsValid(cityProv[1])));
             return cityProv;
+
         }
     }
 }

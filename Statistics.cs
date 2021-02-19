@@ -28,6 +28,11 @@ namespace Project1_Group_17
         }
 
         // City Methods
+        public bool IsValidCity(string city)
+        {
+            return CityCatalogue.ContainsKey(city);
+        }
+
         public void DisplayCityInfo(string cityName)
         {
             //Either show all cities with same name or ask user which to show
@@ -164,6 +169,17 @@ namespace Project1_Group_17
             }
         }
         // Province Methods
+        public bool IsValidProvince(string province)
+        {
+            foreach (var city in CityCatalogue)
+            {
+                if (city.Value.GetProvince() == province)
+                    return true;
+            }
+
+            return false;
+        }
+
         public void DisplayProvincePopulation(string province)
         {
             ulong totalPopulation = 0;
