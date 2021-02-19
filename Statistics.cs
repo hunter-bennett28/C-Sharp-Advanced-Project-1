@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.IO;
 using System.Xml;
+using System.Text;
 
 namespace Project1_Group_17
 {
@@ -253,9 +254,9 @@ namespace Project1_Group_17
         /// <param name="province"></param>
         public void GetCapital(string province)
         {
-            foreach(KeyValuePair<string, CityInfo> city in CityCatalogue)
+            foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
-                if(city.Value.GetProvince() == province && city.Value.GetCapitalStatus() == "admin")
+                if (city.Value.GetProvince() == province && city.Value.GetCapitalStatus() == "admin")
                 {
                     Console.WriteLine($"The capital of {province} is {city.Value.GetCityName()}.");
                     return;
@@ -396,6 +397,76 @@ namespace Project1_Group_17
             XmlNode cityPopulation = cityNode.SelectSingleNode("population");
             cityPopulation.InnerText = population.ToString();
             document.Save("../../../Data/Canadacities-XML.xml");
+        }
+        /// <summary>
+        /// Bool flag to tell whether the input from the user is correct.
+        /// </summary>
+        /// <param name="city">user input string.</param>
+        /// <returns>bool result</returns>
+        public bool CityIsValid(string city)
+        {
+            bool valid = false;
+            foreach (var item in CityCatalogue)
+            {
+                if (item.Value.GetCityName().ToLower() == city.ToLower()) return true;
+            }
+            return false;
+        }
+        /// <summary>
+        /// Bool flag to tell whether the input from the user is correct.
+        /// </summary>
+        /// <param name="city">user input string.</param>
+        /// <returns>bool result</returns>
+        public bool ProvinceIsValid(string province)
+        {
+            bool valid = false;
+            foreach (var item in CityCatalogue)
+            {
+                if (item.Value.GetProvince().ToLower() == province.ToLower()) return true;
+            }
+            return false;
+        }
+        /// <summary>
+        /// Displays the cities list.
+        /// </summary>
+        public void DisplayCitiesList()
+        {
+            StringBuilder cities = new StringBuilder("\n\n");
+
+            int counter = 0;
+            var items = from pair in CityCatalogue
+                        orderby pair.Key ascending
+                        select pair;
+
+
+            foreach (var item in items)
+            {
+                if (counter % 3 == 0)
+                {
+                    cities.Append("\n");
+                }
+                cities.Append("  " + item.Value.GetCityName().PadRight(30));
+                if (counter % 3 != 2)
+                    cities.Append("|");
+                counter++;
+            }
+            Console.WriteLine(cities);
+        }
+        /// <summary>
+        /// Displays the province list.
+        /// </summary>
+        public void DisplayProvinceList()
+        {
+            Console.WriteLine();
+            var h = new SortedSet<string>();
+            foreach (var item in CityCatalogue)
+            {
+                h.Add(item.Value.GetProvince());
+            }
+            foreach (var item in h)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
