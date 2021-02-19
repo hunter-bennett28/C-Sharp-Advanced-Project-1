@@ -43,10 +43,7 @@ namespace Project1_Group_17
 
 
                 //add the city
-                if (ParsedCities.ContainsKey(city))
-                    ParsedCities.Add($"{city}|{adminName}", new CityInfo(id, city, cityAscii, pop, adminName, lat, lng, capital));
-                else
-                    ParsedCities.Add(city, new CityInfo(id, city, cityAscii, pop, adminName, lat, lng, capital));
+                ParsedCities.Add($"{city}|{adminName}", new CityInfo(id, city, cityAscii, pop, adminName, lat, lng, capital));
 
             }
         }
@@ -62,23 +59,26 @@ namespace Project1_Group_17
                 string cityName = GetJTokenPropertyValue(result, "city", "");
                 if (cityName == "")
                     continue;
+
+                ulong id = ulong.Parse(GetJTokenPropertyValue(result, "id", "0"));
+                string cityAscii = GetJTokenPropertyValue(result, "city_ascii", "");
+                ulong population = ulong.Parse(GetJTokenPropertyValue(result, "population", "0"));
+                string province = GetJTokenPropertyValue(result, "admin_name", "");
+                double latitude = double.Parse(GetJTokenPropertyValue(result, "lat", "0"));
+                double longitude = double.Parse(GetJTokenPropertyValue(result, "lng", "0"));
+                string capitalStatus = GetJTokenPropertyValue(result, "capital", "");
                 CityInfo city = new CityInfo(
-                    ulong.Parse(GetJTokenPropertyValue(result, "id", "0")),
+                    id,
                     cityName,
-                    GetJTokenPropertyValue(result, "city_ascii", ""),
-                    ulong.Parse(GetJTokenPropertyValue(result, "population", "0")),
-                    GetJTokenPropertyValue(result, "admin_name", ""),
-                    double.Parse(GetJTokenPropertyValue(result, "lat", "0")),
-                    double.Parse(GetJTokenPropertyValue(result, "lng", "0")),
-                    GetJTokenPropertyValue(result, "capital", "")
+                    cityAscii,
+                    population,
+                    province,
+                    latitude,
+                    longitude,
+                    capitalStatus
                 );
 
-                // If a city with the given name already exists in the dictionary, append the province name
-                if(ParsedCities.ContainsKey(cityName))
-                {
-                    cityName += $"|{result["admin_name"].ToString()}";
-                }
-                ParsedCities.Add(cityName, city);
+                ParsedCities.Add($"{cityName}|{province}", city);
             }
         }
 
@@ -114,10 +114,7 @@ namespace Project1_Group_17
                 string capital = city[6];
 
                 CityInfo info = new CityInfo(Id, cityName, ascii, pop, prov, lat, lon, capital);
-                if (ParsedCities.ContainsKey(cityName))
-                    ParsedCities.Add(($"{cityName}|{prov}"), info);
-                else
-                    ParsedCities.Add(cityName, info);
+                ParsedCities.Add(($"{cityName}|{prov}"), info);
             }
         }
 
