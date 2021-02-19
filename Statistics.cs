@@ -28,21 +28,25 @@ namespace Project1_Group_17
         }
 
         // City Methods
-        public bool IsValidCity(string city)
+
+        public bool IsValidCity(string cityName)
         {
-            return CityCatalogue.ContainsKey(city);
+            foreach(KeyValuePair<string, CityInfo> city in CityCatalogue)
+            {
+                if (city.Value.GetCityName().ToLower() == cityName.ToLower())
+                    return true;
+            }
+            return false;
         }
 
-        public void DisplayCityInfo(string cityName)
+        public void DisplayCityInformation(string cityName)
         {
-            //Either show all cities with same name or ask user which to show
-            foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
+            CityInfo chosenCity = GetSpecificCity(cityName);
+            if (chosenCity != null)
             {
-                string[] nameParts = city.Key.Split('|');
-                if (nameParts[0] == cityName)
-                {
-                    Console.WriteLine($"{cityName}, {city.Value.GetProvince()}. Population: {string.Format("{0:n0}", city.Value.GetPopulation())}");
-                }
+                Console.WriteLine($"\nCity:\t\t{chosenCity.GetCityName()}");
+                Console.WriteLine($"Province:\t{chosenCity.GetCityName()}");
+                Console.WriteLine($"Population:\t{chosenCity.GetPopulation()}\n");
             }
         }
 
@@ -82,12 +86,10 @@ namespace Project1_Group_17
         /// </summary>
         /// <param name="city1"></param>
         /// <param name="city2"></param>
-        public void CompareCitiesPopulation(string city1, string city2)
+        public void CompareCitiesPopulation(CityInfo city1, CityInfo city2)
         {
-            CityInfo city1Info = CityCatalogue[city1];
-            CityInfo city2Info = CityCatalogue[city2];
-            CityInfo smallerCity = city1Info.GetPopulation() < city2Info.GetPopulation() ? city1Info : city2Info;
-            CityInfo largerCity = smallerCity == city1Info ? city2Info : city1Info;
+            CityInfo smallerCity = city1.GetPopulation() < city2.GetPopulation() ? city1 : city2;
+            CityInfo largerCity = smallerCity == city1 ? city2 : city1;
             Console.WriteLine($"{largerCity.GetCityName()} has a larger population than {smallerCity.GetCityName()} at {string.Format("{0:n0}", largerCity.GetPopulation())}");
         }
 
@@ -198,7 +200,7 @@ namespace Project1_Group_17
             {
                 if (city.Value.GetProvince() == province)
                 {
-                    Console.WriteLine(city.Key.Split('|')[0]);
+                    Console.WriteLine(city.Value.GetCityName());
                 }
             }
         }
@@ -398,74 +400,48 @@ namespace Project1_Group_17
             cityPopulation.InnerText = population.ToString();
             document.Save("../../../Data/Canadacities-XML.xml");
         }
-        /// <summary>
-        /// Bool flag to tell whether the input from the user is correct.
-        /// </summary>
-        /// <param name="city">user input string.</param>
-        /// <returns>bool result</returns>
-        public bool CityIsValid(string city)
-        {
-            bool valid = false;
-            foreach (var item in CityCatalogue)
-            {
-                if (item.Value.GetCityName().ToLower() == city.ToLower()) return true;
-            }
-            return false;
-        }
-        /// <summary>
-        /// Bool flag to tell whether the input from the user is correct.
-        /// </summary>
-        /// <param name="city">user input string.</param>
-        /// <returns>bool result</returns>
-        public bool ProvinceIsValid(string province)
-        {
-            bool valid = false;
-            foreach (var item in CityCatalogue)
-            {
-                if (item.Value.GetProvince().ToLower() == province.ToLower()) return true;
-            }
-            return false;
-        }
-        /// <summary>
-        /// Displays the cities list.
-        /// </summary>
-        public void DisplayCitiesList()
-        {
-            StringBuilder cities = new StringBuilder("\n\n");
 
-            int counter = 0;
-            var items = from pair in CityCatalogue
-                        orderby pair.Key ascending
-                        select pair;
-
-
-            foreach (var item in items)
+        public CityInfo GetSpecificCity(string cityName)
+        {
+            List<CityInfo> matchedCities = new List<CityInfo>();
+            //Either show all cities with same name or ask user which to show
+            foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
-                if (counter % 3 == 0)
+                string[] nameParts = city.Key.Split('|');
+                if (nameParts[0] == cityName)
                 {
-                    cities.Append("\n");
+                    matchedCities.Add(city.Value);
                 }
-                cities.Append("  " + item.Value.GetCityName().PadRight(30));
-                if (counter % 3 != 2)
-                    cities.Append("|");
-                counter++;
             }
-            Console.WriteLine(cities);
-        }
-        /// <summary>
-        /// Displays the province list.
-        /// </summary>
-        public void DisplayProvinceList()
-        {
-            Console.WriteLine();
-            var h = new SortedSet<string>();
-            foreach (var item in CityCatalogue)
+
+            if (matchedCities.Count == 0)
             {
-                h.Add(item.Value.GetProvince());
+                Console.WriteLine($"No city exists named {cityName}.\n");
+                return null;
             }
-            foreach (var item in h)
+            else if (matchedCities.Count > 1)
             {
-                Console.WriteLine(item);
+                Console.WriteLine($"Multiple Cities Named {matchedCities[0].GetCityName()}. Please Select Desired City.\n");
+
+                for (int i = 0; i < matchedCities.Count; i++)
+                {
+                    Console.WriteLine($"\t{i + 1}) {matchedCities[i].GetCityName()}, {matchedCities[i].GetProvince()}");
+                }
+
+                do
+                {
+                    Console.Write("\nPlease Select Desired City (ex 1, 2): ");
+                    int choice;
+                    if (int.TryParse(Console.ReadLine(), out choice) && choice > 0 && choice <= matchedCities.Count)
+                    {
+                        return matchedCities[choice - 1];
+                    }
+                    Console.WriteLine("Invalid choice. Please try again.");
+                } while (true);
+            }
+            else
+            {
+                return matchedCities[0];
             }
         }
     }
