@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.IO;
 using System.Xml;
+using System.Text;
 
 namespace Project1_Group_17
 {
@@ -27,6 +28,17 @@ namespace Project1_Group_17
         }
 
         // City Methods
+
+        public bool IsValidCity(string cityName)
+        {
+            foreach(KeyValuePair<string, CityInfo> city in CityCatalogue)
+            {
+                if (city.Value.GetCityName().ToLower() == cityName.ToLower())
+                    return true;
+            }
+            return false;
+        }
+
         public void DisplayCityInformation(string cityName)
         {
             CityInfo chosenCity = GetSpecificCity(cityName);
@@ -159,6 +171,17 @@ namespace Project1_Group_17
             }
         }
         // Province Methods
+        public bool IsValidProvince(string province)
+        {
+            foreach (var city in CityCatalogue)
+            {
+                if (city.Value.GetProvince() == province)
+                    return true;
+            }
+
+            return false;
+        }
+
         public void DisplayProvincePopulation(string province)
         {
             ulong totalPopulation = 0;
@@ -233,9 +256,9 @@ namespace Project1_Group_17
         /// <param name="province"></param>
         public void GetCapital(string province)
         {
-            foreach(KeyValuePair<string, CityInfo> city in CityCatalogue)
+            foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
-                if(city.Value.GetProvince() == province && city.Value.GetCapitalStatus() == "admin")
+                if (city.Value.GetProvince() == province && city.Value.GetCapitalStatus() == "admin")
                 {
                     Console.WriteLine($"The capital of {province} is {city.Value.GetCityName()}.");
                     return;
