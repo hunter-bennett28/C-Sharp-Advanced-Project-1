@@ -18,9 +18,9 @@ namespace Project1_Group_17
     {
         // Properties
         static readonly HttpClient client = new HttpClient(); //Used to make requests to the bing API
+        private const int ColumnWidth = 26; // width per column when printing multiple entries per row
         private Dictionary<string, CityInfo> CityCatalogue;
         private CityPopulationChangeEvent PopulationChangeEvent;// = new CityPopulationChangeEvent();
-
 
         // Constructor
         public Statistics(string fileName, DataModeler.SupportedFileTypes fileType)
@@ -44,6 +44,14 @@ namespace Project1_Group_17
             return false;
 
         }
+
+        private void PrintCityDetails(string cityName, string province, ulong population)
+        {
+            Console.WriteLine($"\nCity:\t\t{cityName}");
+            Console.WriteLine($"Province:\t{province}");
+            Console.WriteLine($"Population:\t{string.Format("{0:n0}", population)}\n");
+        }
+
         /// <summary>
         /// Displays the city information.
         /// </summary>
@@ -53,9 +61,7 @@ namespace Project1_Group_17
             CityInfo chosenCity = GetSpecificCity(cityName);
             if (chosenCity != null)
             {
-                Console.WriteLine($"\nCity:\t\t{chosenCity.GetCityName()}");
-                Console.WriteLine($"Province:\t{chosenCity.GetProvince()}");
-                Console.WriteLine($"Population:\t{chosenCity.GetPopulation()}\n");
+                PrintCityDetails(chosenCity.GetCityName(), chosenCity.GetProvince(), chosenCity.GetPopulation());
             }
         }
         /// <summary>
@@ -74,8 +80,12 @@ namespace Project1_Group_17
                     cityName = city.Key.Split('|')[0];
                 }
             }
-            Console.WriteLine($"Largest Population: {cityName} Population: {string.Format("{0:n0}", largestPopulation)}");
+
+            province = CapitalizeString(province);
+            Console.WriteLine($"\nThe largest population in {province} is:");
+            PrintCityDetails(cityName, province, largestPopulation);
         }
+
         /// <summary>
         /// Displays the smallest population city.
         /// </summary>
@@ -93,7 +103,9 @@ namespace Project1_Group_17
                 }
             }
 
-            Console.WriteLine($"Smallest Population: {cityName} Population: {string.Format("{0:n0}", lowestPopulation)}");
+            province = CapitalizeString(province);
+            Console.WriteLine($"\nThe smallest population in {province} is:");
+            PrintCityDetails(cityName, province, lowestPopulation);
         }
 
         /// <summary>
@@ -128,6 +140,7 @@ namespace Project1_Group_17
             string url = $"https://www.google.com/maps/@{cityLocation.Item1},{cityLocation.Item2},15z";
             try
             {
+                Console.WriteLine("Launching Google Maps in local browser...");
                 Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
             }
             catch (Exception ex)
@@ -148,8 +161,8 @@ namespace Project1_Group_17
             //https://docs.microsoft.com/en-us/bingmaps/rest-services/routes/calculate-a-distance-matrix#response
             try
             {
-                CityInfo city1 = GetSpecificCity(city1Name);
-                CityInfo city2 = GetSpecificCity(city2Name);
+                CityInfo city1 = GetSpecificCity(city1Name.ToLower());
+                CityInfo city2 = GetSpecificCity(city2Name.ToLower());
 
                 //Get the lattitudes and logitudes from the cities
                 Tuple<double, double> c1Loc = city1.GetLocation();
@@ -225,7 +238,8 @@ namespace Project1_Group_17
                 if (city.Value.GetProvince().ToLower() == province.ToLower())
                     totalPopulation += city.Value.GetPopulation();
             }
-            Console.WriteLine($"{province} Population: {string.Format("{0:n0}", totalPopulation)}");
+            Console.WriteLine($"\nProvince: {CapitalizeString(province)}");
+            Console.WriteLine($"Population: {string.Format("{0:n0}", totalPopulation)}\n");
         }
 
         /// <summary>
@@ -234,13 +248,24 @@ namespace Project1_Group_17
         /// <param name="province">Province to find the cities for</param>
         public void DisplayProvinceCities(string province)
         {
+            SortedSet<string> cityNames = new SortedSet<string>();
             foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
                 if (city.Value.GetProvince().ToLower() == province.ToLower())
                 {
-                    Console.WriteLine(city.Value.GetCityName());
+                    cityNames.Add(city.Value.GetCityName());
                 }
             }
+
+            Console.WriteLine($"\nCities in {CapitalizeString(province)}");
+            int index = 0;
+            foreach (string cityName in cityNames)
+            {
+                if (index++ % 3 == 0)
+                    Console.WriteLine();
+                Console.Write(string.Format($"{{0,-{ColumnWidth}}}", cityName)); // Print in specified length column
+            }
+            Console.WriteLine('\n');
         }
 
         /// <summary>
@@ -266,6 +291,8 @@ namespace Project1_Group_17
             {
                 Console.WriteLine("{0,-35}|{1,14}", province.Key, string.Format("{0:n0}", province.Value));
             }
+
+            Console.WriteLine();
         }
       
         /// <summary>
@@ -292,6 +319,8 @@ namespace Project1_Group_17
             {
                 Console.WriteLine("{0,-35}|{1,14}", province.Key, string.Format("{0:n0}", province.Value));
             }
+
+            Console.WriteLine();
         }
 
         /// <summary>
@@ -304,7 +333,7 @@ namespace Project1_Group_17
             {
                 if (city.Value.GetProvince().ToLower() == province.ToLower() && city.Value.GetCapitalStatus() == "admin")
                 {
-                    Console.WriteLine($"The capital of {province} is {city.Value.GetCityName()}.");
+                    Console.WriteLine($"\nThe capital of {CapitalizeString(province)} is {city.Value.GetCityName()}.\n");
                     return;
                 }
             }
@@ -510,6 +539,16 @@ namespace Project1_Group_17
             {
                 return matchedCities[0];
             }
+        }
+
+        private string CapitalizeString(string toCapitalize)
+        {
+            if (toCapitalize.Length == 0)
+                return toCapitalize;
+            else if (toCapitalize.Length == 1)
+                return toCapitalize.ToUpper();
+            else
+                return toCapitalize.Substring(0, 1).ToUpper() + toCapitalize.Substring(1);
         }
     }
 }
