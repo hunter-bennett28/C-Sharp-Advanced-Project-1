@@ -1,4 +1,8 @@
-﻿using Newtonsoft.Json.Linq;
+﻿/// Statistics.cs
+/// Authors: Hunter Bennett, Connor Black, James Dunton
+/// Desc: Various methods to display statistics on cityInfo objects
+
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,7 +11,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.IO;
 using System.Xml;
-using System.Text;
 
 namespace Project1_Group_17
 {
@@ -28,10 +31,9 @@ namespace Project1_Group_17
         }
 
         // City Methods
-
         public bool IsValidCity(string cityName)
         {
-            return CityCatalogue.ContainsKey(cityName.ToLower());
+            return GetSpecificCity(cityName)!=null?true:false;
         }
 
         public void DisplayCityInformation(string cityName)
@@ -92,9 +94,11 @@ namespace Project1_Group_17
         /// Show a location on the google maps site
         /// </summary>
         /// <param name="cityKey"></param>
-        public void ShowCityOnMap(string cityKey)
+        public void ShowCityOnMap(string cityName)
         {
-            Tuple<double, double> cityLocation = CityCatalogue[cityKey].GetLocation();
+            CityInfo city = GetSpecificCity(cityName);
+            Tuple<double, double> cityLocation = CityCatalogue[$"{city.GetCityName()}|{city.GetProvince()}"].GetLocation();
+            
             string url = $"https://www.google.com/maps/@{cityLocation.Item1},{cityLocation.Item2},15z";
             try
             {
@@ -118,8 +122,8 @@ namespace Project1_Group_17
             //https://docs.microsoft.com/en-us/bingmaps/rest-services/routes/calculate-a-distance-matrix#response
             try
             {
-                CityInfo city1 = CityCatalogue[city1Name];
-                CityInfo city2 = CityCatalogue[city2Name];
+                CityInfo city1 = GetSpecificCity(city1Name);
+                CityInfo city2 = GetSpecificCity(city2Name);
 
                 //Get the lattitudes and logitudes from the cities
                 Tuple<double, double> c1Loc = city1.GetLocation();
@@ -165,6 +169,7 @@ namespace Project1_Group_17
                 Console.WriteLine("Error determining the distance between cities\nError: " + ex.Message);
             }
         }
+
         // Province Methods
         public bool IsValidProvince(string province)
         {
@@ -177,32 +182,38 @@ namespace Project1_Group_17
             return false;
         }
         /// <summary>
-        /// 
+        /// Display population for a province
         /// </summary>
-        /// <param name="province"></param>
+        /// <param name="province">Province to display province for</param>
         public void DisplayProvincePopulation(string province)
         {
             ulong totalPopulation = 0;
             foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
-                if (city.Value.GetProvince() == province)
+                if (city.Value.GetProvince().ToLower() == province.ToLower())
                     totalPopulation += city.Value.GetPopulation();
             }
-
             Console.WriteLine($"{province} Population: {string.Format("{0:n0}", totalPopulation)}");
         }
 
+        /// <summary>
+        /// Display the cities for the given province
+        /// </summary>
+        /// <param name="province">Province to find the cities for</param>
         public void DisplayProvinceCities(string province)
         {
             foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
-                if (city.Value.GetProvince() == province)
+                if (city.Value.GetProvince().ToLower() == province.ToLower())
                 {
                     Console.WriteLine(city.Value.GetCityName());
                 }
             }
         }
 
+        /// <summary>
+        /// Displays the provinces by population in ascending order
+        /// </summary>
         public void RankProvincesByPopulation()
         {
             Dictionary<string, ulong> provincePopulation = new Dictionary<string, ulong>();
@@ -225,6 +236,9 @@ namespace Project1_Group_17
             }
         }
 
+        /// <summary>
+        /// Displays the provinces by cities in ascending order
+        /// </summary>
         public void RankProvincesByCities()
         {
             Dictionary<string, ulong> provinceCities = new Dictionary<string, ulong>();
@@ -256,7 +270,7 @@ namespace Project1_Group_17
         {
             foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
-                if (city.Value.GetProvince() == province && city.Value.GetCapitalStatus() == "admin")
+                if (city.Value.GetProvince().ToLower() == province.ToLower() && city.Value.GetCapitalStatus() == "admin")
                 {
                     Console.WriteLine($"The capital of {province} is {city.Value.GetCityName()}.");
                     return;
@@ -424,7 +438,7 @@ namespace Project1_Group_17
             foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
                 string[] nameParts = city.Key.Split('|');
-                if (nameParts[0] == cityName)
+                if (nameParts[0].ToLower() == cityName.ToLower())
                 {
                     matchedCities.Add(city.Value);
                 }
