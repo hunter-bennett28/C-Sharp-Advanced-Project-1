@@ -1,8 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿/// Program.cs
+/// Authors: James Dunton, Hunter Bennett, Connor Black
+/// Desc: A program that allows city data to be loaded through various file types
+///         and displays various statistics on the data provided.
+
+using System;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Project1_Group_17
 {
@@ -12,44 +14,15 @@ namespace Project1_Group_17
         {
             Console.WriteLine("Canadian Cities Data Analayzer © Hunter Bennett, Connor Black, James Dunton");
 
-            Statistics citiesStats = StartMenu();
-            string selection;
-            string titleText = "Mode Selection Menu";
-            string dash = new string('-', titleText.Length);
-            Console.WriteLine($"{dash}\n{titleText}\n{dash}\n");
-            Console.WriteLine("\nAvailable selections:");
-            Console.WriteLine("\t1) Display city statistics menu.");
-            Console.WriteLine("\t2) Display province statistics menu.");
-            Console.Write("Please make a selection: ");
-            do
-            {
-
-                selection = Console.ReadLine();
-                switch (selection.ToLower())
-                {
-                    case "1":
-                        CityMenu(citiesStats);
-                        break;
-                    case "2":
-                        ProvinceMenu(citiesStats);
-                        break;
-                    case "exit":
-                        return;
-                    case "restart":
-                        citiesStats = StartMenu();
-                        break;
-                    default:
-                        Console.Write("\nInvalid selection, please enter a valid selection: ");
-                        break;
-                }
-            } while (true);
-
+            Statistics citiesStats = LoadMenu();
+            MainMenu(citiesStats);
         }
+
         /// <summary>
         /// First menu that the user sees.
         /// </summary>
         /// <returns>Statitics object</returns>
-        static Statistics StartMenu()
+        static Statistics LoadMenu()
         {
             Statistics citiesStats = null;
             bool valid = false;
@@ -57,8 +30,6 @@ namespace Project1_Group_17
             string selection;
             string dash = new string('-', titleText.Length);
             Console.WriteLine($"\n{dash}\n{titleText}\n{dash}\n");
-            Console.WriteLine("-Enter 'exit' to exit the application at any menu in this program.");
-            Console.WriteLine("-Enter 'restart' at any menu to return to this menu.");
             Console.WriteLine("\nAvailable data files:");
             Console.WriteLine("\t1) Canadacities-JSON.json");
             Console.WriteLine("\t2) Canadacities-XML.xml");
@@ -81,11 +52,6 @@ namespace Project1_Group_17
                         citiesStats = new Statistics("Canadacities.csv", DataModeler.SupportedFileTypes.CSV);
                         valid = true;
                         break;
-                    case "exit":
-                        System.Environment.Exit(0);
-                        break;
-                    case "restart":
-                        break;
                     default:
                         Console.Write("\nInvalid selection, please enter a valid selection: ");
                         break;
@@ -93,76 +59,120 @@ namespace Project1_Group_17
             } while (!valid);
             return citiesStats;
         }
+
+        /// <summary>
+        /// Display a main menu to allow users to go to a province menu or city menu
+        /// </summary>
+        /// <param name="cityStats"></param>
+        static void MainMenu(Statistics cityStats)
+        {
+            string selection;
+            string titleText = "Mode Selection Menu";
+            string dash = new string('-', titleText.Length);
+
+            bool displayMenu = true;
+            do
+            {
+                if (displayMenu)
+                {
+                    Console.Clear();
+                    Console.WriteLine($"{dash}\n{titleText}\n{dash}\n");
+                    Console.WriteLine("\nAvailable selections:");
+                    Console.WriteLine("\t1) Display city statistics menu.");
+                    Console.WriteLine("\t2) Display province statistics menu.");
+                    Console.WriteLine("\texit - Exit the program");
+                    Console.Write("Please make a selection: ");
+                }
+                displayMenu = true;
+                selection = Console.ReadLine();
+                switch (selection.ToLower())
+                {
+                    case "1":
+                        CityMenu(cityStats);
+                        break;
+                    case "2":
+                        ProvinceMenu(cityStats);
+                        break;
+                    case "exit":
+                        return;
+                    default:
+                        Console.Write("\nInvalid selection, please enter a valid selection: ");
+                        displayMenu = false;
+                        break;
+                }
+            } while (true);
+
+        }
+
         /// <summary>
         /// Menu for province stats.
         /// </summary>
         /// <param name="cityStats"></param>
         static void ProvinceMenu(Statistics cityStats)
         {
-            Console.Clear();
             string selection;
             string titleText = "Provinces Menu";
             string dash = new string('-', titleText.Length);
-            Console.WriteLine($"\n{dash}\n{titleText}\n{dash}\n");
-            Console.WriteLine("\nAvailable selections:");
-            Console.WriteLine("\t1) Display the population for a given province.");
-            Console.WriteLine("\t2) Display all the cities in a given province.");
-            Console.WriteLine("\t3) Rank provinces by population.");
-            Console.WriteLine("\t4) Rank provinces by the number of cities.");
-            Console.WriteLine("\t5) Display the capital city for the given province.");
-            Console.Write("Please make a selection(ex. 1, 2): ");
+
+            bool displayMenu = true;
             do
             {
+                if (displayMenu)
+                {
+                    Console.Clear();
+                    Console.WriteLine($"\n{dash}\n{titleText}\n{dash}\n");
+                    Console.WriteLine("\nAvailable selections:");
+                    Console.WriteLine("\t1) Display the population for a given province.");
+                    Console.WriteLine("\t2) Display all the cities in a given province.");
+                    Console.WriteLine("\t3) Rank provinces by population.");
+                    Console.WriteLine("\t4) Rank provinces by the number of cities.");
+                    Console.WriteLine("\t5) Display the capital city for the given province.");
+                    Console.WriteLine("\treturn - Return to the main menu");
+                    Console.Write("Please make a selection(ex. 1, 2): ");
+                }
+                displayMenu = true;
+
                 selection = Console.ReadLine();
                 string response;
                 switch (selection.ToLower())
                 {
                     case "1":
-                        //Console.Write("\nPlease enter the province name to see the population for that given province: ");
                         response = ProvinceValidator(cityStats);
                         cityStats.DisplayProvincePopulation(response);
-                        Console.Write("\nEnter 'y' to return to the Mode Selection Menu. Press 'Enter' to continue in current menu.");
-                        if (Console.ReadKey().KeyChar == 'y')
-                            return;
+                        Console.WriteLine("Press a key to continue");
+                        Console.ReadKey();
                         break;
                     case "2":
-                        //Console.Write("\nPlease enter the province name to see the cities located in that given province: ");
                         response = ProvinceValidator(cityStats);
                         cityStats.DisplayProvinceCities(response);
-                        Console.Write("\nEnter 'y' to return to the Mode Selection Menu. Press 'Enter' to continue in current menu.");
-                        if (Console.ReadKey().KeyChar == 'y')
-                            return;
+                        Console.WriteLine("Press a key to continue");
+                        Console.ReadKey();
                         break;
                     case "3":
                         Console.WriteLine("Here's the rank breakdown of each province by population: ");
                         cityStats.RankProvincesByPopulation();
-                        Console.Write("\nEnter 'y' to return to the Mode Selection Menu. Press 'Enter' to continue in current menu.");
-                        if (Console.ReadKey().KeyChar == 'y')
-                            return;
+                        Console.WriteLine("Press a key to continue");
+                        Console.ReadKey();
                         break;
                     case "4":
                         Console.WriteLine("Here's the rank breakdown of each province by number of cities: ");
                         cityStats.RankProvincesByCities();
-                        Console.Write("\nEnter 'y' to return to the Mode Selection Menu. Press 'Enter' to continue in current menu.");
-                        if (Console.ReadKey().KeyChar == 'y')
-                            return;
+                        Console.WriteLine("Press a key to continue");
+                        Console.ReadKey();
                         break;
                     case "5":
                         Console.Write("\nPlease enter a province to view the capital city of that province: ");
                         response = ProvinceValidator(cityStats);
                         cityStats.GetCapital(response);
-                        Console.Write("\nEnter 'y' to return to the Mode Selection Menu. Press 'Enter' to continue in current menu.");
-                        if (Console.ReadKey().KeyChar == 'y')
-                            return;
+                        Console.WriteLine("Press a key to continue");
+                        Console.ReadKey();
                         break;
-                    case "exit":
-                        System.Environment.Exit(0);
-                        break;
-                    case "restart":
-                        cityStats = StartMenu();
+                    case "return":
                         return;
+
                     default:
                         Console.Write("\nInvalid selection, please enter a valid selection: ");
+                        displayMenu = false;
                         break;
                 }
             } while (true);
@@ -246,6 +256,7 @@ namespace Project1_Group_17
                         break;
                     case "return":
                         return;
+
                     default:
                         Console.Write("\nInvalid selection, please enter a valid selection: ");
                         displayMenu = false;
@@ -265,8 +276,7 @@ namespace Project1_Group_17
             do
             {
                 Console.Write("\nEnter city name or type 'list' to display all cities: ");
-                response = Console.ReadLine();
-                response = response.Trim();
+                response = Console.ReadLine().Trim();
                 if (response.ToLower() == "list")
                 {
                     Console.Write("\n Enter the province name to see the cities located in that given province: ");
@@ -276,7 +286,7 @@ namespace Project1_Group_17
                 }
                 if (cityStats.GetSpecificCity(response) == null)
                 {
-                    Console.WriteLine($"\nNo city exists called {response}. Please try again.\n");
+                    Console.WriteLine($"\nNo city exists called {response}.");
                 }
                 else
                 {
@@ -285,6 +295,7 @@ namespace Project1_Group_17
             } while (true);
 
         }
+
         /// <summary>
         /// Province validator
         /// </summary>
@@ -295,8 +306,7 @@ namespace Project1_Group_17
             do
             {
                 Console.Write("\nEnter province name or type 'list' to display all provinces: ");
-                string response = Console.ReadLine();
-                response = response.Trim();
+                string response = Console.ReadLine().Trim();
                 if (response.ToLower() == "list")
                 {
                     cityStats.DisplayProvinceList();
@@ -305,7 +315,7 @@ namespace Project1_Group_17
 
                 if (!cityStats.IsValidProvince(response))
                 {
-                    Console.Write($"\nNo province exists called {response}. Please try again.\n");
+                    Console.Write($"\nNo province exists called {response}.");
                 }
                 else
                 {
@@ -313,6 +323,7 @@ namespace Project1_Group_17
                 }
             } while (true);
         }
+
         /// <summary>
         /// Validates the names of two cities.
         /// </summary>
@@ -326,8 +337,7 @@ namespace Project1_Group_17
             do
             {
                 Console.Write("\nEnter two cities split by a comma (ex: London, Victoria), or type 'list' to see a list of cities: ");
-                response = Console.ReadLine();
-                response = response.Trim();
+                response = Console.ReadLine().Trim();
                 if (response.ToLower() == "list")
                 {
                     Console.Write("\nPlease enter the province name to see the cities located in that given province: ");
@@ -342,11 +352,12 @@ namespace Project1_Group_17
                 }
                 if (cities.Length != 2)
                 {
-                    Console.Write($"\nInvalid response. ");
+                    Console.WriteLine($"\nInvalid number of arguements. ");
                 }
 
                 else if (cityStats.GetSpecificCity(cities[0]) == null || cityStats.GetSpecificCity(cities[1])==null)
                 {
+                    Console.WriteLine($"\nInvalid cities given. ");
                     continue;
                 }
                 else
@@ -354,6 +365,7 @@ namespace Project1_Group_17
             } while (true);
 
         }
+
         /// <summary>
         /// Validates the name of the city and that respecitve province.
         /// </summary>
@@ -365,8 +377,8 @@ namespace Project1_Group_17
             string response;
             do
             {
-                response = Console.ReadLine();
-                response = response.Trim();
+                Console.Write("Please enter a city and province separated by ','(ex: 'city, prov'): ");
+                response = Console.ReadLine().Trim();
                 if (response.ToLower() == "list")
                 {
                     Console.Write("\nPlease enter the province name to see the cities located in that given province: ");
@@ -380,10 +392,13 @@ namespace Project1_Group_17
                     cityProv[i] = cityProv[i].Trim();
                 }   
                 
-                if (!cityStats.IsValidCity(cityProv[0]) || !cityStats.IsValidProvince(cityProv[1]) || cityProv.Length != 2)
+                if (!cityStats.IsValidCity(cityProv[0]) || !cityStats.IsValidProvince(cityProv[1]))
                 {
-                    Console.Write("\nInvalid response. Please enter a city and province separated by ','(ex: 'city, prov'): "); ;
+                    Console.WriteLine("\nInvalid arguements given.");
                 }
+                else if( cityProv.Length != 2)
+                    Console.WriteLine("\nInvalid number of arguements.");
+
                 else
                 {
                     return cityProv;

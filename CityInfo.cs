@@ -1,4 +1,8 @@
-﻿using System;
+﻿/// CityInfo.cs
+/// Authors: James Dunton, Hunter Bennett, Connor Black
+/// Desc: An object representing a city
+
+using System;
 
 namespace Project1_Group_17
 {
@@ -31,16 +35,28 @@ namespace Project1_Group_17
         }
 
         // Methods
+        /// <summary>
+        /// Return province
+        /// </summary>
+        /// <returns>Province in a string</returns>
         public string GetProvince()
         {
             return Province;
         }
 
+        /// <summary>
+        /// Get population
+        /// </summary>
+        /// <returns>Population in a ulong</returns>
         public ulong GetPopulation()
         {
             return Population;
         }
 
+        /// <summary>
+        /// Set the population of the city
+        /// </summary>
+        /// <param name="population">The population to be set</param>
         public void SetPopulation(ulong population)
         {
             Population = population;
@@ -55,11 +71,19 @@ namespace Project1_Group_17
             return new Tuple<double, double>(Latitude, Longitude);
         }
 
+        /// <summary>
+        /// Get the city name
+        /// </summary>
+        /// <returns>The city name</returns>
         public string GetCityName()
         {
             return CityName;
         }
 
+        /// <summary>
+        /// Determine if the city is capital (will hold "admin")
+        /// </summary>
+        /// <returns>The capital status</returns>
         public string GetCapitalStatus()
         {
             return CapitalStatus;

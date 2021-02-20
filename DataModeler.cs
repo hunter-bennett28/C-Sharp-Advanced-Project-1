@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿/// DataModeler.cs
+/// Authors: Connor Black, James Dunton, Hunter Bennett
+/// Desc: Loads a dictionary with cities parsed from varying file types
+
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json.Linq;

@@ -1,4 +1,8 @@
-﻿using Newtonsoft.Json.Linq;
+﻿/// Statistics.cs
+/// Authors: Hunter Bennett, Connor Black, James Dunton
+/// Desc: Various methods to display statistics on cityInfo objects
+
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,7 +11,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.IO;
 using System.Xml;
-using System.Text;
 
 namespace Project1_Group_17
 {
@@ -28,10 +31,10 @@ namespace Project1_Group_17
         }
 
         /// <summary>
-        /// The is valid city.
+        /// Check if the city is valid.
         /// </summary>
         /// <param name="cityName">The city name.</param>
-        /// <returns>The result.</returns>
+        /// <returns>A bool representing if the city given is valid.</returns>
         public bool IsValidCity(string cityName)
         {
             foreach (var item in CityCatalogue)
@@ -39,6 +42,7 @@ namespace Project1_Group_17
                 if (cityName.ToLower() == item.Value.GetCityName().ToLower()) return true;
             }
             return false;
+
         }
         /// <summary>
         /// Displays the city information.
@@ -110,12 +114,14 @@ namespace Project1_Group_17
         /// <param name="cityKey"></param>
         public void ShowCityOnMap(string cityName)
         {
-            Tuple<double, double> cityLocation = new Tuple<double, double>(0,0);
+            Tuple<double, double> cityLocation = null;
             foreach (var item in CityCatalogue)
             {
                 if (item.Key.ToLower() == cityName.ToLower())
                     cityLocation = item.Value.GetLocation(); 
             }
+          if(cityLocation==null)
+            Console.WriteLine("Error displaying cities");
             //CityInfo city = GetSpecificCity(cityName);
             //Tuple<double, double> cityLocation = CityCatalogue[$"{city.GetCityName()}|{city.GetProvince()}"].GetLocation();
 
@@ -210,34 +216,35 @@ namespace Project1_Group_17
         /// <summary>
         /// Displays the population for the entered province
         /// </summary>
-        /// <param name="province"></param>
+        /// <param name="province">Province to display province for</param>
         public void DisplayProvincePopulation(string province)
         {
             ulong totalPopulation = 0;
             foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
-                if (city.Value.GetProvince() == province)
+                if (city.Value.GetProvince().ToLower() == province.ToLower())
                     totalPopulation += city.Value.GetPopulation();
             }
-
             Console.WriteLine($"{province} Population: {string.Format("{0:n0}", totalPopulation)}");
         }
+
         /// <summary>
-        /// Displays the cities in the given province.
+        /// Display the cities for the given province
         /// </summary>
-        /// <param name="province">The province.</param>
+        /// <param name="province">Province to find the cities for</param>
         public void DisplayProvinceCities(string province)
         {
             foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
-                if (city.Value.GetProvince() == province)
+                if (city.Value.GetProvince().ToLower() == province.ToLower())
                 {
                     Console.WriteLine(city.Value.GetCityName());
                 }
             }
         }
+
         /// <summary>
-        /// Ranks the provinces by population in ascending order.
+        /// Displays the ranked provinces by population in ascending order
         /// </summary>
         public void RankProvincesByPopulation()
         {
@@ -260,8 +267,9 @@ namespace Project1_Group_17
                 Console.WriteLine("{0,-35}|{1,14}", province.Key, string.Format("{0:n0}", province.Value));
             }
         }
+      
         /// <summary>
-        /// Ranks the provinces by the count of cities in ascending order.
+        /// Displays the ranked provinces by cities in ascending order
         /// </summary>
         public void RankProvincesByCities()
         {
@@ -294,7 +302,7 @@ namespace Project1_Group_17
         {
             foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
-                if (city.Value.GetProvince() == province && city.Value.GetCapitalStatus() == "admin")
+                if (city.Value.GetProvince().ToLower() == province.ToLower() && city.Value.GetCapitalStatus() == "admin")
                 {
                     Console.WriteLine($"The capital of {province} is {city.Value.GetCityName()}.");
                     return;
