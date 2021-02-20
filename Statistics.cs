@@ -31,12 +31,7 @@ namespace Project1_Group_17
 
         public bool IsValidCity(string cityName)
         {
-            foreach(KeyValuePair<string, CityInfo> city in CityCatalogue)
-            {
-                if (city.Value.GetCityName().ToLower() == cityName.ToLower())
-                    return true;
-            }
-            return false;
+            return CityCatalogue.ContainsKey(city.ToLower());
         }
 
         public void DisplayCityInformation(string cityName)
@@ -96,11 +91,11 @@ namespace Project1_Group_17
         /// <summary>
         /// Show a location on the google maps site
         /// </summary>
-        /// <param name="lat">Lattitude of the location</param>
-        /// <param name="lng">Longitude of the location</param>
-        public void ShowCityOnMap(double lat, double lng)
+        /// <param name="cityKey"></param>
+        public void ShowCityOnMap(string cityKey)
         {
-            string url = $"https://www.google.com/maps/@{lat},{lng},15z";
+            Tuple<double, double> cityLocation = CityCatalogue[cityKey].GetLocation();
+            string url = $"https://www.google.com/maps/@{cityLocation.Item1},{cityLocation.Item2},15z";
             try
             {
                 Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
@@ -175,13 +170,16 @@ namespace Project1_Group_17
         {
             foreach (var city in CityCatalogue)
             {
-                if (city.Value.GetProvince() == province)
+                if (city.Value.GetProvince().ToLower() == province.ToLower())
                     return true;
             }
 
             return false;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="province"></param>
         public void DisplayProvincePopulation(string province)
         {
             ulong totalPopulation = 0;
@@ -401,6 +399,17 @@ namespace Project1_Group_17
             document.Save("../../../Data/Canadacities-XML.xml");
         }
 
+        /// <summary>
+        /// Displays the province list.
+        /// </summary>
+        public void DisplayProvinceList()
+        {
+            Console.WriteLine();
+            var h = new SortedSet<string>();
+            foreach (var item in CityCatalogue)
+            {
+                h.Add(item.Value.GetProvince());
+
         public CityInfo GetSpecificCity(string cityName)
         {
             List<CityInfo> matchedCities = new List<CityInfo>();
@@ -438,6 +447,7 @@ namespace Project1_Group_17
                     }
                     Console.WriteLine("Invalid choice. Please try again.");
                 } while (true);
+
             }
             else
             {

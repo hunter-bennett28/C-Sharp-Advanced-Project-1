@@ -13,16 +13,17 @@ namespace Project1_Group_17
             Console.WriteLine("Canadian Cities Data Analayzer © Hunter Bennett, Connor Black, James Dunton");
 
             Statistics citiesStats = StartMenu();
+            string selection;
+            string titleText = "Mode Selection Menu";
+            string dash = new string('-', titleText.Length);
+            Console.WriteLine($"{dash}\n{titleText}\n{dash}\n");
+            Console.WriteLine("\nAvailable selections:");
+            Console.WriteLine("\t1) Display city statistics menu.");
+            Console.WriteLine("\t2) Display province statistics menu.");
+            Console.Write("Please make a selection: ");
             do
             {
-                string selection;
-                string titleText = "Mode Selection Menu";
-                string dash = new string('-', titleText.Length);
-                Console.WriteLine($"{dash}\n{titleText}\n{dash}\n");
-                Console.WriteLine("\nAvailable selections:");
-                Console.WriteLine("\t1) Display city statistics menu.");
-                Console.WriteLine("\t2) Display province statistics menu.");
-                Console.Write("Please make a selection: ");
+
                 selection = Console.ReadLine();
                 switch (selection.ToLower())
                 {
@@ -55,16 +56,16 @@ namespace Project1_Group_17
             string titleText = "Main Menu";
             string selection;
             string dash = new string('-', titleText.Length);
+            Console.WriteLine($"\n{dash}\n{titleText}\n{dash}\n");
+            Console.WriteLine("-Enter 'exit' to exit the application at any menu in this program.");
+            Console.WriteLine("-Enter 'restart' at any menu to return to this menu.");
+            Console.WriteLine("\nAvailable data files:");
+            Console.WriteLine("\t1) Canadacities-JSON.json");
+            Console.WriteLine("\t2) Canadacities-XML.xml");
+            Console.WriteLine("\t3) Canadacities.csv");
+            Console.Write("Please make a selection(ex. 1, 2): ");
             do
             {
-                Console.WriteLine($"\n{dash}\n{titleText}\n{dash}\n");
-                Console.WriteLine("-Enter 'exit' to exit the application at any menu in this program.");
-                Console.WriteLine("-Enter 'restart' at any menu to return to this menu.");
-                Console.WriteLine("\nAvailable data files:");
-                Console.WriteLine("\t1) Canadacities-JSON.json");
-                Console.WriteLine("\t2) Canadacities-XML.xml");
-                Console.WriteLine("\t3) Canadacities.csv");
-                Console.Write("Please make a selection(ex. 1, 2): ");
                 selection = Console.ReadLine();
                 switch (selection.ToLower())
                 {
@@ -98,26 +99,26 @@ namespace Project1_Group_17
         /// <param name="cityStats"></param>
         static void ProvinceMenu(Statistics cityStats)
         {
+            Console.Clear();
             string selection;
             string titleText = "Provinces Menu";
             string dash = new string('-', titleText.Length);
-
+            Console.WriteLine($"\n{dash}\n{titleText}\n{dash}\n");
+            Console.WriteLine("\nAvailable selections:");
+            Console.WriteLine("\t1) Display the population for a given province.");
+            Console.WriteLine("\t2) Display all the cities in a given province.");
+            Console.WriteLine("\t3) Rank provinces by population.");
+            Console.WriteLine("\t4) Rank provinces by the number of cities.");
+            Console.WriteLine("\t5) Display the capital city for the given province.");
+            Console.Write("Please make a selection(ex. 1, 2): ");
             do
             {
-                Console.WriteLine($"\n{dash}\n{titleText}\n{dash}\n");
-                Console.WriteLine("\nAvailable selections:");
-                Console.WriteLine("\t1) Display the population for a given province.");
-                Console.WriteLine("\t2) Display all the cities in a given province.");
-                Console.WriteLine("\t3) Rank provinces by population.");
-                Console.WriteLine("\t4) Rank provinces by the number of cities.");
-                Console.WriteLine("\t5) Display the capital city for the given province.");
-                Console.Write("Please make a selection(ex. 1, 2): ");
                 selection = Console.ReadLine();
                 string response;
                 switch (selection.ToLower())
                 {
                     case "1":
-                        Console.Write("\nPlease enter the province name to see the population for that given province: ");
+                        //Console.Write("\nPlease enter the province name to see the population for that given province: ");
                         response = ProvinceValidator(cityStats);
                         cityStats.DisplayProvincePopulation(response);
                         Console.Write("\nEnter 'y' to return to the Mode Selection Menu. Press 'Enter' to continue in current menu.");
@@ -125,7 +126,7 @@ namespace Project1_Group_17
                             return;
                         break;
                     case "2":
-                        Console.Write("\nPlease enter the province name to see the cities located in that given province: ");
+                        //Console.Write("\nPlease enter the province name to see the cities located in that given province: ");
                         response = ProvinceValidator(cityStats);
                         cityStats.DisplayProvinceCities(response);
                         Console.Write("\nEnter 'y' to return to the Mode Selection Menu. Press 'Enter' to continue in current menu.");
@@ -172,22 +173,21 @@ namespace Project1_Group_17
         /// <param name="cityStats"></param>
         static void CityMenu(Statistics cityStats)
         {
-            bool valid = false;
+            Console.Clear();
             string selection;
             string titleText = "Cities Menu";
             string dash = new string('-', titleText.Length);
-          
+            Console.WriteLine($"\n{dash}\n{titleText}\n{dash}\n");
+            Console.WriteLine("\nAvailable selections:");
+            Console.WriteLine("\t1) Display city's info.");
+            Console.WriteLine("\t2) Display the city with the largest population within a given province.");
+            Console.WriteLine("\t3) Display the city with the smallest population within a given province.");
+            Console.WriteLine("\t4) Compare the population of two cities.");
+            Console.WriteLine("\t5) Display the city on a map.");
+            Console.WriteLine("\t6) Calculate the distance between two cities.");
+            Console.Write("Please make a selection(ex. 1, 2): ");
             do
             {
-                Console.WriteLine($"\n{dash}\n{titleText}\n{dash}\n");
-                Console.WriteLine("\nAvailable selections:");
-                Console.WriteLine("\t1) Display city's info.");
-                Console.WriteLine("\t2) Display the city with the largest population within a given province.");
-                Console.WriteLine("\t3) Display the city with the smallest population within a given province.");
-                Console.WriteLine("\t4) Compare the population of two cities.");
-                Console.WriteLine("\t5) Display the city on a map.");
-                Console.WriteLine("\t6) Calculate the distance between two cities.");
-                Console.Write("Please make a selection(ex. 1, 2): ");
                 selection = Console.ReadLine();
                 string response;
                 string[] resp;
@@ -229,7 +229,7 @@ namespace Project1_Group_17
                     case "5":
                         Console.Write("\nPlease enter a city's name and a porvince's name seperated by a comma to display the city on a map(ex. 'London, Ontario'): ");
                         resp = CityProvValidator(cityStats);
-                        cityStats.ShowCityOnMap(resp[0], resp[1]);
+                        cityStats.ShowCityOnMap($"{resp[0]}|{resp[1]}");
                         Console.WriteLine(":");
                         if (Console.ReadKey().KeyChar == 'y')
                             return;
@@ -267,21 +267,25 @@ namespace Project1_Group_17
             string response;
             do
             {
+                Console.Write("Enter city name or type 'list' to display all cities: ");
                 response = Console.ReadLine();
-                if (!cityStats.CityIsValid(response))
+                if (response.ToLower() == "list")
                 {
-                    Console.Write("\nInvalid response. Type 'y' to see a list of available cities, or press enter to continue: ");
-                    char yOrN = Console.ReadKey().KeyChar;
-                    if (yOrN == 'y')
-                    {
-                        cityStats.DisplayCitiesList();
-                        Console.Write("\nPlease enter the name of the city from the above list: ");
-                    }
-                    else
-                        Console.Write("\nPlease enter the name of the city: ");
+                    Console.Write("\n Enter the province name to see the cities located in that given province: ");
+                    response = ProvinceValidator(cityStats);
+                    cityStats.DisplayProvinceCities(response);
+                    continue;
                 }
-            } while (!cityStats.ProvinceIsValid(response));
-            return response;
+                if (!cityStats.IsValidCity(response))
+                {
+                    Console.WriteLine($"\nNo city exists called {response}. Please try again.\n");
+                }
+                else
+                {
+                    return response;
+                }
+            } while (true);
+
         }
         /// <summary>
         /// Province validator
@@ -290,24 +294,25 @@ namespace Project1_Group_17
         /// <returns>the user's validated response</returns>
         static string ProvinceValidator(Statistics cityStats)
         {
-            string response;
             do
             {
-                response = Console.ReadLine();
-                if (!cityStats.ProvinceIsValid(response))
+                Console.Write("Enter province name or type 'list' to display all provinces: ");
+                string response = Console.ReadLine();
+                if (response.ToLower() == "list")
                 {
-                    Console.Write("\nInvalid response. Type 'y' to see a list of available provinces, or press enter to continue: ");
-                    char yOrN = Console.ReadKey().KeyChar;
-                    if (yOrN == 'y')
-                    {
-                        cityStats.DisplayProvinceList();
-                        Console.Write("\nPlease enter the name of the province from the above list: ");
-                    }
-                    else
-                        Console.Write("\nPlease enter the name of the province: ");
+                    cityStats.DisplayProvinceList();
+                    continue;
                 }
-            } while (!cityStats.ProvinceIsValid(response));
-            return response;
+
+                if (!cityStats.IsValidProvince(response))
+                {
+                    Console.Write($"\nNo province exists called {response}. Please try again.\n");
+                }
+                else
+                {
+                    return response;
+                }
+            } while (true);
         }
         /// <summary>
         /// Validates the names of two cities.
@@ -318,24 +323,27 @@ namespace Project1_Group_17
         {
             string[] cities;
             string response;
+            StringBuilder str = new StringBuilder("");
             do
             {
+                Console.Write("Enter two cities split by a comma (ex: London, Chatham), or type 'list' to see a list of cities: ");
                 response = Console.ReadLine();
-                cities = response.Split(',', 2);
-                if (!cityStats.CityIsValid(cities[0]) || !cityStats.CityIsValid(cities[1]))
+                if (response.ToLower() == "list")
                 {
-                    Console.Write("\nInvalid response. Type 'y' to see a list of available cities, or press enter to continue: ");
-                    char yOrN = Console.ReadKey().KeyChar;
-                    if (yOrN == 'y')
-                    {
-                        cityStats.DisplayCitiesList();
-                        Console.Write("Please enter two cities, separated by ',' from the above list: ");
-                    }
-                    else
-                        Console.Write("Please enter two cities, separated by ','(ex. 'London, Kingston'): ");
+                    Console.Write("\nPlease enter the province name to see the cities located in that given province: ");
+                    response = ProvinceValidator(cityStats);
+                    cityStats.DisplayProvinceCities(response);
+                    continue;
                 }
-            } while (!cityStats.CityIsValid(cities[0]) || (!cityStats.CityIsValid(cities[1])));
-            return cities;
+                cities = response.Split(", ", 2);
+                if (!cityStats.IsValidCity(cities[0]) || !cityStats.IsValidCity(cities[1]))
+                {
+                    Console.Write($"\nInvalid response: {(cityStats.IsValidCity(cities[0]) ? "" : $"\n{cities[0]} is not valid")} {(cityStats.IsValidCity(cities[1]) ? "" : $"\n{cities[1]} is not valid")}");
+                }
+                else
+                    return cities;
+            } while (true);
+
         }
         /// <summary>
         /// Validates the name of the city and that respecitve province.
@@ -350,13 +358,15 @@ namespace Project1_Group_17
             {
                 response = Console.ReadLine();
                 cityProv = response.Split(',', 2);
-                if (!cityStats.CityIsValid(cityProv[0]) || !cityStats.ProvinceIsValid(cityProv[1]))
+                if (!cityStats.IsValidCity(cityProv[0]) || !cityStats.IsValidProvince(cityProv[1]))
                 {
                     Console.Write("\nInvalid response. Please enter a city and province separated by ','(ex: 'city, prov'): "); ;
                 }
-            } while (!cityStats.CityIsValid(cityProv[0]) || (!cityStats.ProvinceIsValid(cityProv[1])));
-            return cityProv;
-
+                else
+                {
+                    return cityProv;
+                }
+            } while (true);
         }
     }
 }
