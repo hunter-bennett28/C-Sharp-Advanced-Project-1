@@ -254,25 +254,42 @@ namespace Project1_Group_17
                         Console.ReadKey();
                         break;
                     case "7":
-                        bool valid = false;
-                        string fileName = "";
-                        ulong newPopulation = 0;
-                        Console.WriteLine("Available data files:\n");
-                        Console.WriteLine("\t1) Canadacities-JSON.json");
-                        Console.WriteLine("\t2) Canadacities-XML.xml");
-                        Console.WriteLine("\t3) Canadacities.csv");
-                        Console.Write("Please make a selection(ex. 1, 2): ");
-                        do
-                        {
-                            selection = Console.ReadLine();
-                            switch (selection)
-                            {
-                                case "1":
-                                    fileName = "Canadacities-JSON.json";
-                                    valid = true;
-                                    break;
-                                case "2":
-                                    fileName = "Canadacities-XML.xml";
+                        UpdatePopulation(cityStats);
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                        break;
+                    case "return":
+                        return;
+
+                    default:
+                        Console.Write("\nInvalid selection, please enter a valid selection: ");
+                        displayMenu = false;
+                        break;
+                }
+            } while (true);
+        }
+
+        static void UpdatePopulation(Statistics cityStats){
+            bool valid = false;
+            string fileName = "";
+            ulong newPopulation = 0;
+            Console.WriteLine("Available data files:\n");
+            Console.WriteLine("\t1) Canadacities-JSON.json");
+            Console.WriteLine("\t2) Canadacities-XML.xml");
+            Console.WriteLine("\t3) Canadacities.csv");
+            Console.Write("Please make a selection(ex. 1, 2): ");
+            string selection;
+            do
+            {
+                selection = Console.ReadLine();
+                switch (selection)
+                {
+                    case "1":
+                        fileName = "Canadacities-JSON.json";
+                        valid = true;
+                        break;
+                     case "2":
+                        fileName = "Canadacities-XML.xml";
                                     valid = true;
                                     break;
                                 case "3":
@@ -298,24 +315,12 @@ namespace Project1_Group_17
                         try
                         {
                             cityStats.UpdatePopulation(response, newPopulation, fileName);
-                        }catch (Exception ex)
-                        {
-                            Console.WriteLine($"ERROR: {ex.Message}");
-                        }
-                        Console.WriteLine("Press any key to continue");
-                        Console.ReadKey();
-                        break;
-                    case "return":
-                        return;
-
-                    default:
-                        Console.Write("\nInvalid selection, please enter a valid selection: ");
-                        displayMenu = false;
-                        break;
-                }
-            } while (true);
+            }catch (Exception ex)
+            {
+                Console.WriteLine($"ERROR: {ex.Message}");
+            }
         }
-
+        
         /// <summary>
         /// One City Validator.
         /// </summary>
