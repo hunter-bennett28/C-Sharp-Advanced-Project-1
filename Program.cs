@@ -197,7 +197,7 @@ namespace Project1_Group_17
                     case "1":
                         Console.Write("\nPlease enter a city's name to display the city's info: ");
                         response = OneCityValidator(cityStats);
-                        cityStats.DisplayCityInfo(response);
+                        cityStats.DisplayCityInformation(response);
                         Console.WriteLine("Enter 'y' to return to the Mode Selection Menu. Press 'Enter' to continue in current menu.");
                         if (Console.ReadKey().KeyChar == 'y')
                             return;
@@ -221,7 +221,7 @@ namespace Project1_Group_17
                     case "4":
                         Console.Write("\nPlease enter two cities, separated by ',' to compare the population of those two cities: ");
                         resp = TwoCityValidator(cityStats);
-                        cityStats.CompareCitiesPopulation(resp[0], resp[1]);
+                        cityStats.CompareCitiesPopulation(cityStats.GetSpecificCity(resp[0]), cityStats.GetSpecificCity(resp[1]));
                         Console.Write("Enter 'y' to return to the Mode Selection Menu. Press 'Enter' to continue in current menu. ");
                         if (Console.ReadKey().KeyChar == 'y')
                             return;
@@ -237,8 +237,8 @@ namespace Project1_Group_17
                     case "6":
                         Console.Write("\nPlease enter two cities, separated by ',' to compare the population of those two cities: ");
                         resp = TwoCityValidator(cityStats);
-                        //Task t = new Task();
-                        Task result = cityStats.CalculateDistanceBetweenCities(resp[0], resp[1]); result.Wait();// how do I call await on this void method?
+                        cityStats.CalculateDistanceBetweenCities(resp[0], resp[1]).Wait();
+
                         Console.Write("Enter 'y' to return to the Mode Selection Menu. Press 'Enter' to continue in current menu.");
                         if (Console.ReadKey().KeyChar == 'y')
                             return;

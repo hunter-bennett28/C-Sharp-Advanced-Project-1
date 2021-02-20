@@ -31,7 +31,7 @@ namespace Project1_Group_17
 
         public bool IsValidCity(string cityName)
         {
-            return CityCatalogue.ContainsKey(city.ToLower());
+            return CityCatalogue.ContainsKey(cityName.ToLower());
         }
 
         public void DisplayCityInformation(string cityName)
@@ -409,6 +409,13 @@ namespace Project1_Group_17
             foreach (var item in CityCatalogue)
             {
                 h.Add(item.Value.GetProvince());
+            }
+            
+            foreach(string prov in h)
+            {
+                Console.WriteLine(prov);
+            }
+        }
 
         public CityInfo GetSpecificCity(string cityName)
         {
