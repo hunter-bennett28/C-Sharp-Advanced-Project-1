@@ -30,7 +30,7 @@ namespace Project1_Group_17
         // City Methods
         public bool IsValidCity(string city)
         {
-            return CityCatalogue.ContainsKey(city);
+            return CityCatalogue.ContainsKey(city.ToLower());
         }
 
         public void DisplayCityInfo(string cityName)
@@ -94,11 +94,11 @@ namespace Project1_Group_17
         /// <summary>
         /// Show a location on the google maps site
         /// </summary>
-        /// <param name="lat">Lattitude of the location</param>
-        /// <param name="lng">Longitude of the location</param>
-        public void ShowCityOnMap(double lat, double lng)
+        /// <param name="cityKey"></param>
+        public void ShowCityOnMap(string cityKey)
         {
-            string url = $"https://www.google.com/maps/@{lat},{lng},15z";
+            Tuple<double, double> cityLocation = CityCatalogue[cityKey].GetLocation();
+            string url = $"https://www.google.com/maps/@{cityLocation.Item1},{cityLocation.Item2},15z";
             try
             {
                 Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
@@ -173,13 +173,16 @@ namespace Project1_Group_17
         {
             foreach (var city in CityCatalogue)
             {
-                if (city.Value.GetProvince() == province)
+                if (city.Value.GetProvince().ToLower() == province.ToLower())
                     return true;
             }
 
             return false;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="province"></param>
         public void DisplayProvincePopulation(string province)
         {
             ulong totalPopulation = 0;
@@ -397,60 +400,6 @@ namespace Project1_Group_17
             XmlNode cityPopulation = cityNode.SelectSingleNode("population");
             cityPopulation.InnerText = population.ToString();
             document.Save("../../../Data/Canadacities-XML.xml");
-        }
-        /// <summary>
-        /// Bool flag to tell whether the input from the user is correct.
-        /// </summary>
-        /// <param name="city">user input string.</param>
-        /// <returns>bool result</returns>
-        public bool CityIsValid(string city)
-        {
-            bool valid = false;
-            foreach (var item in CityCatalogue)
-            {
-                if (item.Value.GetCityName().ToLower() == city.ToLower()) return true;
-            }
-            return false;
-        }
-        /// <summary>
-        /// Bool flag to tell whether the input from the user is correct.
-        /// </summary>
-        /// <param name="city">user input string.</param>
-        /// <returns>bool result</returns>
-        public bool ProvinceIsValid(string province)
-        {
-            bool valid = false;
-            foreach (var item in CityCatalogue)
-            {
-                if (item.Value.GetProvince().ToLower() == province.ToLower()) return true;
-            }
-            return false;
-        }
-        /// <summary>
-        /// Displays the cities list.
-        /// </summary>
-        public void DisplayCitiesList()
-        {
-            StringBuilder cities = new StringBuilder("\n\n");
-
-            int counter = 0;
-            var items = from pair in CityCatalogue
-                        orderby pair.Key ascending
-                        select pair;
-
-
-            foreach (var item in items)
-            {
-                if (counter % 3 == 0)
-                {
-                    cities.Append("\n");
-                }
-                cities.Append("  " + item.Value.GetCityName().PadRight(30));
-                if (counter % 3 != 2)
-                    cities.Append("|");
-                counter++;
-            }
-            Console.WriteLine(cities);
         }
         /// <summary>
         /// Displays the province list.
