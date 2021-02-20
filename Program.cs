@@ -199,12 +199,12 @@ namespace Project1_Group_17
                     Console.WriteLine("\t4) Compare the population of two cities.");
                     Console.WriteLine("\t5) Display the city on a map.");
                     Console.WriteLine("\t6) Calculate the distance between two cities.");
+                    Console.WriteLine("\t7) Update the population of a specific city.");
                     Console.WriteLine("\treturn) Return to the main menu");
                     Console.Write("\nPlease make a selection (ex. 1, return): ");
                 }
                 selection = Console.ReadLine();
                 string response;
-                string[] resp;
                 switch (selection.ToLower())
 
                 {
@@ -250,6 +250,54 @@ namespace Project1_Group_17
                         Console.WriteLine("\nWhich city do you want to calculate the distance to?\n");
                         CityInfo endingCity = GetCityChoice(cityStats);
                         cityStats.CalculateDistanceBetweenCities(startingCity.GetCityName(), endingCity.GetCityName()).Wait();
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                        break;
+                    case "7":
+                        bool valid = false;
+                        string fileName = "";
+                        bool isULong;
+                        ulong newPopulation = 0;
+                        Console.WriteLine("Available data files:\n");
+                        Console.WriteLine("\t1) Canadacities-JSON.json");
+                        Console.WriteLine("\t2) Canadacities-XML.xml");
+                        Console.WriteLine("\t3) Canadacities.csv");
+                        Console.Write("Please make a selection(ex. 1, 2): ");
+                        do
+                        {
+                            selection = Console.ReadLine();
+                            switch (selection.ToLower())
+                            {
+                                case "1":
+                                    fileName = "Canadacities-JSON.json";
+                                    valid = true;
+                                    break;
+                                case "2":
+                                    fileName = "Canadacities-XML.xml";
+                                    valid = true;
+                                    break;
+                                case "3":
+                                    fileName = "Canadacities.csv";
+                                    valid = true;
+                                    break;
+                                default:
+                                    Console.Write("\nInvalid selection, please enter a valid selection: ");
+                                    break;
+                            }
+                        } while (!valid);
+                        Console.WriteLine("\nWhich city do you want to change the population?\n");
+                        city = GetCityChoice(cityStats);
+                        string oldPopulation = string.Format("{0:n0}", city.GetPopulation());
+                        Console.WriteLine($"\nThe city of{city.GetCityName()}, {city.GetProvince()} has a current population of {oldPopulation}.");
+                        do
+                        {
+                            Console.Write($"Please enter the new population for {city.GetCityName()}, {city.GetProvince()} :");
+                            isULong = UInt64.TryParse(Console.ReadLine(), out newPopulation);
+                            if (!isULong)
+                                Console.Write("Invalid response. ");
+                        }
+                        while (!isULong);
+                        cityStats.UpdatePopulation($"{city.GetCityName()}|{city.GetProvince()}", newPopulation, fileName);
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         break;
@@ -336,7 +384,7 @@ namespace Project1_Group_17
             {
                 Console.Write("Please enter the city name or 'list' to see all available options: ");
                 response = Console.ReadLine().Trim().ToLower();
-                if(response == "list")
+                if (response == "list")
                 {
                     Console.WriteLine("Which province do you wish to see the cities of?");
                     response = ProvinceValidator(cityStats);
