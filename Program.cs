@@ -266,7 +266,7 @@ namespace Project1_Group_17
                         do
                         {
                             selection = Console.ReadLine();
-                            switch (selection.ToLower())
+                            switch (selection)
                             {
                                 case "1":
                                     fileName = "Canadacities-JSON.json";
