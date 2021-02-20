@@ -1,8 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿/// Program.cs
+/// Authors: James Dunton, Hunter Bennett, Connor Black
+/// Desc: A program that allows city data to be loaded through various file types
+///         and displays various statistics on the data provided.
+
+using System;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Project1_Group_17
 {

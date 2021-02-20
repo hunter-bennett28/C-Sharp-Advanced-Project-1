@@ -1,4 +1,8 @@
-﻿using Newtonsoft.Json.Linq;
+﻿/// Statistics.cs
+/// Authors: Hunter Bennett, Connor Black, James Dunton
+/// Desc: Various methods to display statistics on cityInfo objects
+
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,7 +11,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.IO;
 using System.Xml;
-using System.Text;
 
 namespace Project1_Group_17
 {
@@ -166,6 +169,7 @@ namespace Project1_Group_17
                 Console.WriteLine("Error determining the distance between cities\nError: " + ex.Message);
             }
         }
+
         // Province Methods
         public bool IsValidProvince(string province)
         {
@@ -178,9 +182,9 @@ namespace Project1_Group_17
             return false;
         }
         /// <summary>
-        /// 
+        /// Display population for a province
         /// </summary>
-        /// <param name="province"></param>
+        /// <param name="province">Province to display province for</param>
         public void DisplayProvincePopulation(string province)
         {
             ulong totalPopulation = 0;
@@ -192,6 +196,10 @@ namespace Project1_Group_17
             Console.WriteLine($"{province} Population: {string.Format("{0:n0}", totalPopulation)}");
         }
 
+        /// <summary>
+        /// Display the cities for the given province
+        /// </summary>
+        /// <param name="province">Province to find the cities for</param>
         public void DisplayProvinceCities(string province)
         {
             foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
@@ -203,6 +211,9 @@ namespace Project1_Group_17
             }
         }
 
+        /// <summary>
+        /// Displays the provinces by population in ascending order
+        /// </summary>
         public void RankProvincesByPopulation()
         {
             Dictionary<string, ulong> provincePopulation = new Dictionary<string, ulong>();
@@ -225,6 +236,9 @@ namespace Project1_Group_17
             }
         }
 
+        /// <summary>
+        /// Displays the provinces by cities in ascending order
+        /// </summary>
         public void RankProvincesByCities()
         {
             Dictionary<string, ulong> provinceCities = new Dictionary<string, ulong>();
