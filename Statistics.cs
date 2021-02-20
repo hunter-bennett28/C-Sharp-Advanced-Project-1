@@ -27,31 +27,44 @@ namespace Project1_Group_17
             PopulationChangeEvent.NotifyPopulationChange += NotifyPopulationChanged;
         }
 
-        // City Methods
-
+        /// <summary>
+        /// The is valid city.
+        /// </summary>
+        /// <param name="cityName">The city name.</param>
+        /// <returns>The result.</returns>
         public bool IsValidCity(string cityName)
         {
-            return CityCatalogue.ContainsKey(cityName.ToLower());
+            foreach (var item in CityCatalogue)
+            {
+                if (cityName.ToLower() == item.Value.GetCityName().ToLower()) return true;
+            }
+            return false;
         }
-
+        /// <summary>
+        /// Displays the city information.
+        /// </summary>
+        /// <param name="cityName">Name of the city.</param>
         public void DisplayCityInformation(string cityName)
         {
             CityInfo chosenCity = GetSpecificCity(cityName);
             if (chosenCity != null)
             {
                 Console.WriteLine($"\nCity:\t\t{chosenCity.GetCityName()}");
-                Console.WriteLine($"Province:\t{chosenCity.GetCityName()}");
+                Console.WriteLine($"Province:\t{chosenCity.GetProvince()}");
                 Console.WriteLine($"Population:\t{chosenCity.GetPopulation()}\n");
             }
         }
-
+        /// <summary>
+        /// Displays the largest population city for a given province.
+        /// </summary>
+        /// <param name="province">The province.</param>
         public void DisplayLargestPopulationCity(string province)
         {
             ulong largestPopulation = 0;
             string cityName = "";
             foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
-                if (city.Value.GetProvince() == province && city.Value.GetPopulation() > largestPopulation)
+                if (city.Value.GetProvince().ToLower() == province.ToLower() && city.Value.GetPopulation() > largestPopulation)
                 {
                     largestPopulation = city.Value.GetPopulation();
                     cityName = city.Key.Split('|')[0];
@@ -59,14 +72,17 @@ namespace Project1_Group_17
             }
             Console.WriteLine($"Largest Population: {cityName} Population: {string.Format("{0:n0}", largestPopulation)}");
         }
-
+        /// <summary>
+        /// Displays the smallest population city.
+        /// </summary>
+        /// <param name="province">The province.</param>
         public void DisplaySmallestPopulationCity(string province)
         {
             ulong lowestPopulation = ulong.MaxValue;
             string cityName = "";
             foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
-                if (city.Value.GetProvince() == province && city.Value.GetPopulation() < lowestPopulation)
+                if (city.Value.GetProvince().ToLower() == province.ToLower() && city.Value.GetPopulation() < lowestPopulation)
                 {
                     lowestPopulation = city.Value.GetPopulation();
                     cityName = city.Key.Split('|')[0];
@@ -92,9 +108,17 @@ namespace Project1_Group_17
         /// Show a location on the google maps site
         /// </summary>
         /// <param name="cityKey"></param>
-        public void ShowCityOnMap(string cityKey)
+        public void ShowCityOnMap(string cityName)
         {
-            Tuple<double, double> cityLocation = CityCatalogue[cityKey].GetLocation();
+            Tuple<double, double> cityLocation = new Tuple<double, double>(0,0);
+            foreach (var item in CityCatalogue)
+            {
+                if (item.Key.ToLower() == cityName.ToLower())
+                    cityLocation = item.Value.GetLocation(); 
+            }
+            //CityInfo city = GetSpecificCity(cityName);
+            //Tuple<double, double> cityLocation = CityCatalogue[$"{city.GetCityName()}|{city.GetProvince()}"].GetLocation();
+
             string url = $"https://www.google.com/maps/@{cityLocation.Item1},{cityLocation.Item2},15z";
             try
             {
@@ -118,8 +142,8 @@ namespace Project1_Group_17
             //https://docs.microsoft.com/en-us/bingmaps/rest-services/routes/calculate-a-distance-matrix#response
             try
             {
-                CityInfo city1 = CityCatalogue[city1Name];
-                CityInfo city2 = CityCatalogue[city2Name];
+                CityInfo city1 = GetSpecificCity(city1Name);
+                CityInfo city2 = GetSpecificCity(city2Name);
 
                 //Get the lattitudes and logitudes from the cities
                 Tuple<double, double> c1Loc = city1.GetLocation();
@@ -165,7 +189,14 @@ namespace Project1_Group_17
                 Console.WriteLine("Error determining the distance between cities\nError: " + ex.Message);
             }
         }
-        // Province Methods
+        // Province Methods        
+        /// <summary>
+        /// Determines whether the province entered by the user is valid.
+        /// </summary>
+        /// <param name="province">The province.</param>
+        /// <returns>
+        ///   <c>true</c> if [is valid province] [the specified province]; otherwise, <c>false</c>.
+        /// </returns>
         public bool IsValidProvince(string province)
         {
             foreach (var city in CityCatalogue)
@@ -177,7 +208,7 @@ namespace Project1_Group_17
             return false;
         }
         /// <summary>
-        /// 
+        /// Displays the population for the entered province
         /// </summary>
         /// <param name="province"></param>
         public void DisplayProvincePopulation(string province)
@@ -191,7 +222,10 @@ namespace Project1_Group_17
 
             Console.WriteLine($"{province} Population: {string.Format("{0:n0}", totalPopulation)}");
         }
-
+        /// <summary>
+        /// Displays the cities in the given province.
+        /// </summary>
+        /// <param name="province">The province.</param>
         public void DisplayProvinceCities(string province)
         {
             foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
@@ -202,7 +236,9 @@ namespace Project1_Group_17
                 }
             }
         }
-
+        /// <summary>
+        /// Ranks the provinces by population in ascending order.
+        /// </summary>
         public void RankProvincesByPopulation()
         {
             Dictionary<string, ulong> provincePopulation = new Dictionary<string, ulong>();
@@ -224,7 +260,9 @@ namespace Project1_Group_17
                 Console.WriteLine("{0,-35}|{1,14}", province.Key, string.Format("{0:n0}", province.Value));
             }
         }
-
+        /// <summary>
+        /// Ranks the provinces by the count of cities in ascending order.
+        /// </summary>
         public void RankProvincesByCities()
         {
             Dictionary<string, ulong> provinceCities = new Dictionary<string, ulong>();
@@ -416,7 +454,11 @@ namespace Project1_Group_17
                 Console.WriteLine(prov);
             }
         }
-
+        /// <summary>
+        /// Gets the specific city. If more than one city has that name, ask the user what city they would like to select.
+        /// </summary>
+        /// <param name="cityName">Name of the city.</param>
+        /// <returns></returns>
         public CityInfo GetSpecificCity(string cityName)
         {
             List<CityInfo> matchedCities = new List<CityInfo>();
@@ -424,7 +466,7 @@ namespace Project1_Group_17
             foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
                 string[] nameParts = city.Key.Split('|');
-                if (nameParts[0] == cityName)
+                if (nameParts[0].ToLower() == cityName.ToLower())
                 {
                     matchedCities.Add(city.Value);
                 }
