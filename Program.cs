@@ -256,7 +256,6 @@ namespace Project1_Group_17
                     case "7":
                         bool valid = false;
                         string fileName = "";
-                        bool isULong;
                         ulong newPopulation = 0;
                         Console.WriteLine("Available data files:\n");
                         Console.WriteLine("\t1) Canadacities-JSON.json");
@@ -286,18 +285,23 @@ namespace Project1_Group_17
                             }
                         } while (!valid);
                         Console.WriteLine("\nWhich city do you want to change the population?\n");
-                        city = GetCityChoice(cityStats);
-                        string oldPopulation = string.Format("{0:n0}", city.GetPopulation());
-                        Console.WriteLine($"\nThe city of{city.GetCityName()}, {city.GetProvince()} has a current population of {oldPopulation}.");
+                        //get the user's choice
+                        response = OneCityValidator(cityStats);
                         do
                         {
-                            Console.Write($"Please enter the new population for {city.GetCityName()}, {city.GetProvince()} :");
-                            isULong = UInt64.TryParse(Console.ReadLine(), out newPopulation);
-                            if (!isULong)
-                                Console.Write("Invalid response. ");
+                            Console.Write($"Please enter the new population for {response}: ");
+                            if (!UInt64.TryParse(Console.ReadLine(), out newPopulation))
+                            continue;
+                            else break;
                         }
-                        while (!isULong);
-                        cityStats.UpdatePopulation($"{city.GetCityName()}|{city.GetProvince()}", newPopulation, fileName);
+                        while (true);
+                        try
+                        {
+                            cityStats.UpdatePopulation(response, newPopulation, fileName);
+                        }catch (Exception ex)
+                        {
+                            Console.WriteLine($"ERROR: {ex.Message}");
+                        }
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         break;
@@ -331,7 +335,7 @@ namespace Project1_Group_17
                     cityStats.DisplayProvinceCities(response);
                     continue;
                 }
-                if (cityStats.GetSpecificCity(response) == null)
+                if (!cityStats.IsValidCity(response))
                 {
                     Console.WriteLine($"\nNo city exists called {response}.");
                 }
