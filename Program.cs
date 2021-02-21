@@ -282,6 +282,10 @@ namespace Project1_Group_17
             } while (true);
         }
 
+        /// <summary>
+        /// Gets user choice for population to update and calls the update
+        /// </summary>
+        /// <param name="cityStats">The city stats object</param>
         static void UpdatePopulation(Statistics cityStats)
         {
             bool valid = false;
