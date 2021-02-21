@@ -4,7 +4,6 @@
 ///         and displays various statistics on the data provided.
 
 using System;
-using System.Text;
 
 namespace Project1_Group_17
 {
@@ -17,24 +16,30 @@ namespace Project1_Group_17
         }
 
         /// <summary>
-        /// First menu that the user sees.
+        /// First menu that the user sees that loads the statistics with a file.
         /// </summary>
         /// <returns>Statitics object</returns>
         static Statistics LoadMenu()
         {
             Statistics citiesStats = null;
             bool valid = false;
+
+            //Setup title
             string titleText = "Canadian Cities Data Analayzer Main Menu";
             string selection;
             string dash = new string('-', titleText.Length);
+
+            //Display information
             Console.WriteLine($"{dash}\n{titleText}\n{dash}\n");
             Console.WriteLine("Available data files:\n");
             Console.WriteLine("\t1) Canadacities-JSON.json");
             Console.WriteLine("\t2) Canadacities-XML.xml");
             Console.WriteLine("\t3) Canadacities.csv");
             Console.Write("\nPlease select a data file to get city information from (ex. 1, 2): ");
+
             do
             {
+                //Parse user prompt
                 selection = Console.ReadLine();
                 switch (selection.ToLower())
                 {
@@ -61,7 +66,7 @@ namespace Project1_Group_17
         /// <summary>
         /// Display a main menu to allow users to go to a province menu or city menu
         /// </summary>
-        /// <param name="cityStats"></param>
+        /// <param name="cityStats">A populated statistics object</param>
         static void MainMenu(Statistics cityStats)
         {
             string selection;
@@ -71,6 +76,7 @@ namespace Project1_Group_17
             bool displayMenu = true;
             do
             {
+                //Display the prompt if the user is returning to this menu
                 if (displayMenu)
                 {
                     Console.Clear();
@@ -82,6 +88,8 @@ namespace Project1_Group_17
                     Console.Write("\nPlease make a selection (ex. 1, exit): ");
                 }
                 displayMenu = true;
+
+                //Determine user action
                 selection = Console.ReadLine();
                 switch (selection.ToLower())
                 {
@@ -105,7 +113,7 @@ namespace Project1_Group_17
         /// <summary>
         /// Menu for province stats.
         /// </summary>
-        /// <param name="cityStats"></param>
+        /// <param name="cityStats">A populated statistics object</param>
         static void ProvinceMenu(Statistics cityStats)
         {
             string selection;
@@ -115,10 +123,11 @@ namespace Project1_Group_17
             bool displayMenu = true;
             do
             {
+                //Display menu
                 if (displayMenu)
                 {
                     Console.Clear();
-                    Console.WriteLine($"\n{dash}\n{titleText}\n{dash}\n");
+                    Console.WriteLine($"{dash}\n{titleText}\n{dash}\n");
                     Console.WriteLine("Available selections:\n");
                     Console.WriteLine("\t1) Display the population for a given province.");
                     Console.WriteLine("\t2) Display all the cities in a given province.");
@@ -130,6 +139,7 @@ namespace Project1_Group_17
                 }
                 displayMenu = true;
 
+                //Handle user input
                 selection = Console.ReadLine();
                 string response;
                 switch (selection.ToLower())
@@ -169,28 +179,30 @@ namespace Project1_Group_17
                         return;
 
                     default:
-                        Console.Write("\nInvalid selection, please enter a valid selection.");
+                        Console.Write("\nInvalid selection, please enter a valid selection: ");
                         displayMenu = false;
                         break;
                 }
             } while (true);
         }
+
         /// <summary>
         /// Menu for city statistics.
         /// </summary>
-        /// <param name="cityStats"></param>
+        /// <param name="cityStats">A populated statistics object</param>
         static void CityMenu(Statistics cityStats)
         {
             string selection;
             string titleText = "Cities Menu";
             bool displayMenu = true;
+            string dash = new string('-', titleText.Length);
 
             do
             {
+                //Display the menu
                 if (displayMenu)
                 {
                     Console.Clear();
-                    string dash = new string('-', titleText.Length);
                     Console.WriteLine($"{dash}\n{titleText}\n{dash}\n");
                     Console.WriteLine("Available selections:\n");
                     Console.WriteLine("\t1) Display city's info.");
@@ -203,10 +215,12 @@ namespace Project1_Group_17
                     Console.WriteLine("\treturn) Return to the main menu");
                     Console.Write("\nPlease make a selection (ex. 1, return): ");
                 }
+                displayMenu = true;
+
+                //Handle response
                 selection = Console.ReadLine();
                 string response;
                 switch (selection.ToLower())
-
                 {
                     case "1":
                         response = OneCityValidator(cityStats);
@@ -246,10 +260,10 @@ namespace Project1_Group_17
                         break;
                     case "6":
                         Console.WriteLine("\nWhich city do you want to start at?\n");
-                        CityInfo startingCity = GetCityChoice(cityStats);
+                        string startingCity = OneCityValidator(cityStats);
                         Console.WriteLine("\nWhich city do you want to calculate the distance to?\n");
-                        CityInfo endingCity = GetCityChoice(cityStats);
-                        cityStats.CalculateDistanceBetweenCities(startingCity.GetCityName(), endingCity.GetCityName()).Wait();
+                        string endingCity = OneCityValidator(cityStats);
+                        cityStats.CalculateDistanceBetweenCities(startingCity, endingCity).Wait();
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         break;
@@ -274,15 +288,20 @@ namespace Project1_Group_17
             bool valid = false;
             string fileName = "";
             ulong newPopulation = 0;
+
+            //Display the menu
             Console.WriteLine("Available data files:\n");
             Console.WriteLine("\t1) Canadacities-JSON.json");
             Console.WriteLine("\t2) Canadacities-XML.xml");
             Console.WriteLine("\t3) Canadacities.csv");
             Console.Write("Please make a selection(ex. 1, 2): ");
+
             string selection, response;
             do
             {
+                //Handle user input
                 selection = Console.ReadLine();
+
                 switch (selection)
                 {
                     case "1":
@@ -303,6 +322,7 @@ namespace Project1_Group_17
                 }
             } while (!valid);
             Console.WriteLine("\nWhich city do you want to change the population?\n");
+            
             //get the user's choice
             response = OneCityValidator(cityStats);
             do
@@ -310,7 +330,8 @@ namespace Project1_Group_17
                 Console.Write($"Please enter the new population for {response}: ");
                 if (!UInt64.TryParse(Console.ReadLine(), out newPopulation))
                     continue;
-                else break;
+                else 
+                    break;
             }
             while (true);
             try
@@ -327,7 +348,7 @@ namespace Project1_Group_17
         /// One City Validator.
         /// </summary>
         /// <param name="cityStats">The city stats object.</param>
-        /// <returns></returns>
+        /// <returns>Returns a valid</returns>
         static string OneCityValidator(Statistics cityStats)
         {
             string response;
@@ -343,13 +364,9 @@ namespace Project1_Group_17
                     continue;
                 }
                 if (!cityStats.IsValidCity(response))
-                {
                     Console.WriteLine($"\nNo city exists called {response}.");
-                }
                 else
-                {
                     return response;
-                }
             } while (true);
 
         }
@@ -358,7 +375,7 @@ namespace Project1_Group_17
         /// Province validator
         /// </summary>
         /// <param name="cityStats">The city stats object.</param>
-        /// <returns>the user's validated response</returns>
+        /// <returns>The user's validated response</returns>
         static string ProvinceValidator(Statistics cityStats)
         {
             do
@@ -371,14 +388,15 @@ namespace Project1_Group_17
                     continue;
                 }
 
+                //Check for quebec as it has special characters
+                if (response.ToLower() == "quebec")
+                    response = "québec";
+
                 if (!cityStats.IsValidProvince(response))
-                {
                     Console.Write($"\nNo province exists called {response}.\n");
-                }
                 else
-                {
                     return response;
-                }
+                
             } while (true);
         }
 
@@ -386,7 +404,7 @@ namespace Project1_Group_17
         /// Validates the name of the city and that respecitve province.
         /// </summary>
         /// <param name="cityStats">The city stats object.</param>
-        /// <returns>the user's validated response</returns>
+        /// <returns>The user's validated response</returns>
         static CityInfo GetCityChoice(Statistics cityStats)
         {
             CityInfo city = null;
@@ -401,8 +419,8 @@ namespace Project1_Group_17
                     response = ProvinceValidator(cityStats);
                     cityStats.DisplayProvinceCities(response);
                 }
-
-                city = cityStats.GetSpecificCity(response);
+                else 
+                    city = cityStats.GetSpecificCity(response);
             } while (city == null);
 
             return city;
