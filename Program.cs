@@ -259,9 +259,9 @@ namespace Project1_Group_17
                         break;
                     case "6":
                         Console.WriteLine("\nWhich city do you want to start at?");
-                        string startingCity = GetValidCityName(cityStats);
+                        CityInfo startingCity = cityStats.GetSpecificCity(Console.ReadLine().Trim());
                         Console.WriteLine("\nWhich city do you want to calculate the distance to?");
-                        string endingCity = GetValidCityName(cityStats);
+                        CityInfo endingCity = cityStats.GetSpecificCity(Console.ReadLine().Trim());
                         cityStats.CalculateDistanceBetweenCities(startingCity, endingCity).Wait();
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
