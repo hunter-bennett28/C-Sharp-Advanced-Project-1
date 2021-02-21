@@ -172,6 +172,8 @@ namespace Project1_Group_17
         /// <returns>An awaitable task to ensure that the method is called</returns>
         public async Task CalculateDistanceBetweenCities(string city1Name, string city2Name)
         {
+            //Fetch from the url, in this case the bing API
+            //https://docs.microsoft.com/en-us/bingmaps/rest-services/routes/calculate-a-distance-matrix#response
             try
             {
                 CityInfo city1 = GetSpecificCity(city1Name.ToLower());
@@ -184,20 +186,24 @@ namespace Project1_Group_17
                 Tuple<double, double> c2Loc = city2.GetLocation();
                 double lat2 = c2Loc.Item1, lng2 = c2Loc.Item2;
 
-                //Format URL with locations and key
+                //Initiate the key and populate the URL to call
                 const string bingApiKey = "Ao0BK4GXiMwRy_4CGUMODJcwKwsHzEluEPLwIA5XpVJVxjpZyoY9NOujRdaLRtEM";
                 string destMatrix = $"https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=" +
                     $"{lat1},{lng1}&destinations={lat2},{lng2}" +
                     $"&travelMode=driving&startTime=&timeUnit=&key={bingApiKey}"; //Travel mode is required but does not impact distance
 
-                //Get response from the server
+                //The structure of the return is in a DistanceMatrix Resource
+                //https://docs.microsoft.com/en-us/bingmaps/rest-services/routes/distance-matrix-data
+                //Note: returns in KM
+
+                //Get the resource object, held within the returned data (element 3 is the response)
                 HttpResponseMessage response = await client.GetAsync(destMatrix);
                 JObject json = JObject.Parse($"{{ data:{response.Content.ReadAsStringAsync().Result}}}");
 
                 //Get the resource object from returned data (element 3 is response)
                 JToken returnResources = json["data"].Children().ElementAt(3).First().Children().First()["resources"];
 
-                //Extract travel distance from result
+                //Determine the travel distance from the result
                 JToken results = returnResources.Children().First()["results"].Children().First()["travelDistance"];
 
                 if (Convert.ToInt32(results) == -1)
