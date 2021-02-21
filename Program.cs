@@ -145,15 +145,15 @@ namespace Project1_Group_17
                 switch (selection.ToLower())
                 {
                     case "1":
-                        response = ProvinceValidator(cityStats);
+                        response = GetValidProvince(cityStats);
                         cityStats.DisplayProvincePopulation(response);
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         break;
                     case "2":
-                        response = ProvinceValidator(cityStats);
+                        response = GetValidProvince(cityStats);
                         cityStats.DisplayProvinceCities(response);
-                        Console.WriteLine("Press any key to continue");
+                        Console.WriteLine("\nPress any key to continue");
                         Console.ReadKey();
                         break;
                     case "3":
@@ -170,7 +170,7 @@ namespace Project1_Group_17
                         break;
                     case "5":
                         Console.WriteLine("\nWhich province do you wish to find the capital of?");
-                        response = ProvinceValidator(cityStats);
+                        response = GetValidProvince(cityStats);
                         cityStats.GetCapital(response);
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
@@ -222,46 +222,46 @@ namespace Project1_Group_17
                 switch (selection.ToLower())
                 {
                     case "1":
-                        response = OneCityValidator(cityStats);
+                        response = GetValidCityName(cityStats);
                         cityStats.DisplayCityInformation(response);
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         break;
                     case "2":
                         Console.WriteLine("\nWhich province do you wish to see the largest population city of?");
-                        response = ProvinceValidator(cityStats);
+                        response = GetValidProvince(cityStats);
                         cityStats.DisplayLargestPopulationCity(response);
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         break;
                     case "3":
                         Console.WriteLine("\nWhich province do you wish to see the smallest population city of?");
-                        response = ProvinceValidator(cityStats);
+                        response = GetValidProvince(cityStats);
                         cityStats.DisplaySmallestPopulationCity(response);
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         break;
                     case "4":
-                        Console.WriteLine("\nWhich city do you want to pick first?\n");
-                        CityInfo city1 = GetCityChoice(cityStats);
-                        Console.WriteLine("\nWhich city do you want to compare it to?\n");
-                        CityInfo city2 = GetCityChoice(cityStats);
+                        Console.WriteLine("\nWhich city do you want to pick first?");
+                        CityInfo city1 = GetCityChoiceObject(cityStats);
+                        Console.WriteLine("\nWhich city do you want to compare it to?");
+                        CityInfo city2 = GetCityChoiceObject(cityStats);
                         cityStats.CompareCitiesPopulation(city1, city2);
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         break;
                     case "5":
-                        Console.WriteLine("\nWhich city do you want to see on the map?\n");
-                        CityInfo city = GetCityChoice(cityStats);
+                        Console.WriteLine("\nWhich city do you want to see on the map?");
+                        CityInfo city = GetCityChoiceObject(cityStats);
                         cityStats.ShowCityOnMap($"{city.GetCityName().ToLower()}|{city.GetProvince().ToLower()}");
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         break;
                     case "6":
                         Console.WriteLine("\nWhich city do you want to start at?");
-                        string startingCity = OneCityValidator(cityStats);
+                        string startingCity = GetValidCityName(cityStats);
                         Console.WriteLine("\nWhich city do you want to calculate the distance to?");
-                        string endingCity = OneCityValidator(cityStats);
+                        string endingCity = GetValidCityName(cityStats);
                         cityStats.CalculateDistanceBetweenCities(startingCity, endingCity).Wait();
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
@@ -282,6 +282,10 @@ namespace Project1_Group_17
             } while (true);
         }
 
+        /// <summary>
+        /// Gets user choice for population to update and calls the update
+        /// </summary>
+        /// <param name="cityStats">The city stats object</param>
         static void UpdatePopulation(Statistics cityStats)
         {
             bool valid = false;
@@ -323,10 +327,10 @@ namespace Project1_Group_17
             Console.WriteLine("\nWhich city do you want to change the population?");
             
             //get the user's choice
-            response = OneCityValidator(cityStats);
+            response = GetValidCityName(cityStats);
             do
             {
-                Console.Write($"\nPlease enter the new population for {response}: ");
+                Console.Write($"\nPlease enter the new population for {cityStats.CapitalizeString(response)}: ");
                 if (ulong.TryParse(Console.ReadLine(), out newPopulation))
                     break;
                 else
@@ -338,21 +342,21 @@ namespace Project1_Group_17
         }
 
         /// <summary>
-        /// One City Validator.
+        /// Checks to see if a city name exists at all in the database
         /// </summary>
         /// <param name="cityStats">The city stats object.</param>
-        /// <returns>Returns a valid</returns>
-        static string OneCityValidator(Statistics cityStats)
+        /// <returns>Returns a valid city name</returns>
+        static string GetValidCityName(Statistics cityStats)
         {
             string response;
             do
             {
                 Console.Write("\nEnter city name or type 'list' to see available cities: ");
-                response = Console.ReadLine().Trim();
-                if (response.ToLower() == "list")
+                response = Console.ReadLine().Trim().ToLower();
+                if (response == "list")
                 {
                     Console.WriteLine("\nWhich province do you wish to see the cities in?");
-                    response = ProvinceValidator(cityStats);
+                    response = GetValidProvince(cityStats);
                     cityStats.DisplayProvinceCities(response);
                     continue;
                 }
@@ -369,7 +373,7 @@ namespace Project1_Group_17
         /// </summary>
         /// <param name="cityStats">The city stats object.</param>
         /// <returns>The user's validated response</returns>
-        static string ProvinceValidator(Statistics cityStats)
+        static string GetValidProvince(Statistics cityStats)
         {
             do
             {
@@ -386,7 +390,7 @@ namespace Project1_Group_17
                     response = "québec";
 
                 if (!cityStats.IsValidProvince(response))
-                    Console.Write($"\nNo province exists called {response}.\n");
+                    Console.WriteLine($"\nNo province exists called {response}.");
                 else
                     return response;
                 
@@ -394,29 +398,13 @@ namespace Project1_Group_17
         }
 
         /// <summary>
-        /// Validates the name of the city and that respecitve province.
+        /// Validates the name of the city and returns its CityInfo object.
         /// </summary>
         /// <param name="cityStats">The city stats object.</param>
-        /// <returns>The user's validated response</returns>
-        static CityInfo GetCityChoice(Statistics cityStats)
+        /// <returns>The CityInfo object of the selected city</returns>
+        static CityInfo GetCityChoiceObject(Statistics cityStats)
         {
-            CityInfo city = null;
-            string response = "";
-            do
-            {
-                Console.Write("Please enter the city name or 'list' to see all available options: ");
-                response = Console.ReadLine().Trim().ToLower();
-                if (response == "list")
-                {
-                    Console.WriteLine("\nWhich province do you wish to see the cities of?");
-                    response = ProvinceValidator(cityStats);
-                    cityStats.DisplayProvinceCities(response);
-                }
-                else 
-                    city = cityStats.GetSpecificCity(response);
-            } while (city == null);
-
-            return city;
+            return cityStats.GetSpecificCity(GetValidCityName(cityStats));
         }
     }
 }

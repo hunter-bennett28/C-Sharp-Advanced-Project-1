@@ -213,7 +213,7 @@ namespace Project1_Group_17
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error determining the distance between cities\nError: " + ex.Message);
+                Console.WriteLine($"\nError determining the distance between cities: {ex.Message}\n");
             }
         }
 
@@ -270,7 +270,7 @@ namespace Project1_Group_17
                 Console.Write(string.Format($"{{0,-{ColumnWidth}}}", cityName)); // Print in specified length column
             }
 
-            Console.WriteLine("\n");
+            Console.WriteLine();
         }
 
         /// <summary>
@@ -551,7 +551,7 @@ namespace Project1_Group_17
         /// </summary>
         /// <param name="toCapitalize">The string to capitalize</param>
         /// <returns>The first letter capitalized</returns>
-        private string CapitalizeString(string toCapitalize)
+        public string CapitalizeString(string toCapitalize)
         {
             if (toCapitalize.Length == 0)
                 return toCapitalize;
