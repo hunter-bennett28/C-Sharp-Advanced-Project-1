@@ -129,8 +129,8 @@ namespace Project1_Group_17
             CityInfo smallerCity = city1.GetPopulation() < city2.GetPopulation() ? city1 : city2;
             CityInfo largerCity = smallerCity == city1 ? city2 : city1;
 
-            Console.WriteLine($"\nLarger City:\t{CapitalizeString(largerCity.GetCityName())} ({string.Format("{0:n0}", largerCity.GetPopulation())})");
-            Console.WriteLine($"Smaller City:\t{CapitalizeString(smallerCity.GetCityName())} ({string.Format("{0:n0}", smallerCity.GetPopulation())})\n");
+            Console.WriteLine($"\nLarger City:\t{CapitalizeString(largerCity.GetCityName())}, {CapitalizeString(largerCity.GetProvince())} ({string.Format("{0:n0}", largerCity.GetPopulation())})");
+            Console.WriteLine($"Smaller City:\t{CapitalizeString(smallerCity.GetCityName())}, {CapitalizeString(smallerCity.GetProvince())} ({string.Format("{0:n0}", smallerCity.GetPopulation())})\n");
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace Project1_Group_17
                 if (Convert.ToInt32(results) == -1)
                     throw new Exception("Could not find a valid route between the two passed co-ordinates");
 
-                Console.WriteLine($"\nThe distance between the two points is: {string.Format("{0:n0}", results)}km\n");
+                Console.WriteLine($"\nThe distance between the two cities is: {string.Format("{0:n0}", results)}km\n");
             }
             catch (Exception ex)
             {
