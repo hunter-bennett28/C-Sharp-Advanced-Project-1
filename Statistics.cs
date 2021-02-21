@@ -512,7 +512,7 @@ namespace Project1_Group_17
             //Either show all cities with same name or ask user which to show
             foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
-                if (cityName == city.Value.GetCityName().ToLower() || cityName == city.Value.GetCityAscii().ToLower())
+                if (cityName.ToLower() == city.Value.GetCityName().ToLower() || cityName.ToLower() == city.Value.GetCityAscii().ToLower())
                     matchedCities.Add(city.Value);
             }
 

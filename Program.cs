@@ -31,7 +31,7 @@ namespace Project1_Group_17
 
             //Display information
             Console.WriteLine($"{dash}\n{titleText}\n{dash}\n");
-            Console.WriteLine("\nAvailable data files:\n");
+            Console.WriteLine("Available data files:\n");
             Console.WriteLine("\t1) Canadacities-JSON.json");
             Console.WriteLine("\t2) Canadacities-XML.xml");
             Console.WriteLine("\t3) Canadacities.csv");
