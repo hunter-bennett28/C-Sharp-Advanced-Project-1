@@ -270,7 +270,7 @@ namespace Project1_Group_17
                 Console.Write(string.Format($"{{0,-{ColumnWidth}}}", cityName)); // Print in specified length column
             }
 
-            Console.WriteLine();
+            Console.WriteLine("\n");
         }
 
         /// <summary>
