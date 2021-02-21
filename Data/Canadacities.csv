@@ -1,4 +1,4 @@
-﻿city,city_ascii,lat,lng,country,admin_name,capital,population,id
+city,city_ascii,lat,lng,country,admin_name,capital,population,id
 Selkirk,Selkirk,50.15,-96.8833,Canada,Manitoba,,9986,1124499880
 Trepassey,Trepassey,46.737,-53.3633,Canada,Newfoundland and Labrador,,398,1124344083
 Schefferville,Schefferville,54.8,-66.8167,Canada,Québec,,471,1124403382
@@ -245,7 +245,7 @@ Charlottetown,Charlottetown,46.2493,-63.1313,Canada,Prince Edward Island,admin,4
 Inukjuak,Inukjuak,58.47,-78.136,Canada,Québec,,1597,1124369757
 Sarnia,Sarnia,42.9666,-82.4,Canada,Ontario,,144172,1124509835
 Edmundston,Edmundston,47.3794,-68.3333,Canada,New Brunswick,,17894,1124274233
-Windsor,Windsor,42.3333,-83.0333,Canada,Ontario,,319246,1124261024
+Windsor,Windsor,42.3333,-83.0333,Canada,Ontario,,0,1124261024
 Joliette,Joliette,46.0333,-73.4333,Canada,Québec,,45361,1124841554
 Amherst,Amherst,45.8166,-64.2166,Canada,Nova Scotia,,9336,1124895094
 Sept-Îles,Sept-Iles,50.3161,-66.36,Canada,Québec,,25686,1124406431
