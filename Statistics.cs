@@ -351,9 +351,10 @@ namespace Project1_Group_17
         {
             try
             {
-                if (CityCatalogue.ContainsKey(cityName))
+                CityInfo cityToUpdate = GetSpecificCity(cityName);
+                if (cityToUpdate != null)
                 {
-                    CityInfo cityToUpdate = CityCatalogue[cityName];
+
                     if (cityToUpdate.GetPopulation() == population)
                     {
                         Console.WriteLine($"{cityToUpdate.GetCityName()}, {cityToUpdate.GetProvince()} already has a population of {string.Format("{0:n0}", population)}.");
