@@ -7,7 +7,7 @@
     <lng>-96.883300000000006</lng>
     <country>Canada</country>
     <admin_name>Manitoba</admin_name>
-    <capital />
+    <capital/>
     <population>9986</population>
     <id>1124499880</id>
   </CanadaCity>
@@ -18,7 +18,7 @@
     <lng>-53.363300000000002</lng>
     <country>Canada</country>
     <admin_name>Newfoundland and Labrador</admin_name>
-    <capital />
+    <capital/>
     <population>398</population>
     <id>1124344083</id>
   </CanadaCity>
@@ -29,7 +29,7 @@
     <lng>-66.816699999999997</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>471</population>
     <id>1124403382</id>
   </CanadaCity>
@@ -51,7 +51,7 @@
     <lng>-58.116599999999998</lng>
     <country>Canada</country>
     <admin_name>Newfoundland and Labrador</admin_name>
-    <capital />
+    <capital/>
     <population>452</population>
     <id>1124733447</id>
   </CanadaCity>
@@ -62,7 +62,7 @@
     <lng>-102.4665</lng>
     <country>Canada</country>
     <admin_name>Saskatchewan</admin_name>
-    <capital />
+    <capital/>
     <population>15172</population>
     <id>1124108820</id>
   </CanadaCity>
@@ -73,7 +73,7 @@
     <lng>-61.998199999999997</lng>
     <country>Canada</country>
     <admin_name>Nova Scotia</admin_name>
-    <capital />
+    <capital/>
     <population>6739</population>
     <id>1124839247</id>
   </CanadaCity>
@@ -84,7 +84,7 @@
     <lng>-54.55</lng>
     <country>Canada</country>
     <admin_name>Newfoundland and Labrador</admin_name>
-    <capital />
+    <capital/>
     <population>3345</population>
     <id>1124310517</id>
   </CanadaCity>
@@ -95,7 +95,7 @@
     <lng>-97.033299999999997</lng>
     <country>Canada</country>
     <admin_name>Manitoba</admin_name>
-    <capital />
+    <capital/>
     <population>892</population>
     <id>1124806860</id>
   </CanadaCity>
@@ -106,7 +106,7 @@
     <lng>-64.347999999999999</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>263</population>
     <id>1124109240</id>
   </CanadaCity>
@@ -117,7 +117,7 @@
     <lng>-113.38330000000001</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>11823</population>
     <id>1124492484</id>
   </CanadaCity>
@@ -128,7 +128,7 @@
     <lng>-92.083299999999994</lng>
     <country>Canada</country>
     <admin_name>Manitoba</admin_name>
-    <capital />
+    <capital/>
     <population>870</population>
     <id>1124131561</id>
   </CanadaCity>
@@ -139,7 +139,7 @@
     <lng>-96.683300000000003</lng>
     <country>Canada</country>
     <admin_name>Manitoba</admin_name>
-    <capital />
+    <capital/>
     <population>9729</population>
     <id>1124152692</id>
   </CanadaCity>
@@ -150,7 +150,7 @@
     <lng>-89.275000000000006</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>99334</population>
     <id>1124398712</id>
   </CanadaCity>
@@ -161,7 +161,7 @@
     <lng>-78.849999999999994</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>450963</population>
     <id>1124541904</id>
   </CanadaCity>
@@ -172,7 +172,7 @@
     <lng>-71.066699999999997</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>53940</population>
     <id>1124426272</id>
   </CanadaCity>
@@ -183,7 +183,7 @@
     <lng>-102.8</lng>
     <country>Canada</country>
     <admin_name>Saskatchewan</admin_name>
-    <capital />
+    <capital/>
     <population>4279</population>
     <id>1124823140</id>
   </CanadaCity>
@@ -194,7 +194,7 @@
     <lng>-111.9</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>14163</population>
     <id>1124093123</id>
   </CanadaCity>
@@ -205,7 +205,7 @@
     <lng>-100.05</lng>
     <country>Canada</country>
     <admin_name>Manitoba</admin_name>
-    <capital />
+    <capital/>
     <population>9077</population>
     <id>1124144510</id>
   </CanadaCity>
@@ -216,7 +216,7 @@
     <lng>-127.1666</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>6245</population>
     <id>1124191574</id>
   </CanadaCity>
@@ -227,7 +227,7 @@
     <lng>-128.58330000000001</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>19443</population>
     <id>1124878479</id>
   </CanadaCity>
@@ -238,7 +238,7 @@
     <lng>-110.7333</lng>
     <country>Canada</country>
     <admin_name>Northwest Territories</admin_name>
-    <capital />
+    <capital/>
     <population>102</population>
     <id>1124525451</id>
   </CanadaCity>
@@ -249,7 +249,7 @@
     <lng>-94.9</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>250</population>
     <id>1124211405</id>
   </CanadaCity>
@@ -260,7 +260,7 @@
     <lng>-122.4833</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>13788</population>
     <id>1124028015</id>
   </CanadaCity>
@@ -271,7 +271,7 @@
     <lng>-94.766599999999997</lng>
     <country>Canada</country>
     <admin_name>Manitoba</admin_name>
-    <capital />
+    <capital/>
     <population>10</population>
     <id>1124887306</id>
   </CanadaCity>
@@ -293,7 +293,7 @@
     <lng>-128.80000000000001</lng>
     <country>Canada</country>
     <admin_name>Yukon</admin_name>
-    <capital />
+    <capital/>
     <population>802</population>
     <id>1124162676</id>
   </CanadaCity>
@@ -304,7 +304,7 @@
     <lng>-60.18</lng>
     <country>Canada</country>
     <admin_name>Nova Scotia</admin_name>
-    <capital />
+    <capital/>
     <population>37538</population>
     <id>1124205375</id>
   </CanadaCity>
@@ -315,7 +315,7 @@
     <lng>-120.2333</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>10802</population>
     <id>1124081402</id>
   </CanadaCity>
@@ -326,7 +326,7 @@
     <lng>-108.61660000000001</lng>
     <country>Canada</country>
     <admin_name>Saskatchewan</admin_name>
-    <capital />
+    <capital/>
     <population>89</population>
     <id>1124993293</id>
   </CanadaCity>
@@ -337,7 +337,7 @@
     <lng>-81.333299999999994</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>34974</population>
     <id>1124760634</id>
   </CanadaCity>
@@ -348,7 +348,7 @@
     <lng>-106.67</lng>
     <country>Canada</country>
     <admin_name>Saskatchewan</admin_name>
-    <capital />
+    <capital/>
     <population>198958</population>
     <id>1124612546</id>
   </CanadaCity>
@@ -370,7 +370,7 @@
     <lng>-62.25</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>125</population>
     <id>1124921853</id>
   </CanadaCity>
@@ -381,7 +381,7 @@
     <lng>-83.55</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>1464</population>
     <id>1124087342</id>
   </CanadaCity>
@@ -403,7 +403,7 @@
     <lng>-112.81659999999999</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>15808</population>
     <id>1124351657</id>
   </CanadaCity>
@@ -414,7 +414,7 @@
     <lng>-125.25</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>33430</population>
     <id>1124851971</id>
   </CanadaCity>
@@ -425,7 +425,7 @@
     <lng>-118.1833</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>7668</population>
     <id>1124070926</id>
   </CanadaCity>
@@ -436,7 +436,7 @@
     <lng>-108.43470000000001</lng>
     <country>Canada</country>
     <admin_name>Saskatchewan</admin_name>
-    <capital />
+    <capital/>
     <population>5882</population>
     <id>1124434578</id>
   </CanadaCity>
@@ -447,7 +447,7 @@
     <lng>-91.616600000000005</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>3625</population>
     <id>1124868159</id>
   </CanadaCity>
@@ -458,7 +458,7 @@
     <lng>-116.5167</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>4816</population>
     <id>1124204302</id>
   </CanadaCity>
@@ -469,7 +469,7 @@
     <lng>-94.7</lng>
     <country>Canada</country>
     <admin_name>Manitoba</admin_name>
-    <capital />
+    <capital/>
     <population>1281</population>
     <id>1124560722</id>
   </CanadaCity>
@@ -480,7 +480,7 @@
     <lng>-115.7667</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>18610</population>
     <id>1124937794</id>
   </CanadaCity>
@@ -491,7 +491,7 @@
     <lng>-81.933300000000003</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>1595</population>
     <id>1124386809</id>
   </CanadaCity>
@@ -502,7 +502,7 @@
     <lng>-114.08</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>1110000</population>
     <id>1124690423</id>
   </CanadaCity>
@@ -513,7 +513,7 @@
     <lng>-89.883300000000006</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>10</population>
     <id>1124557709</id>
   </CanadaCity>
@@ -524,7 +524,7 @@
     <lng>-80.033000000000001</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>7105</population>
     <id>1124245809</id>
   </CanadaCity>
@@ -535,7 +535,7 @@
     <lng>-120.33329999999999</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>68714</population>
     <id>1124735582</id>
   </CanadaCity>
@@ -546,13 +546,13 @@
     <lng>-72.2333</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>13337</population>
     <id>1124037070</id>
   </CanadaCity>
   <CanadaCity>
-    <city>St. John's</city>
-    <city_ascii>St. John's</city_ascii>
+    <city>St. John&apos;s</city>
+    <city_ascii>St. John&apos;s</city_ascii>
     <lat>47.585000000000001</lat>
     <lng>-52.680999999999997</lng>
     <country>Canada</country>
@@ -568,7 +568,7 @@
     <lng>-87.883300000000006</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>120</population>
     <id>1124130748</id>
   </CanadaCity>
@@ -579,7 +579,7 @@
     <lng>-123.9833</lng>
     <country>Canada</country>
     <admin_name>Northwest Territories</admin_name>
-    <capital />
+    <capital/>
     <population>294</population>
     <id>1124599203</id>
   </CanadaCity>
@@ -590,7 +590,7 @@
     <lng>-82.433300000000003</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>1802</population>
     <id>1124363788</id>
   </CanadaCity>
@@ -601,7 +601,7 @@
     <lng>-68.5167</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>35584</population>
     <id>1124433645</id>
   </CanadaCity>
@@ -612,7 +612,7 @@
     <lng>-118.8</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>41462</population>
     <id>1124505481</id>
   </CanadaCity>
@@ -623,7 +623,7 @@
     <lng>-79.2</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>7206</population>
     <id>1124902252</id>
   </CanadaCity>
@@ -634,7 +634,7 @@
     <lng>-64.017300000000006</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>588</population>
     <id>1124305694</id>
   </CanadaCity>
@@ -645,7 +645,7 @@
     <lng>-105.75</lng>
     <country>Canada</country>
     <admin_name>Saskatchewan</admin_name>
-    <capital />
+    <capital/>
     <population>34609</population>
     <id>1124158154</id>
   </CanadaCity>
@@ -656,7 +656,7 @@
     <lng>-105.55</lng>
     <country>Canada</country>
     <admin_name>Saskatchewan</admin_name>
-    <capital />
+    <capital/>
     <population>32166</population>
     <id>1124806868</id>
   </CanadaCity>
@@ -667,7 +667,7 @@
     <lng>-124.55</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>12779</population>
     <id>1124154376</id>
   </CanadaCity>
@@ -678,7 +678,7 @@
     <lng>-65.75</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>1320</population>
     <id>1124731886</id>
   </CanadaCity>
@@ -689,7 +689,7 @@
     <lng>-117.2833</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>11779</population>
     <id>1124361295</id>
   </CanadaCity>
@@ -700,7 +700,7 @@
     <lng>-117.2833</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>5340</population>
     <id>1124941936</id>
   </CanadaCity>
@@ -711,7 +711,7 @@
     <lng>-79.683300000000003</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>1372</population>
     <id>1124248298</id>
   </CanadaCity>
@@ -722,7 +722,7 @@
     <lng>-62.633299999999998</lng>
     <country>Canada</country>
     <admin_name>Nova Scotia</admin_name>
-    <capital />
+    <capital/>
     <population>20322</population>
     <id>1124760188</id>
   </CanadaCity>
@@ -733,7 +733,7 @@
     <lng>-85.166600000000003</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>604</population>
     <id>1124556203</id>
   </CanadaCity>
@@ -744,7 +744,7 @@
     <lng>-139</lng>
     <country>Canada</country>
     <admin_name>Yukon</admin_name>
-    <capital />
+    <capital/>
     <population>73</population>
     <id>1124021816</id>
   </CanadaCity>
@@ -755,7 +755,7 @@
     <lng>-70.666700000000006</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>26149</population>
     <id>1124154865</id>
   </CanadaCity>
@@ -766,7 +766,7 @@
     <lng>-123.1216</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>2313328</population>
     <id>1124825478</id>
   </CanadaCity>
@@ -777,7 +777,7 @@
     <lng>-110.6833</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>63138</population>
     <id>1124303972</id>
   </CanadaCity>
@@ -788,7 +788,7 @@
     <lng>-56.3</lng>
     <country>Canada</country>
     <admin_name>Newfoundland and Labrador</admin_name>
-    <capital />
+    <capital/>
     <population>197</population>
     <id>1124159024</id>
   </CanadaCity>
@@ -799,7 +799,7 @@
     <lng>-57.426900000000003</lng>
     <country>Canada</country>
     <admin_name>Newfoundland and Labrador</admin_name>
-    <capital />
+    <capital/>
     <population>4163</population>
     <id>1124841556</id>
   </CanadaCity>
@@ -810,7 +810,7 @@
     <lng>-112.05</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>5813</population>
     <id>1124534321</id>
   </CanadaCity>
@@ -821,7 +821,7 @@
     <lng>-128.1173</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>1400</population>
     <id>1124480592</id>
   </CanadaCity>
@@ -832,7 +832,7 @@
     <lng>-92.095299999999995</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>2472</population>
     <id>1124057160</id>
   </CanadaCity>
@@ -843,7 +843,7 @@
     <lng>-80.849999999999994</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>22625</population>
     <id>1124623613</id>
   </CanadaCity>
@@ -854,7 +854,7 @@
     <lng>-111.96469999999999</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>2986</population>
     <id>1124501918</id>
   </CanadaCity>
@@ -865,7 +865,7 @@
     <lng>-60.216700000000003</lng>
     <country>Canada</country>
     <admin_name>Newfoundland and Labrador</admin_name>
-    <capital />
+    <capital/>
     <population>442</population>
     <id>1124338710</id>
   </CanadaCity>
@@ -876,7 +876,7 @@
     <lng>-97.833299999999994</lng>
     <country>Canada</country>
     <admin_name>Manitoba</admin_name>
-    <capital />
+    <capital/>
     <population>6000</population>
     <id>1124567295</id>
   </CanadaCity>
@@ -887,7 +887,7 @@
     <lng>-83.176599999999993</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>834</population>
     <id>1124748087</id>
   </CanadaCity>
@@ -898,7 +898,7 @@
     <lng>-115.1254</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>1302</population>
     <id>1124349489</id>
   </CanadaCity>
@@ -909,7 +909,7 @@
     <lng>-126.85</lng>
     <country>Canada</country>
     <admin_name>Northwest Territories</admin_name>
-    <capital />
+    <capital/>
     <population>1027</population>
     <id>1124868628</id>
   </CanadaCity>
@@ -920,7 +920,7 @@
     <lng>-113.68300000000001</lng>
     <country>Canada</country>
     <admin_name>Northwest Territories</admin_name>
-    <capital />
+    <capital/>
     <population>448</population>
     <id>1124395645</id>
   </CanadaCity>
@@ -931,7 +931,7 @@
     <lng>-134.89500000000001</lng>
     <country>Canada</country>
     <admin_name>Northwest Territories</admin_name>
-    <capital />
+    <capital/>
     <population>1069</population>
     <id>1124984904</id>
   </CanadaCity>
@@ -942,7 +942,7 @@
     <lng>-56.95</lng>
     <country>Canada</country>
     <admin_name>Newfoundland and Labrador</admin_name>
-    <capital />
+    <capital/>
     <population>448</population>
     <id>1124235945</id>
   </CanadaCity>
@@ -953,7 +953,7 @@
     <lng>-68.400000000000006</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>1273</population>
     <id>1124705411</id>
   </CanadaCity>
@@ -964,7 +964,7 @@
     <lng>-76.538600000000002</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>1326</population>
     <id>1124646146</id>
   </CanadaCity>
@@ -975,7 +975,7 @@
     <lng>-57.012099999999997</lng>
     <country>Canada</country>
     <admin_name>Newfoundland and Labrador</admin_name>
-    <capital />
+    <capital/>
     <population>505</population>
     <id>1124810278</id>
   </CanadaCity>
@@ -986,7 +986,7 @@
     <lng>-101.88330000000001</lng>
     <country>Canada</country>
     <admin_name>Manitoba</admin_name>
-    <capital />
+    <capital/>
     <population>6393</population>
     <id>1124500458</id>
   </CanadaCity>
@@ -997,7 +997,7 @@
     <lng>-117.75</lng>
     <country>Canada</country>
     <admin_name>Northwest Territories</admin_name>
-    <capital />
+    <capital/>
     <population>500</population>
     <id>1124762461</id>
   </CanadaCity>
@@ -1008,7 +1008,7 @@
     <lng>-77.116600000000005</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>15551</population>
     <id>1124877940</id>
   </CanadaCity>
@@ -1019,7 +1019,7 @@
     <lng>-96.0167</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>1584</population>
     <id>1124826935</id>
   </CanadaCity>
@@ -1030,7 +1030,7 @@
     <lng>-80.658000000000001</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>1725</population>
     <id>1124592907</id>
   </CanadaCity>
@@ -1041,7 +1041,7 @@
     <lng>-92.833299999999994</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>7862</population>
     <id>1124295097</id>
   </CanadaCity>
@@ -1052,7 +1052,7 @@
     <lng>-57.933300000000003</lng>
     <country>Canada</country>
     <admin_name>Newfoundland and Labrador</admin_name>
-    <capital />
+    <capital/>
     <population>20791</population>
     <id>1124244792</id>
   </CanadaCity>
@@ -1063,7 +1063,7 @@
     <lng>-119.4833</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>125109</population>
     <id>1124080626</id>
   </CanadaCity>
@@ -1074,7 +1074,7 @@
     <lng>-111.88330000000001</lng>
     <country>Canada</country>
     <admin_name>Northwest Territories</admin_name>
-    <capital />
+    <capital/>
     <population>518</population>
     <id>1124491408</id>
   </CanadaCity>
@@ -1085,7 +1085,7 @@
     <lng>-87.65</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>125</population>
     <id>1124513059</id>
   </CanadaCity>
@@ -1096,7 +1096,7 @@
     <lng>-75.5</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>11642</population>
     <id>1124355399</id>
   </CanadaCity>
@@ -1107,7 +1107,7 @@
     <lng>-59.15</lng>
     <country>Canada</country>
     <admin_name>Newfoundland and Labrador</admin_name>
-    <capital />
+    <capital/>
     <population>4220</population>
     <id>1124993496</id>
   </CanadaCity>
@@ -1118,7 +1118,7 @@
     <lng>-109.13330000000001</lng>
     <country>Canada</country>
     <admin_name>Saskatchewan</admin_name>
-    <capital />
+    <capital/>
     <population>4383</population>
     <id>1124343190</id>
   </CanadaCity>
@@ -1129,7 +1129,7 @@
     <lng>-81.793599999999998</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>1612</population>
     <id>1124253277</id>
   </CanadaCity>
@@ -1140,7 +1140,7 @@
     <lng>-102.38330000000001</lng>
     <country>Canada</country>
     <admin_name>Saskatchewan</admin_name>
-    <capital />
+    <capital/>
     <population>2157</population>
     <id>1124151446</id>
   </CanadaCity>
@@ -1151,7 +1151,7 @@
     <lng>-125</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>32793</population>
     <id>1124324905</id>
   </CanadaCity>
@@ -1162,7 +1162,7 @@
     <lng>-73.866600000000005</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>2645</population>
     <id>1124591114</id>
   </CanadaCity>
@@ -1173,7 +1173,7 @@
     <lng>-76.4833</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>114195</population>
     <id>1124437097</id>
   </CanadaCity>
@@ -1184,7 +1184,7 @@
     <lng>-78.5167</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>335</population>
     <id>1124594875</id>
   </CanadaCity>
@@ -1195,7 +1195,7 @@
     <lng>-68.158000000000001</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>10435</population>
     <id>1124859576</id>
   </CanadaCity>
@@ -1206,7 +1206,7 @@
     <lng>-79.45</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>50170</population>
     <id>1124058496</id>
   </CanadaCity>
@@ -1217,7 +1217,7 @@
     <lng>-108.2833</lng>
     <country>Canada</country>
     <admin_name>Saskatchewan</admin_name>
-    <capital />
+    <capital/>
     <population>19440</population>
     <id>1124789635</id>
   </CanadaCity>
@@ -1228,7 +1228,7 @@
     <lng>-82.95</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>23</population>
     <id>1124072601</id>
   </CanadaCity>
@@ -1239,7 +1239,7 @@
     <lng>-115.7</lng>
     <country>Canada</country>
     <admin_name>Northwest Territories</admin_name>
-    <capital />
+    <capital/>
     <population>3900</population>
     <id>1124721803</id>
   </CanadaCity>
@@ -1250,7 +1250,7 @@
     <lng>-105.83329999999999</lng>
     <country>Canada</country>
     <admin_name>Saskatchewan</admin_name>
-    <capital />
+    <capital/>
     <population>152</population>
     <id>1124279421</id>
   </CanadaCity>
@@ -1261,7 +1261,7 @@
     <lng>-117.5834</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>10265</population>
     <id>1124131074</id>
   </CanadaCity>
@@ -1294,7 +1294,7 @@
     <lng>-95.916700000000006</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>1109</population>
     <id>1124942230</id>
   </CanadaCity>
@@ -1305,7 +1305,7 @@
     <lng>-121.33329999999999</lng>
     <country>Canada</country>
     <admin_name>Northwest Territories</admin_name>
-    <capital />
+    <capital/>
     <population>283</population>
     <id>1124669512</id>
   </CanadaCity>
@@ -1316,7 +1316,7 @@
     <lng>-86.282899999999998</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>1000</population>
     <id>1124398936</id>
   </CanadaCity>
@@ -1327,7 +1327,7 @@
     <lng>-112.83329999999999</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>70617</population>
     <id>1124321200</id>
   </CanadaCity>
@@ -1338,7 +1338,7 @@
     <lng>-80.9666</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>157857</population>
     <id>1124539524</id>
   </CanadaCity>
@@ -1349,7 +1349,7 @@
     <lng>-107.7666</lng>
     <country>Canada</country>
     <admin_name>Saskatchewan</admin_name>
-    <capital />
+    <capital/>
     <population>14906</population>
     <id>1124460875</id>
   </CanadaCity>
@@ -1371,7 +1371,7 @@
     <lng>-74.7333</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>48821</population>
     <id>1124938303</id>
   </CanadaCity>
@@ -1382,7 +1382,7 @@
     <lng>-93.533299999999997</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>774</population>
     <id>1124099415</id>
   </CanadaCity>
@@ -1393,7 +1393,7 @@
     <lng>-133.04920000000001</lng>
     <country>Canada</country>
     <admin_name>Northwest Territories</admin_name>
-    <capital />
+    <capital/>
     <population>929</population>
     <id>1124437778</id>
   </CanadaCity>
@@ -1404,7 +1404,7 @@
     <lng>-94.066599999999994</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>3743</population>
     <id>1124585613</id>
   </CanadaCity>
@@ -1415,7 +1415,7 @@
     <lng>-81.25</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>346765</population>
     <id>1124469960</id>
   </CanadaCity>
@@ -1426,7 +1426,7 @@
     <lng>-61.810699999999997</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>722</population>
     <id>1124631749</id>
   </CanadaCity>
@@ -1437,7 +1437,7 @@
     <lng>-66.683300000000003</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>1484</population>
     <id>1124662875</id>
   </CanadaCity>
@@ -1448,7 +1448,7 @@
     <lng>-79.416700000000006</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>37483</population>
     <id>1124049830</id>
   </CanadaCity>
@@ -1459,7 +1459,7 @@
     <lng>-94.4666</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>10852</population>
     <id>1124844807</id>
   </CanadaCity>
@@ -1470,7 +1470,7 @@
     <lng>-79.7</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>182041</population>
     <id>1124340223</id>
   </CanadaCity>
@@ -1481,7 +1481,7 @@
     <lng>-71.900000000000006</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>139652</population>
     <id>1124559506</id>
   </CanadaCity>
@@ -1492,7 +1492,7 @@
     <lng>-55.6</lng>
     <country>Canada</country>
     <admin_name>Newfoundland and Labrador</admin_name>
-    <capital />
+    <capital/>
     <population>224</population>
     <id>1124808047</id>
   </CanadaCity>
@@ -1503,7 +1503,7 @@
     <lng>-58.447299999999998</lng>
     <country>Canada</country>
     <admin_name>Newfoundland and Labrador</admin_name>
-    <capital />
+    <capital/>
     <population>124</population>
     <id>1124015130</id>
   </CanadaCity>
@@ -1514,7 +1514,7 @@
     <lng>-128.63329999999999</lng>
     <country>Canada</country>
     <admin_name>Northwest Territories</admin_name>
-    <capital />
+    <capital/>
     <population>597</population>
     <id>1124011380</id>
   </CanadaCity>
@@ -1525,7 +1525,7 @@
     <lng>-55.582999999999998</lng>
     <country>Canada</country>
     <admin_name>Newfoundland and Labrador</admin_name>
-    <capital />
+    <capital/>
     <population>817</population>
     <id>1124371570</id>
   </CanadaCity>
@@ -1536,7 +1536,7 @@
     <lng>-120.83329999999999</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>18776</population>
     <id>1124517495</id>
   </CanadaCity>
@@ -1547,7 +1547,7 @@
     <lng>-86.366699999999994</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>4627</population>
     <id>1124974800</id>
   </CanadaCity>
@@ -1558,7 +1558,7 @@
     <lng>-64.493399999999994</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>3677</population>
     <id>1124212754</id>
   </CanadaCity>
@@ -1569,7 +1569,7 @@
     <lng>-98.85</lng>
     <country>Canada</country>
     <admin_name>Manitoba</admin_name>
-    <capital />
+    <capital/>
     <population>2500</population>
     <id>1124119363</id>
   </CanadaCity>
@@ -1580,7 +1580,7 @@
     <lng>-121.9333</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>2893</population>
     <id>1124632130</id>
   </CanadaCity>
@@ -1591,7 +1591,7 @@
     <lng>-111.38330000000001</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>21863</population>
     <id>1124169385</id>
   </CanadaCity>
@@ -1602,7 +1602,7 @@
     <lng>-118.0834</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>3907</population>
     <id>1124533812</id>
   </CanadaCity>
@@ -1613,7 +1613,7 @@
     <lng>-56.866599999999998</lng>
     <country>Canada</country>
     <admin_name>Newfoundland and Labrador</admin_name>
-    <capital />
+    <capital/>
     <population>685</population>
     <id>1124564223</id>
   </CanadaCity>
@@ -1624,7 +1624,7 @@
     <lng>-112.6833</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>5494</population>
     <id>1124010388</id>
   </CanadaCity>
@@ -1635,7 +1635,7 @@
     <lng>-105.3</lng>
     <country>Canada</country>
     <admin_name>Saskatchewan</admin_name>
-    <capital />
+    <capital/>
     <population>3783</population>
     <id>1124763455</id>
   </CanadaCity>
@@ -1646,7 +1646,7 @@
     <lng>-101.6666</lng>
     <country>Canada</country>
     <admin_name>Manitoba</admin_name>
-    <capital />
+    <capital/>
     <population>278</population>
     <id>1124164486</id>
   </CanadaCity>
@@ -1657,7 +1657,7 @@
     <lng>-60.753999999999998</lng>
     <country>Canada</country>
     <admin_name>Nova Scotia</admin_name>
-    <capital />
+    <capital/>
     <population>852</population>
     <id>1124594988</id>
   </CanadaCity>
@@ -1668,7 +1668,7 @@
     <lng>-78.000100000000003</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>1549</population>
     <id>1124788973</id>
   </CanadaCity>
@@ -1679,7 +1679,7 @@
     <lng>-58.646999999999998</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>3961</population>
     <id>1124425707</id>
   </CanadaCity>
@@ -1690,7 +1690,7 @@
     <lng>-97</lng>
     <country>Canada</country>
     <admin_name>Manitoba</admin_name>
-    <capital />
+    <capital/>
     <population>2623</population>
     <id>1124472413</id>
   </CanadaCity>
@@ -1701,7 +1701,7 @@
     <lng>-93.833299999999994</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>1765</population>
     <id>1124856215</id>
   </CanadaCity>
@@ -1712,7 +1712,7 @@
     <lng>-58.566600000000001</lng>
     <country>Canada</country>
     <admin_name>Newfoundland and Labrador</admin_name>
-    <capital />
+    <capital/>
     <population>7054</population>
     <id>1124000201</id>
   </CanadaCity>
@@ -1723,7 +1723,7 @@
     <lng>-100.88330000000001</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>0</population>
     <id>1124019423</id>
   </CanadaCity>
@@ -1734,7 +1734,7 @@
     <lng>-60.3</lng>
     <country>Canada</country>
     <admin_name>Newfoundland and Labrador</admin_name>
-    <capital />
+    <capital/>
     <population>7572</population>
     <id>1124879731</id>
   </CanadaCity>
@@ -1745,7 +1745,7 @@
     <lng>-122.15</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>14168</population>
     <id>1124821980</id>
   </CanadaCity>
@@ -1756,7 +1756,7 @@
     <lng>-130.33000000000001</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>14708</population>
     <id>1124847707</id>
   </CanadaCity>
@@ -1767,7 +1767,7 @@
     <lng>-121.95</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>51942</population>
     <id>1124531262</id>
   </CanadaCity>
@@ -1778,7 +1778,7 @@
     <lng>-77.616600000000005</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>270</population>
     <id>1124508471</id>
   </CanadaCity>
@@ -1789,7 +1789,7 @@
     <lng>-94.165999999999997</lng>
     <country>Canada</country>
     <admin_name>Manitoba</admin_name>
-    <capital />
+    <capital/>
     <population>1000</population>
     <id>1124676851</id>
   </CanadaCity>
@@ -1800,7 +1800,7 @@
     <lng>-127.5</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>2295</population>
     <id>1124937351</id>
   </CanadaCity>
@@ -1811,7 +1811,7 @@
     <lng>-119.58329999999999</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>37721</population>
     <id>1124613898</id>
   </CanadaCity>
@@ -1822,7 +1822,7 @@
     <lng>-72.483400000000003</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>59489</population>
     <id>1124624283</id>
   </CanadaCity>
@@ -1833,7 +1833,7 @@
     <lng>-99.95</lng>
     <country>Canada</country>
     <admin_name>Manitoba</admin_name>
-    <capital />
+    <capital/>
     <population>28418</population>
     <id>1124239939</id>
   </CanadaCity>
@@ -1844,7 +1844,7 @@
     <lng>-53.99</lng>
     <country>Canada</country>
     <admin_name>Newfoundland and Labrador</admin_name>
-    <capital />
+    <capital/>
     <population>1063</population>
     <id>1124242107</id>
   </CanadaCity>
@@ -1855,7 +1855,7 @@
     <lng>-69.883300000000006</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>385</population>
     <id>1124651529</id>
   </CanadaCity>
@@ -1866,7 +1866,7 @@
     <lng>-81.133300000000006</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>2182</population>
     <id>1124916771</id>
   </CanadaCity>
@@ -1888,7 +1888,7 @@
     <lng>-111.15</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>3222</population>
     <id>1124526582</id>
   </CanadaCity>
@@ -1899,7 +1899,7 @@
     <lng>-122.533</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>6315</population>
     <id>1124378059</id>
   </CanadaCity>
@@ -1910,7 +1910,7 @@
     <lng>-101.05</lng>
     <country>Canada</country>
     <admin_name>Manitoba</admin_name>
-    <capital />
+    <capital/>
     <population>482</population>
     <id>1124617750</id>
   </CanadaCity>
@@ -1921,7 +1921,7 @@
     <lng>-103.85</lng>
     <country>Canada</country>
     <admin_name>Saskatchewan</admin_name>
-    <capital />
+    <capital/>
     <population>9362</population>
     <id>1124618383</id>
   </CanadaCity>
@@ -1932,7 +1932,7 @@
     <lng>-125.7666</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>2635</population>
     <id>1124512812</id>
   </CanadaCity>
@@ -1943,7 +1943,7 @@
     <lng>-61.686</lng>
     <country>Canada</country>
     <admin_name>Newfoundland and Labrador</admin_name>
-    <capital />
+    <capital/>
     <population>1151</population>
     <id>1124719084</id>
   </CanadaCity>
@@ -1954,7 +1954,7 @@
     <lng>-122.7667</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>65558</population>
     <id>1124733292</id>
   </CanadaCity>
@@ -1965,7 +1965,7 @@
     <lng>-81.016599999999997</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>4441</population>
     <id>1124296729</id>
   </CanadaCity>
@@ -1976,7 +1976,7 @@
     <lng>-88.25</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>1204</population>
     <id>1124361489</id>
   </CanadaCity>
@@ -1987,7 +1987,7 @@
     <lng>-69.533299999999997</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>16403</population>
     <id>1124662123</id>
   </CanadaCity>
@@ -1998,7 +1998,7 @@
     <lng>-74</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>78439</population>
     <id>1124268324</id>
   </CanadaCity>
@@ -2009,7 +2009,7 @@
     <lng>-86.9666</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>1290</population>
     <id>1124836221</id>
   </CanadaCity>
@@ -2020,7 +2020,7 @@
     <lng>-79.666600000000003</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>5203</population>
     <id>1124394858</id>
   </CanadaCity>
@@ -2031,7 +2031,7 @@
     <lng>-91.8</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>277</population>
     <id>1124908580</id>
   </CanadaCity>
@@ -2042,7 +2042,7 @@
     <lng>-125.90309999999999</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>1655</population>
     <id>1124140302</id>
   </CanadaCity>
@@ -2053,7 +2053,7 @@
     <lng>-133.75</lng>
     <country>Canada</country>
     <admin_name>Northwest Territories</admin_name>
-    <capital />
+    <capital/>
     <population>175</population>
     <id>1124282127</id>
   </CanadaCity>
@@ -2064,7 +2064,7 @@
     <lng>-97.866600000000005</lng>
     <country>Canada</country>
     <admin_name>Manitoba</admin_name>
-    <capital />
+    <capital/>
     <population>13727</population>
     <id>1124110693</id>
   </CanadaCity>
@@ -2075,7 +2075,7 @@
     <lng>-122.3</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>151683</population>
     <id>1124808029</id>
   </CanadaCity>
@@ -2086,7 +2086,7 @@
     <lng>-72.549899999999994</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>119693</population>
     <id>1124407487</id>
   </CanadaCity>
@@ -2097,7 +2097,7 @@
     <lng>-78.333299999999994</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>83627</population>
     <id>1124440356</id>
   </CanadaCity>
@@ -2108,7 +2108,7 @@
     <lng>-78.116699999999994</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>10516</population>
     <id>1124939649</id>
   </CanadaCity>
@@ -2119,7 +2119,7 @@
     <lng>-83.4</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>2663</population>
     <id>1124518288</id>
   </CanadaCity>
@@ -2130,7 +2130,7 @@
     <lng>-113.2666</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>2539</population>
     <id>1124006333</id>
   </CanadaCity>
@@ -2141,7 +2141,7 @@
     <lng>-113.8</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>74857</population>
     <id>1124404130</id>
   </CanadaCity>
@@ -2152,7 +2152,7 @@
     <lng>-77.383300000000006</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>43990</population>
     <id>1124786959</id>
   </CanadaCity>
@@ -2163,7 +2163,7 @@
     <lng>-82.433300000000003</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>9240</population>
     <id>1124764245</id>
   </CanadaCity>
@@ -2174,7 +2174,7 @@
     <lng>-91.916600000000003</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>4570</population>
     <id>1124804545</id>
   </CanadaCity>
@@ -2196,7 +2196,7 @@
     <lng>-116.1833</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>1248</population>
     <id>1124619845</id>
   </CanadaCity>
@@ -2207,7 +2207,7 @@
     <lng>-115.5719</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>7502</population>
     <id>1124351648</id>
   </CanadaCity>
@@ -2218,7 +2218,7 @@
     <lng>-123.41670000000001</lng>
     <country>Canada</country>
     <admin_name>Northwest Territories</admin_name>
-    <capital />
+    <capital/>
     <population>525</population>
     <id>1124071207</id>
   </CanadaCity>
@@ -2229,7 +2229,7 @@
     <lng>-105.0333</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>1477</population>
     <id>1124596377</id>
   </CanadaCity>
@@ -2240,7 +2240,7 @@
     <lng>-107.9833</lng>
     <country>Canada</country>
     <admin_name>Saskatchewan</admin_name>
-    <capital />
+    <capital/>
     <population>2192</population>
     <id>1124897904</id>
   </CanadaCity>
@@ -2251,18 +2251,18 @@
     <lng>-123.93429999999999</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>84905</population>
     <id>1124623893</id>
   </CanadaCity>
   <CanadaCity>
-    <city>Val d'Or</city>
-    <city_ascii>Val d'Or</city_ascii>
+    <city>Val d&apos;Or</city>
+    <city_ascii>Val d&apos;Or</city_ascii>
     <lat>48.116599999999998</lat>
     <lng>-77.766599999999997</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>20625</population>
     <id>1124239138</id>
   </CanadaCity>
@@ -2273,7 +2273,7 @@
     <lng>-81.236099999999993</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>654</population>
     <id>1124072220</id>
   </CanadaCity>
@@ -2284,7 +2284,7 @@
     <lng>-95.266599999999997</lng>
     <country>Canada</country>
     <admin_name>Manitoba</admin_name>
-    <capital />
+    <capital/>
     <population>184</population>
     <id>1124490415</id>
   </CanadaCity>
@@ -2295,7 +2295,7 @@
     <lng>-101.2333</lng>
     <country>Canada</country>
     <admin_name>Manitoba</admin_name>
-    <capital />
+    <capital/>
     <population>6055</population>
     <id>1124755168</id>
   </CanadaCity>
@@ -2306,7 +2306,7 @@
     <lng>-117.68300000000001</lng>
     <country>Canada</country>
     <admin_name>Alberta</admin_name>
-    <capital />
+    <capital/>
     <population>200</population>
     <id>1124688170</id>
   </CanadaCity>
@@ -2317,7 +2317,7 @@
     <lng>-65.650000000000006</lng>
     <country>Canada</country>
     <admin_name>New Brunswick</admin_name>
-    <capital />
+    <capital/>
     <population>6111</population>
     <id>1124816720</id>
   </CanadaCity>
@@ -2328,7 +2328,7 @@
     <lng>-64.129099999999994</lng>
     <country>Canada</country>
     <admin_name>Nova Scotia</admin_name>
-    <capital />
+    <capital/>
     <population>3864</population>
     <id>1124800737</id>
   </CanadaCity>
@@ -2339,7 +2339,7 @@
     <lng>-71.966700000000003</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>41500</population>
     <id>1124149787</id>
   </CanadaCity>
@@ -2350,7 +2350,7 @@
     <lng>-75.695300000000003</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>26458</population>
     <id>1124286131</id>
   </CanadaCity>
@@ -2361,7 +2361,7 @@
     <lng>-79.83</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>721053</population>
     <id>1124567288</id>
   </CanadaCity>
@@ -2372,7 +2372,7 @@
     <lng>-80.5</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>417001</population>
     <id>1124158530</id>
   </CanadaCity>
@@ -2394,7 +2394,7 @@
     <lng>-80.083299999999994</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>32640</population>
     <id>1124566061</id>
   </CanadaCity>
@@ -2405,7 +2405,7 @@
     <lng>-131.83330000000001</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>538</population>
     <id>1124264846</id>
   </CanadaCity>
@@ -2416,7 +2416,7 @@
     <lng>-84.783299999999997</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>2174</population>
     <id>1124381797</id>
   </CanadaCity>
@@ -2427,7 +2427,7 @@
     <lng>-69.999099999999999</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>549</population>
     <id>1124276361</id>
   </CanadaCity>
@@ -2438,7 +2438,7 @@
     <lng>-72.7333</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>49161</population>
     <id>1124441118</id>
   </CanadaCity>
@@ -2449,7 +2449,7 @@
     <lng>-83.666600000000003</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>5043</population>
     <id>1124376843</id>
   </CanadaCity>
@@ -2460,7 +2460,7 @@
     <lng>-101.31659999999999</lng>
     <country>Canada</country>
     <admin_name>Manitoba</admin_name>
-    <capital />
+    <capital/>
     <population>431</population>
     <id>1124927414</id>
   </CanadaCity>
@@ -2471,7 +2471,7 @@
     <lng>-94.058599999999998</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>1868</population>
     <id>1124309634</id>
   </CanadaCity>
@@ -2482,7 +2482,7 @@
     <lng>-77.633300000000006</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>1966</population>
     <id>1124686252</id>
   </CanadaCity>
@@ -2493,7 +2493,7 @@
     <lng>-66.076700000000002</lng>
     <country>Canada</country>
     <admin_name>New Brunswick</admin_name>
-    <capital />
+    <capital/>
     <population>87857</population>
     <id>1124631364</id>
   </CanadaCity>
@@ -2504,7 +2504,7 @@
     <lng>-133.69999999999999</lng>
     <country>Canada</country>
     <admin_name>Northwest Territories</admin_name>
-    <capital />
+    <capital/>
     <population>3022</population>
     <id>1124116419</id>
   </CanadaCity>
@@ -2515,7 +2515,7 @@
     <lng>-90.700100000000006</lng>
     <country>Canada</country>
     <admin_name>Nunavut</admin_name>
-    <capital />
+    <capital/>
     <population>374</population>
     <id>1124208484</id>
   </CanadaCity>
@@ -2526,7 +2526,7 @@
     <lng>-79.033199999999994</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>24602</population>
     <id>1124267752</id>
   </CanadaCity>
@@ -2537,7 +2537,7 @@
     <lng>-64.72</lng>
     <country>Canada</country>
     <admin_name>Nova Scotia</admin_name>
-    <capital />
+    <capital/>
     <population>4331</population>
     <id>1124159558</id>
   </CanadaCity>
@@ -2548,7 +2548,7 @@
     <lng>-73.583299999999994</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>3678000</population>
     <id>1124586170</id>
   </CanadaCity>
@@ -2559,7 +2559,7 @@
     <lng>-65.319400000000002</lng>
     <country>Canada</country>
     <admin_name>Nova Scotia</admin_name>
-    <capital />
+    <capital/>
     <population>3167</population>
     <id>1124659892</id>
   </CanadaCity>
@@ -2570,7 +2570,7 @@
     <lng>-66.1126</lng>
     <country>Canada</country>
     <admin_name>Nova Scotia</admin_name>
-    <capital />
+    <capital/>
     <population>7500</population>
     <id>1124983867</id>
   </CanadaCity>
@@ -2581,7 +2581,7 @@
     <lng>-75.659499999999994</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>106</population>
     <id>1124962070</id>
   </CanadaCity>
@@ -2592,7 +2592,7 @@
     <lng>-77.900000000000006</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>156</population>
     <id>1124828045</id>
   </CanadaCity>
@@ -2614,7 +2614,7 @@
     <lng>-139.41669999999999</lng>
     <country>Canada</country>
     <admin_name>Yukon</admin_name>
-    <capital />
+    <capital/>
     <population>1319</population>
     <id>1124075766</id>
   </CanadaCity>
@@ -2625,7 +2625,7 @@
     <lng>-64.7667</lng>
     <country>Canada</country>
     <admin_name>New Brunswick</admin_name>
-    <capital />
+    <capital/>
     <population>90635</population>
     <id>1124521303</id>
   </CanadaCity>
@@ -2636,7 +2636,7 @@
     <lng>-65.760499999999993</lng>
     <country>Canada</country>
     <admin_name>Nova Scotia</admin_name>
-    <capital />
+    <capital/>
     <population>3949</population>
     <id>1124797865</id>
   </CanadaCity>
@@ -2658,7 +2658,7 @@
     <lng>-130.0333</lng>
     <country>Canada</country>
     <admin_name>British Columbia</admin_name>
-    <capital />
+    <capital/>
     <population>303</population>
     <id>1124864417</id>
   </CanadaCity>
@@ -2680,7 +2680,7 @@
     <lng>-78.135999999999996</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>1597</population>
     <id>1124369757</id>
   </CanadaCity>
@@ -2691,7 +2691,7 @@
     <lng>-82.4</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
+    <capital/>
     <population>144172</population>
     <id>1124509835</id>
   </CanadaCity>
@@ -2702,7 +2702,7 @@
     <lng>-68.333299999999994</lng>
     <country>Canada</country>
     <admin_name>New Brunswick</admin_name>
-    <capital />
+    <capital/>
     <population>17894</population>
     <id>1124274233</id>
   </CanadaCity>
@@ -2713,8 +2713,8 @@
     <lng>-83.033299999999997</lng>
     <country>Canada</country>
     <admin_name>Ontario</admin_name>
-    <capital />
-    <population>0</population>
+    <capital/>
+    <population>319246</population>
     <id>1124261024</id>
   </CanadaCity>
   <CanadaCity>
@@ -2724,7 +2724,7 @@
     <lng>-73.433300000000003</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>45361</population>
     <id>1124841554</id>
   </CanadaCity>
@@ -2735,7 +2735,7 @@
     <lng>-64.2166</lng>
     <country>Canada</country>
     <admin_name>Nova Scotia</admin_name>
-    <capital />
+    <capital/>
     <population>9336</population>
     <id>1124895094</id>
   </CanadaCity>
@@ -2746,7 +2746,7 @@
     <lng>-66.36</lng>
     <country>Canada</country>
     <admin_name>Québec</admin_name>
-    <capital />
+    <capital/>
     <population>25686</population>
     <id>1124406431</id>
   </CanadaCity>
