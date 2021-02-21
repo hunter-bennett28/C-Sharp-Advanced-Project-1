@@ -4,7 +4,6 @@
 ///         and displays various statistics on the data provided.
 
 using System;
-using System.Text;
 
 namespace Project1_Group_17
 {
@@ -388,6 +387,10 @@ namespace Project1_Group_17
                     cityStats.DisplayProvinceList();
                     continue;
                 }
+
+                //Check for quebec as it has special characters
+                if (response.ToLower() == "quebec")
+                    response = "québec";
 
                 if (!cityStats.IsValidProvince(response))
                     Console.Write($"\nNo province exists called {response}.\n");
