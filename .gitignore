@@ -367,3 +367,6 @@ project.assets.json
 project.nuget.cache
 project.assets.json
 project.nuget.cache
+Canadacities.csv
+Canadacities-JSON.json
+Canadacities-XML.xml

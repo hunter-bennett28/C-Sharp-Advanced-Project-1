@@ -6,52 +6,58 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json.Linq;
-
 using System;
 using System.Xml;
+
 namespace Project1_Group_17
 {
     public class DataModeler
     {
+        // Properties
         private Dictionary<string, CityInfo> ParsedCities;
         public delegate void ParseHandler(string fileName);
         public enum SupportedFileTypes { JSON, XML, CSV };
       
+        // Constructor
         public DataModeler()
         {
             ParsedCities = new Dictionary<string, CityInfo>();
         }
+
+        // Methods
+
         /// <summary>
-        /// Parse a XML file and populate a dictionary
+        /// Parses an XML file and populates a dictionary
         /// </summary>
         /// <param name="fileName">XML file to be opened</param>
         public void ParseXML(string fileName)
         {
-
             XmlDocument document = new XmlDocument();
             document.Load($"../../../Data/{fileName}");
 
             foreach (XmlElement canadaCity in document.DocumentElement)
             {
                 //Read in all of the elements of a city
-                string city = canadaCity.GetElementsByTagName("city").Item(0).InnerText,
-                    cityAscii = canadaCity.GetElementsByTagName("city_ascii").Item(0).InnerText,
-                    adminName = canadaCity.GetElementsByTagName("admin_name").Item(0).InnerText,
-                    capital = canadaCity.GetElementsByTagName("capital").Item(0).InnerText;
+                string city = canadaCity.GetElementsByTagName("city").Item(0).InnerText;
+                string cityAscii = canadaCity.GetElementsByTagName("city_ascii").Item(0).InnerText;
+                string adminName = canadaCity.GetElementsByTagName("admin_name").Item(0).InnerText;
+                string capital = canadaCity.GetElementsByTagName("capital").Item(0).InnerText;
 
-                double lat = Convert.ToDouble(canadaCity.GetElementsByTagName("lat").Item(0).InnerText),
-                    lng = Convert.ToDouble(canadaCity.GetElementsByTagName("lng").Item(0).InnerText);
+                double lat = Convert.ToDouble(canadaCity.GetElementsByTagName("lat").Item(0).InnerText);
+                double lng = Convert.ToDouble(canadaCity.GetElementsByTagName("lng").Item(0).InnerText);
 
-                ulong pop = Convert.ToUInt64(canadaCity.GetElementsByTagName("population").Item(0).InnerText),
-                    id = Convert.ToUInt64(canadaCity.GetElementsByTagName("id").Item(0).InnerText);
-
+                ulong pop = Convert.ToUInt64(canadaCity.GetElementsByTagName("population").Item(0).InnerText);
+                ulong id = Convert.ToUInt64(canadaCity.GetElementsByTagName("id").Item(0).InnerText);
 
                 //add the city
                 ParsedCities.Add($"{city}|{adminName}", new CityInfo(id, city, cityAscii, pop, adminName, lat, lng, capital));
-
             }
         }
 
+        /// <summary>
+        /// Parses a JSON file and populate a dictionary
+        /// </summary>
+        /// <param name="fileName">JSON file to be opened</param>
         public void ParseJSON(string fileName)
         {
             string rawJson = File.ReadAllText($"../../../Data/{fileName}");
@@ -71,6 +77,7 @@ namespace Project1_Group_17
                 double latitude = double.Parse(GetJTokenPropertyValue(result, "lat", "0"));
                 double longitude = double.Parse(GetJTokenPropertyValue(result, "lng", "0"));
                 string capitalStatus = GetJTokenPropertyValue(result, "capital", "");
+
                 CityInfo city = new CityInfo(
                     id,
                     cityName,
@@ -81,33 +88,33 @@ namespace Project1_Group_17
                     longitude,
                     capitalStatus
                 );
-
                 ParsedCities.Add($"{cityName}|{province}", city);
             }
         }
 
         /// <summary>
-        /// Retrieves a property from a JToken, or returns the given default value if not available
+        /// Helper method that retrieves a property from a JToken, or returns the given default
+        /// value if not available
         /// </summary>
-        /// <param name="token"></param>
-        /// <param name="property"></param>
-        /// <param name="defaultValue"></param>
-        /// <returns></returns>
+        /// <param name="token">JToken to get value from</param>
+        /// <param name="property">the property of the JToken to find</param>
+        /// <param name="defaultValue">the value to return if none found</param>
+        /// <returns>the value or default</returns>
         private string GetJTokenPropertyValue(JToken token, string property, string defaultValue)
         {
             return token[property] == null ? defaultValue : token[property].ToString();
         }
 
+        /// <summary>
+        /// Parses a CSV file and populates a dictionary
+        /// </summary>
+        /// <param name="fileName">CSV file to be opened</param>
         public void ParseCSV(string fileName)
         {
-
-            ParsedCities = new Dictionary<string, CityInfo>();
             List<string> cityInfo = new List<string>(File.ReadAllLines($"../../../Data/{fileName}"));
-
             for (int i = 1; i < cityInfo.Count; i++)
             {
                 string[] city = cityInfo[i].Split(',');
-
                 ulong Id = Convert.ToUInt64(city[8]);
                 string cityName = city[0];
                 string ascii = city[1];
@@ -122,6 +129,12 @@ namespace Project1_Group_17
             }
         }
 
+        /// <summary>
+        /// Calls the correct parsing method based on the file name and type given
+        /// </summary>
+        /// <param name="fileName">The file to parse</param>
+        /// <param name="fileType">The file type</param>
+        /// <returns>Dictionary containing city|province as the key and the city info</returns>
         public Dictionary<string, CityInfo> ParseFile(string fileName, SupportedFileTypes fileType)
         {
             ParseHandler parseMethod = null;

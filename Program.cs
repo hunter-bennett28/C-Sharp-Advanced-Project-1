@@ -1,7 +1,7 @@
 ﻿/// Program.cs
 /// Authors: James Dunton, Hunter Bennett, Connor Black
 /// Desc: A program that allows city data to be loaded through various file types
-///         and displays various statistics on the data provided.
+///       and displays various statistics on the data provided.
 
 using System;
 
@@ -31,7 +31,7 @@ namespace Project1_Group_17
 
             //Display information
             Console.WriteLine($"{dash}\n{titleText}\n{dash}\n");
-            Console.WriteLine("Available data files:\n");
+            Console.WriteLine("\nAvailable data files:\n");
             Console.WriteLine("\t1) Canadacities-JSON.json");
             Console.WriteLine("\t2) Canadacities-XML.xml");
             Console.WriteLine("\t3) Canadacities.csv");
@@ -157,13 +157,13 @@ namespace Project1_Group_17
                         Console.ReadKey();
                         break;
                     case "3":
-                        Console.WriteLine("Here's the rank breakdown of each province by population:");
+                        Console.WriteLine("\nHere's the rank breakdown of each province by population:");
                         cityStats.RankProvincesByPopulation();
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         break;
                     case "4":
-                        Console.WriteLine("Here's the rank breakdown of each province by number of cities:");
+                        Console.WriteLine("\nHere's the rank breakdown of each province by number of cities:");
                         cityStats.RankProvincesByCities();
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
@@ -177,7 +177,6 @@ namespace Project1_Group_17
                         break;
                     case "return":
                         return;
-
                     default:
                         Console.Write("\nInvalid selection, please enter a valid selection: ");
                         displayMenu = false;
@@ -259,9 +258,9 @@ namespace Project1_Group_17
                         Console.ReadKey();
                         break;
                     case "6":
-                        Console.WriteLine("\nWhich city do you want to start at?\n");
+                        Console.WriteLine("\nWhich city do you want to start at?");
                         string startingCity = OneCityValidator(cityStats);
-                        Console.WriteLine("\nWhich city do you want to calculate the distance to?\n");
+                        Console.WriteLine("\nWhich city do you want to calculate the distance to?");
                         string endingCity = OneCityValidator(cityStats);
                         cityStats.CalculateDistanceBetweenCities(startingCity, endingCity).Wait();
                         Console.WriteLine("Press any key to continue");
@@ -290,11 +289,11 @@ namespace Project1_Group_17
             ulong newPopulation = 0;
 
             //Display the menu
-            Console.WriteLine("Available data files:\n");
+            Console.WriteLine("\nAvailable data files:\n");
             Console.WriteLine("\t1) Canadacities-JSON.json");
             Console.WriteLine("\t2) Canadacities-XML.xml");
             Console.WriteLine("\t3) Canadacities.csv");
-            Console.Write("Please make a selection(ex. 1, 2): ");
+            Console.Write("\nPlease make a selection (ex. 1, 2): ");
 
             string selection, response;
             do
@@ -321,27 +320,21 @@ namespace Project1_Group_17
                         break;
                 }
             } while (!valid);
-            Console.WriteLine("\nWhich city do you want to change the population?\n");
+            Console.WriteLine("\nWhich city do you want to change the population?");
             
             //get the user's choice
             response = OneCityValidator(cityStats);
             do
             {
-                Console.Write($"Please enter the new population for {response}: ");
-                if (!UInt64.TryParse(Console.ReadLine(), out newPopulation))
-                    continue;
-                else 
+                Console.Write($"\nPlease enter the new population for {response}: ");
+                if (ulong.TryParse(Console.ReadLine(), out newPopulation))
                     break;
+                else
+                    Console.WriteLine("\nInvalid entry. Amount must be a positive number with no commas.");
             }
             while (true);
-            try
-            {
-                cityStats.UpdatePopulation(response, newPopulation, fileName);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"ERROR: {ex.Message}");
-            }
+
+            cityStats.UpdatePopulation(response, newPopulation, fileName);
         }
 
         /// <summary>
@@ -415,7 +408,7 @@ namespace Project1_Group_17
                 response = Console.ReadLine().Trim().ToLower();
                 if (response == "list")
                 {
-                    Console.WriteLine("Which province do you wish to see the cities of?");
+                    Console.WriteLine("\nWhich province do you wish to see the cities of?");
                     response = ProvinceValidator(cityStats);
                     cityStats.DisplayProvinceCities(response);
                 }

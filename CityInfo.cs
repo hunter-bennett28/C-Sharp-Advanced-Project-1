@@ -36,16 +36,16 @@ namespace Project1_Group_17
 
         // Methods
         /// <summary>
-        /// Return province
+        /// Return province of the city
         /// </summary>
-        /// <returns>Province in a string</returns>
+        /// <returns>Province name in a string</returns>
         public string GetProvince()
         {
             return Province;
         }
 
         /// <summary>
-        /// Get population
+        /// Gets population of the city
         /// </summary>
         /// <returns>Population in a ulong</returns>
         public ulong GetPopulation()
@@ -66,7 +66,7 @@ namespace Project1_Group_17
         /// Get the latitude and longitude
         /// </summary>
         /// <returns>A tuple with the lat (item 1) and long (item 2)</returns>
-        public Tuple<double, double> GetLocation() // TODO: figure out return type, returns lat AND long
+        public Tuple<double, double> GetLocation()
         {
             return new Tuple<double, double>(Latitude, Longitude);
         }
@@ -78,6 +78,15 @@ namespace Project1_Group_17
         public string GetCityName()
         {
             return CityName;
+        }
+
+        /// <summary>
+        /// Get the city ASCII characters with no accents
+        /// </summary>
+        /// <returns>The city name without accents</returns>
+        public string GetCityAscii()
+        {
+            return CityAscii;
         }
 
         /// <summary>

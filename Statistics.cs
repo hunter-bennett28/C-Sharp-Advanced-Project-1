@@ -20,7 +20,7 @@ namespace Project1_Group_17
         static readonly HttpClient client = new HttpClient(); //Used to make requests to the bing API
         private const int ColumnWidth = 26; // width per column when printing multiple entries per row
         private Dictionary<string, CityInfo> CityCatalogue;
-        private CityPopulationChangeEvent PopulationChangeEvent;// = new CityPopulationChangeEvent();
+        private CityPopulationChangeEvent PopulationChangeEvent;
 
         // Constructor
         public Statistics(string fileName, DataModeler.SupportedFileTypes fileType)
@@ -31,22 +31,24 @@ namespace Project1_Group_17
             PopulationChangeEvent.NotifyPopulationChange += NotifyPopulationChanged;
         }
 
+        // City Methods
+
         /// <summary>
-        /// Check if the city is valid.
+        /// Checks if the city is contained in the dictionary
         /// </summary>
         /// <param name="cityName">The city name.</param>
         /// <returns>A bool representing if the city given is valid.</returns>
         public bool IsValidCity(string cityName)
         {
-            foreach (var item in CityCatalogue)
-                if (cityName.ToLower() == item.Value.GetCityName().ToLower())
+            cityName = cityName.ToLower();
+            foreach (var city in CityCatalogue)
+                if (cityName == city.Value.GetCityName().ToLower() || cityName == city.Value.GetCityAscii().ToLower())
                     return true;
             return false;
-
         }
 
         /// <summary>
-        /// Show city details
+        /// Helper method to output city details
         /// </summary>
         /// <param name="cityName">City name to be displayed</param>
         /// <param name="province">Province to be displayed</param>
@@ -94,7 +96,7 @@ namespace Project1_Group_17
         }
 
         /// <summary>
-        /// Displays the smallest population city.
+        /// Displays the smallest population city in the given province.
         /// </summary>
         /// <param name="province">The province.</param>
         public void DisplaySmallestPopulationCity(string province)
@@ -126,11 +128,13 @@ namespace Project1_Group_17
         {
             CityInfo smallerCity = city1.GetPopulation() < city2.GetPopulation() ? city1 : city2;
             CityInfo largerCity = smallerCity == city1 ? city2 : city1;
-            Console.WriteLine($"{CapitalizeString(largerCity.GetCityName())} has a larger population than {CapitalizeString(smallerCity.GetCityName())} at {string.Format("{0:n0}", largerCity.GetPopulation())}");
+
+            Console.WriteLine($"\nLarger City:\t{CapitalizeString(largerCity.GetCityName())} ({string.Format("{0:n0}", largerCity.GetPopulation())})");
+            Console.WriteLine($"Smaller City:\t{CapitalizeString(smallerCity.GetCityName())} ({string.Format("{0:n0}", smallerCity.GetPopulation())})\n");
         }
 
         /// <summary>
-        /// Show a location on the google maps site
+        /// Shows a location of a city on the google maps site
         /// </summary>
         /// <param name="cityKey">City to be shown</param>
         public void ShowCityOnMap(string cityName)
@@ -151,25 +155,23 @@ namespace Project1_Group_17
             try
             {
                 //Launch the browser
-                Console.WriteLine("Launching Google Maps in local browser...");
+                Console.WriteLine("\nLaunching Google Maps in browser...\n");
                 Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error launching Browser\nError: " + ex.Message);
+                Console.WriteLine($"Error launching Browser: {ex.Message}\n");
             }
         }
 
         /// <summary>
-        /// Determine the distance between two points using the Bing Map API
+        /// Determines the distance between two points using the Bing Map API
         /// </summary>
         /// <param name="city1">First city name</param>
         /// <param name="city2">Second city name</param>
-        /// <returns>A awaitable task to ensure that the method is called</returns>
+        /// <returns>An awaitable task to ensure that the method is called</returns>
         public async Task CalculateDistanceBetweenCities(string city1Name, string city2Name)
         {
-            //Fetch from the url, in this case the bing API
-            //https://docs.microsoft.com/en-us/bingmaps/rest-services/routes/calculate-a-distance-matrix#response
             try
             {
                 CityInfo city1 = GetSpecificCity(city1Name.ToLower());
@@ -179,38 +181,29 @@ namespace Project1_Group_17
                 Tuple<double, double> c1Loc = city1.GetLocation();
                 double lat1 = c1Loc.Item1, lng1 = c1Loc.Item2;
 
-
                 Tuple<double, double> c2Loc = city2.GetLocation();
                 double lat2 = c2Loc.Item1, lng2 = c2Loc.Item2;
 
-                //Initiate the key and populate the URL to call
+                //Format URL with locations and key
                 const string bingApiKey = "Ao0BK4GXiMwRy_4CGUMODJcwKwsHzEluEPLwIA5XpVJVxjpZyoY9NOujRdaLRtEM";
                 string destMatrix = $"https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=" +
                     $"{lat1},{lng1}&destinations={lat2},{lng2}" +
                     $"&travelMode=driving&startTime=&timeUnit=&key={bingApiKey}"; //Travel mode is required but does not impact distance
 
-                //Get the response from the server
+                //Get response from the server
                 HttpResponseMessage response = await client.GetAsync(destMatrix);
-
-                //Store in JSON
                 JObject json = JObject.Parse($"{{ data:{response.Content.ReadAsStringAsync().Result}}}");
 
-                //The structure of the return is in a DistanceMatrix Resource
-                //https://docs.microsoft.com/en-us/bingmaps/rest-services/routes/distance-matrix-data
-                //Note: returns in KM
-
-                //Get the resource object, held within the returned data (element 3 is the response)
+                //Get the resource object from returned data (element 3 is response)
                 JToken returnResources = json["data"].Children().ElementAt(3).First().Children().First()["resources"];
 
-                //Determine the travel distance from the result
+                //Extract travel distance from result
                 JToken results = returnResources.Children().First()["results"].Children().First()["travelDistance"];
 
-                //There was an error with the passed co-ordinates
                 if (Convert.ToInt32(results) == -1)
                     throw new Exception("Could not find a valid route between the two passed co-ordinates");
 
-                //Display the results
-                Console.WriteLine($"The distance between the two points is: {string.Format("{0:n0}", results)}km");
+                Console.WriteLine($"\nThe distance between the two points is: {string.Format("{0:n0}", results)}km\n");
             }
             catch (Exception ex)
             {
@@ -218,15 +211,13 @@ namespace Project1_Group_17
             }
         }
 
-        //// Province Methods        
+        // Province Methods
 
         /// <summary>
-        /// Determines whether the province entered by the user is valid.
+        /// Determines whether the province entered by the user exists in the catalogue.
         /// </summary>
         /// <param name="province">The province.</param>
-        /// <returns>
-        ///   Returns true if it is a valid province
-        /// </returns>
+        /// <returns>Returns true if it is a valid province</returns>
         public bool IsValidProvince(string province)
         {
             foreach (var city in CityCatalogue)
@@ -252,7 +243,7 @@ namespace Project1_Group_17
         }
 
         /// <summary>
-        /// Display the cities for the given province
+        /// Displays the cities for the given province in 3 columns
         /// </summary>
         /// <param name="province">Province to find the cities for</param>
         public void DisplayProvinceCities(string province)
@@ -293,7 +284,7 @@ namespace Project1_Group_17
             }
 
             //Table header
-            Console.WriteLine("\n\n{0,-35}\t{1,10}", "Province", "Population");
+            Console.WriteLine("\n{0,-35}|{1,14}", "Province", "Population");
             Console.WriteLine(new string('-', 50));
 
             //Display table contents
@@ -321,7 +312,7 @@ namespace Project1_Group_17
             }
 
             //Table header
-            Console.WriteLine("\n\n{0,-35}\t{1,10}", "Province", "Cities");
+            Console.WriteLine("\n{0,-35}|{1,14}", "Province", "Cities");
             Console.WriteLine(new string('-', 50));
 
             //Display table contents
@@ -345,6 +336,8 @@ namespace Project1_Group_17
                     return;
                 }
             }
+
+            Console.WriteLine($"\nNo capital found for {CapitalizeString(province)}.\n");
         }
 
         /// <summary>
@@ -362,7 +355,6 @@ namespace Project1_Group_17
                 CityInfo cityToUpdate = GetSpecificCity(cityName);
                 if (cityToUpdate != null)
                 {
-
                     if (cityToUpdate.GetPopulation() == population)
                     {
                         Console.WriteLine($"{cityToUpdate.GetCityName()}, {cityToUpdate.GetProvince()} already has a population of {string.Format("{0:n0}", population)}.");
@@ -371,13 +363,13 @@ namespace Project1_Group_17
                     switch (fileName)
                     {
                         case "Canadacities-XML.xml":
-                            UpdateXMLFile(cityName, population, fileName, cityToUpdate.GetProvince());
+                            UpdateXMLFile(cityName, cityToUpdate.GetProvince(), population, fileName);
                             break;
                         case "Canadacities-JSON.json":
-                            UpdateJSONFile(cityName, population, fileName, cityToUpdate.GetProvince());
+                            UpdateJSONFile(cityName, cityToUpdate.GetProvince(), population, fileName);
                             break;
                         case "Canadacities.csv":
-                            UpdateCSVFile(cityName, population, fileName, cityToUpdate.GetProvince());
+                            UpdateCSVFile(cityName, cityToUpdate.GetProvince(), population, fileName);
                             break;
                         default:
                             throw new Exception($"Invalid file name: {fileName}");
@@ -392,11 +384,11 @@ namespace Project1_Group_17
                     ));
                 }
                 else
-                    Console.WriteLine($"No city exists in the collection called {CapitalizeString(cityName)}");
+                    Console.WriteLine($"\nNo city exists in the collection called {CapitalizeString(cityName)}\n");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"ERROR: {ex.Message}");
+                Console.WriteLine($"Population Update Failed: {ex.Message}");
             }
         }
 
@@ -409,7 +401,7 @@ namespace Project1_Group_17
         {
             string oldPopulation = string.Format("{0:n0}", eventArgs.OldPopulation);
             string newPopulation = string.Format("{0:n0}", eventArgs.NewPopulation);
-            Console.WriteLine($"{CapitalizeString(eventArgs.CityName)}, {CapitalizeString(eventArgs.ProvinceName)} Population Changed From {oldPopulation} to {newPopulation}");
+            Console.WriteLine($"\n{CapitalizeString(eventArgs.CityName)}, {CapitalizeString(eventArgs.ProvinceName)} Population Changed From {oldPopulation} to {newPopulation}\n");
         }
 
         /// <summary>
@@ -418,17 +410,17 @@ namespace Project1_Group_17
         /// <param name="cityName">The city to be altered</param>
         /// <param name="population">The new population value</param>
         /// <param name="fileName">The file to be altered</param>
-        private void UpdateCSVFile(string cityName, ulong population, string fileName, string province)
+        private void UpdateCSVFile(string cityName, string province, ulong population, string fileName)
         {
             string[] fileText = File.ReadAllLines($"../../../Data/{fileName}");
             for (int i = 0; i < fileText.Length; i++)
             {
                 //Find the city
                 string[] cityParts = fileText[i].Split(',');
-                if (cityParts[0].ToLower() == cityName.ToLower())
+                if (cityParts[0].ToLower() == cityName.ToLower() || cityParts[1].ToLower() == cityName.ToLower())
                 {
                     //Make sure it is the same province
-                    if (cityParts[5].ToLower()==province.ToLower())
+                    if (cityParts[5].ToLower() == province.ToLower())
                     {
                         cityParts[7] = population.ToString();
                         string outputText = $"{string.Join(',', cityParts)}";
@@ -447,7 +439,7 @@ namespace Project1_Group_17
         /// <param name="cityName">The city to be altered</param>
         /// <param name="population">The new population value</param>
         /// <param name="fileName">The file to be altered</param>
-        private void UpdateJSONFile(string cityName, ulong population, string fileName, string province)
+        private void UpdateJSONFile(string cityName, string province, ulong population, string fileName)
         {
             string rawJson = File.ReadAllText($"../../../Data/{fileName}");
             JObject json = JObject.Parse($"{{ data: {rawJson}}}");
@@ -456,7 +448,7 @@ namespace Project1_Group_17
             foreach (JToken result in results)
             {
                 //Find the city
-                if (result["city"].ToString().ToLower() == cityName.ToLower())
+                if (result["city"].ToString().ToLower() == cityName.ToLower() || result["city_ascii"].ToString().ToLower() == cityName.ToLower())
                 {
                     //Make sure province is correct
                     if (result["admin_name"].ToString().ToLower() == province.ToLower())
@@ -475,12 +467,14 @@ namespace Project1_Group_17
         /// <param name="cityName">The city to be altered</param>
         /// <param name="population">The new population value</param>
         /// <param name="fileName">The file to be altered</param>
-        private void UpdateXMLFile(string cityName, ulong population, string fileName, string province)
+        private void UpdateXMLFile(string cityName, string province, ulong population, string fileName)
         {
             string[] nameParts = cityName.Split('|');
             XmlDocument document = new XmlDocument();
             document.Load($"../../../Data/{fileName}");
-            XmlNode cityNode = document.SelectSingleNode($"//CanadaCity[city='{CapitalizeString(cityName)}' and admin_name='{CapitalizeString(province)}']");
+            XmlNode cityNode = document.SelectSingleNode(
+                $"//CanadaCity[city='{CapitalizeString(cityName)}' or city_ascii='{CapitalizeString(cityName)}' and admin_name='{CapitalizeString(province)}']"
+            );
             XmlNode cityPopulation = cityNode.SelectSingleNode("population");
             cityPopulation.InnerText = population.ToString();
             document.Save("../../../Data/Canadacities-XML.xml");
@@ -491,12 +485,12 @@ namespace Project1_Group_17
         /// </summary>
         public void DisplayProvinceList()
         {
-            Console.WriteLine();
-            var h = new SortedSet<string>();
+            Console.WriteLine("\nAll Provinces:\n");
+            SortedSet<string> provinces = new SortedSet<string>();
             foreach (var item in CityCatalogue)
-                h.Add(item.Value.GetProvince());
+                provinces.Add(item.Value.GetProvince());
 
-            foreach (string prov in h)
+            foreach (string prov in provinces)
                 Console.WriteLine(prov);
         }
 
@@ -512,21 +506,20 @@ namespace Project1_Group_17
             //Either show all cities with same name or ask user which to show
             foreach (KeyValuePair<string, CityInfo> city in CityCatalogue)
             {
-                string[] nameParts = city.Key.Split('|');
-                if (nameParts[0].ToLower() == cityName.ToLower())
+                if (cityName == city.Value.GetCityName().ToLower() || cityName == city.Value.GetCityAscii().ToLower())
                     matchedCities.Add(city.Value);
             }
 
             if (matchedCities.Count == 0)
             {
                 //No cities were found
-                Console.WriteLine($"No city exists named {CapitalizeString(cityName)}.\n");
+                Console.WriteLine($"\nNo city exists named {CapitalizeString(cityName)}.\n");
                 return null;
             }
             else if (matchedCities.Count > 1)
             {
                 //Display the options for multiple cities under the same name
-                Console.WriteLine($"Multiple Cities Named {matchedCities[0].GetCityName()}. Please Select Desired City.\n");
+                Console.WriteLine($"\nMultiple Cities Named {matchedCities[0].GetCityName()}. Please Select Desired City.\n");
 
                 for (int i = 0; i < matchedCities.Count; i++)
                     Console.WriteLine($"\t{i + 1}) {matchedCities[i].GetCityName()}, {matchedCities[i].GetProvince()}");
@@ -560,17 +553,11 @@ namespace Project1_Group_17
                 return toCapitalize.ToUpper();
             else
             {
-                if (toCapitalize.Split(' ').Length > 1)
-                {
-                    //Handle 1+ words
-                    string capitalized = "";
-                    foreach (string word in toCapitalize.Split(' '))
-                        capitalized += word.Substring(0, 1).ToUpper() + word.Substring(1).ToLower() + " ";
+                string capitalized = "";
+                foreach (string word in toCapitalize.Split(' '))
+                    capitalized += word.Substring(0, 1).ToUpper() + word.Substring(1).ToLower() + " ";
 
-                    return capitalized.Trim();
-                }
-                else
-                    return (toCapitalize.Substring(0, 1).ToUpper() + toCapitalize.Substring(1).ToLower()).Trim();
+                return capitalized.Trim();
             }
         }
     }
