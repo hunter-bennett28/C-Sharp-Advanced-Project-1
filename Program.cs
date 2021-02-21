@@ -269,7 +269,8 @@ namespace Project1_Group_17
             } while (true);
         }
 
-        static void UpdatePopulation(Statistics cityStats){
+        static void UpdatePopulation(Statistics cityStats)
+        {
             bool valid = false;
             string fileName = "";
             ulong newPopulation = 0;
@@ -278,7 +279,7 @@ namespace Project1_Group_17
             Console.WriteLine("\t2) Canadacities-XML.xml");
             Console.WriteLine("\t3) Canadacities.csv");
             Console.Write("Please make a selection(ex. 1, 2): ");
-            string selection;
+            string selection, response;
             do
             {
                 selection = Console.ReadLine();
@@ -288,39 +289,40 @@ namespace Project1_Group_17
                         fileName = "Canadacities-JSON.json";
                         valid = true;
                         break;
-                     case "2":
+                    case "2":
                         fileName = "Canadacities-XML.xml";
-                                    valid = true;
-                                    break;
-                                case "3":
-                                    fileName = "Canadacities.csv";
-                                    valid = true;
-                                    break;
-                                default:
-                                    Console.Write("\nInvalid selection, please enter a valid selection: ");
-                                    break;
-                            }
-                        } while (!valid);
-                        Console.WriteLine("\nWhich city do you want to change the population?\n");
-                        //get the user's choice
-                        response = OneCityValidator(cityStats);
-                        do
-                        {
-                            Console.Write($"Please enter the new population for {response}: ");
-                            if (!UInt64.TryParse(Console.ReadLine(), out newPopulation))
-                            continue;
-                            else break;
-                        }
-                        while (true);
-                        try
-                        {
-                            cityStats.UpdatePopulation(response, newPopulation, fileName);
-            }catch (Exception ex)
+                        valid = true;
+                        break;
+                    case "3":
+                        fileName = "Canadacities.csv";
+                        valid = true;
+                        break;
+                    default:
+                        Console.Write("\nInvalid selection, please enter a valid selection: ");
+                        break;
+                }
+            } while (!valid);
+            Console.WriteLine("\nWhich city do you want to change the population?\n");
+            //get the user's choice
+            response = OneCityValidator(cityStats);
+            do
+            {
+                Console.Write($"Please enter the new population for {response}: ");
+                if (!UInt64.TryParse(Console.ReadLine(), out newPopulation))
+                    continue;
+                else break;
+            }
+            while (true);
+            try
+            {
+                cityStats.UpdatePopulation(response, newPopulation, fileName);
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine($"ERROR: {ex.Message}");
             }
         }
-        
+
         /// <summary>
         /// One City Validator.
         /// </summary>
