@@ -126,14 +126,14 @@ namespace Project1_Group_17
         /// <param name="city2">Second city object to compare</param>
         public void CompareCitiesPopulation(CityInfo city1, CityInfo city2)
         {
-            CityInfo smallerCity = city1.GetPopulation() < city2.GetPopulation() ? city1 : city2;
-            CityInfo largerCity = smallerCity == city1 ? city2 : city1;
-
-            if (smallerCity == largerCity)
+            if (city1 == city2)
             {
                 Console.WriteLine("The two cities provided are the same");
                 return;
             }
+            
+            CityInfo smallerCity = city1.GetPopulation() < city2.GetPopulation() ? city1 : city2;
+            CityInfo largerCity = smallerCity == city1 ? city2 : city1;
 
             Console.WriteLine($"\nLarger City:\t{CapitalizeString(largerCity.GetCityName())}, {CapitalizeString(largerCity.GetProvince())} ({string.Format("{0:n0}", largerCity.GetPopulation())})");
             Console.WriteLine($"Smaller City:\t{CapitalizeString(smallerCity.GetCityName())}, {CapitalizeString(smallerCity.GetProvince())} ({string.Format("{0:n0}", smallerCity.GetPopulation())})\n");
