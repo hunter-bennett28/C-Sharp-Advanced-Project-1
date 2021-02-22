@@ -126,6 +126,12 @@ namespace Project1_Group_17
         /// <param name="city2">Second city object to compare</param>
         public void CompareCitiesPopulation(CityInfo city1, CityInfo city2)
         {
+            if (city1 == city2)
+            {
+                Console.WriteLine("The two cities provided are the same");
+                return;
+            }
+            
             CityInfo smallerCity = city1.GetPopulation() < city2.GetPopulation() ? city1 : city2;
             CityInfo largerCity = smallerCity == city1 ? city2 : city1;
 
@@ -167,18 +173,15 @@ namespace Project1_Group_17
         /// <summary>
         /// Determines the distance between two points using the Bing Map API
         /// </summary>
-        /// <param name="city1">First city name</param>
-        /// <param name="city2">Second city name</param>
+        /// <param name="city1">First city</param>
+        /// <param name="city2">Second city</param>
         /// <returns>An awaitable task to ensure that the method is called</returns>
-        public async Task CalculateDistanceBetweenCities(string city1Name, string city2Name)
+        public async Task CalculateDistanceBetweenCities(CityInfo city1, CityInfo city2)
         {
             //Fetch from the url, in this case the bing API
             //https://docs.microsoft.com/en-us/bingmaps/rest-services/routes/calculate-a-distance-matrix#response
             try
             {
-                CityInfo city1 = GetSpecificCity(city1Name.ToLower());
-                CityInfo city2 = GetSpecificCity(city2Name.ToLower());
-
                 //Get the lattitudes and logitudes from the cities
                 Tuple<double, double> c1Loc = city1.GetLocation();
                 double lat1 = c1Loc.Item1, lng1 = c1Loc.Item2;

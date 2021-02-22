@@ -259,9 +259,9 @@ namespace Project1_Group_17
                         break;
                     case "6":
                         Console.WriteLine("\nWhich city do you want to start at?");
-                        string startingCity = GetValidCityName(cityStats);
+                        CityInfo startingCity = GetCityChoiceObject(cityStats);
                         Console.WriteLine("\nWhich city do you want to calculate the distance to?");
-                        string endingCity = GetValidCityName(cityStats);
+                        CityInfo endingCity = GetCityChoiceObject(cityStats);
                         cityStats.CalculateDistanceBetweenCities(startingCity, endingCity).Wait();
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
@@ -325,7 +325,7 @@ namespace Project1_Group_17
                 }
             } while (!valid);
             Console.WriteLine("\nWhich city do you want to change the population?");
-            
+
             //get the user's choice
             response = GetValidCityName(cityStats);
             do
@@ -393,7 +393,7 @@ namespace Project1_Group_17
                     Console.WriteLine($"\nNo province exists called {response}.");
                 else
                     return response;
-                
+
             } while (true);
         }
 
